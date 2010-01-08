@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:background="@drawable/tmosplash"
+android:layout_height="fill_parent"
+android:layout_width="fill_parent"
+android:padding="30dip"
+android:orientation="horizontal" >
+
+<LinearLayout
+android:orientation="vertical"
+android:layout_height="wrap_content"
+android:layout_width="fill_parent"
+android:layout_gravity="center" >
+
+	<Button
+	android:id="@+id/new_button"
+	android:layout_width="150px"
+	android:layout_height="38px"
+	android:layout_gravity="center_horizontal"
+	android:layout_marginBottom="10dip"
+	android:text="PLAY"
+	/>
+	
+	<Button
+	android:id="@+id/help_button"
+	android:layout_width="150px"
+	android:layout_height="38px"
+	android:layout_gravity="center_horizontal"
+	android:layout_marginBottom="10dip"
+	android:text="HELP"
+	/>
+	
+	<Button
+	android:id="@+id/website_button"
+	android:layout_width="150px"
+	android:layout_height="38px"
+	android:layout_gravity="center_horizontal"
+	android:layout_marginBottom="10dip"
+	android:text="COMMUNITY"
+	/>
+
+	<Button
+	android:id="@+id/exit_button"
+	android:layout_width="150px"
+	android:layout_height="38px"
+	android:layout_gravity="center_horizontal"
+	android:text="EXIT"
+	/>
+
+</LinearLayout>
+</LinearLayout>

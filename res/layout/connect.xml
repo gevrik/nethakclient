@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout android:id="@+id/RelativeLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/NameText" android:text="Server Desc:"></TextView><EditText android:layout_height="wrap_content" android:id="@+id/NameValue" android:layout_width="fill_parent" android:layout_toRightOf="@+id/NameText"></EditText><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/HostText" android:text="Host Name:" android:layout_below="@+id/NameValue"></TextView><EditText android:layout_height="wrap_content" android:id="@+id/HostValue" android:layout_toRightOf="@+id/HostText" android:layout_width="fill_parent" android:singleLine="true" android:layout_below="@+id/NameValue" android:layout_alignLeft="@+id/NameValue"></EditText>
+<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/PortText" android:text="Port:" android:layout_below="@+id/HostValue"></TextView><EditText android:layout_height="wrap_content" android:id="@+id/PortValue" android:layout_toRightOf="@+id/PortText" android:layout_below="@+id/HostValue" android:layout_width="fill_parent" android:layout_alignLeft="@+id/HostValue" android:singleLine="true"></EditText><Button android:layout_height="wrap_content" android:layout_below="@+id/PortValue" android:layout_alignRight="@+id/PortValue" android:text="Save" android:id="@+id/SaveButton" android:layout_width="fill_parent"></Button>
+
+
+
+
+
+
+
+
+</RelativeLayout>

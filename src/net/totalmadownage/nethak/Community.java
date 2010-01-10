@@ -14,7 +14,8 @@ public class Community extends Activity {
 	/** Called when the activity is first created. */
 	
 	protected static final int MENU_CONNECT = 1;
-	
+	protected static final int MENU_REFRESH = 2;
+		
 	WebView webview;
 	
 	@Override
@@ -41,6 +42,7 @@ public class Community extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, MENU_CONNECT, 0, "EXIT");
+        menu.add(0, MENU_REFRESH, 0, "REFRESH");
         return true;
     }
     
@@ -56,6 +58,9 @@ public class Community extends Activity {
         case MENU_CONNECT:
 			Community.this.finish();
         	return true;
+        case MENU_REFRESH:
+			webview.reload();
+        	return true;	
         }
         return false;
     }

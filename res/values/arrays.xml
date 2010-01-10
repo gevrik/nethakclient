@@ -46,6 +46,7 @@
 <array name="infocommands">
 <item>Score</item>
 <item>Who</item>
+<item>Skills</item>
 <item>Systems</item>
 <item>Regions</item>
 <item>Organizations</item>
@@ -54,6 +55,8 @@
 <item>Equipment</item>
 <item>Inventory</item>
 <item>Compare [i1] [i2]</item>
+<item>Showorg [org]</item>
+<item>Showsystem [sys]</item>
 </array>
 
 <array name="nodescommands">
@@ -63,6 +66,9 @@
 <item>Dig</item>
 <item>Exits</item>
 <item>Glance</item>
+<item>Unlock [dir]</item>
+<item>Unlock [dir] [code]</item>
+<item>Scan [dir]</item>
 <item>Glance [entity]</item>
 <item>Examine [object]</item>
 <item>Drop [item]</item>
@@ -73,12 +79,16 @@
 <item>Say 'Hi'</item>
 <item>Say 'Job'</item>
 <item>Say [text]</item>
-<item>gchat [text]</item>
-<item>schat [text]</item>
+<item>Tell [target] [text]</item>
+<item>Reply [text]</item>
+<item>Gchat [text]</item>
+<item>Schat [text]</item>
+<item>Yell [text]</item>
 <item>Afk</item>
 <item>Bio</item>
 <item>Gtell [text]</item>
 <item>Orgtalk [text]</item>
+<item>OOC [text]</item>
 </array>
 
 <array name="combatcommands">
@@ -87,6 +97,13 @@
 <item>Blast [dir] [target]</item>
 <item>Consider [target]</item>
 <item>Flee [dir]</item>
+<item>Rest</item>
+<item>Sleep</item>
+<item>Wake</item>
+<item>Sit</item>
+<item>Stand</item>
+<item>Setblaster [mode]</item>
+<item>Shove [target]</item>
 </array>
 
 <array name="travelcommands">
@@ -130,7 +147,9 @@
 <array name="interactcommands">
 <item>Give package ICE (jobs)</item>
 <item>Give [object] [entity]</item>
-<item>Hold [object]</item>
+<item>Wield [object]</item>
+<item>Wear [object]</item>
+<item>Remove [object]</item>
 <item>Get [object]</item>
 <item>Close [entity]</item>
 <item>Lock [dir] [code]</item>
@@ -138,11 +157,16 @@
 <item>Empty [container]</item>
 <item>Fill [container]</item>
 <item>Activate [object]</item>
+<item>Teach [target] [skill]</item>
+<item>Visible</item>
 </array>
 
 <array name="shopcommands">
 <item>List</item>
 <item>Buy [object]</item>
+<item>Sell [object]</item>
+<item>Repair [object]</item>
+<item>Value [object]</item>
 <item>Buyskill</item>
 <item>Buyskill [skill]</item>
 </array>
@@ -156,6 +180,7 @@
 
 <array name="supportcommands">
 <item>Bug [description]</item>
+<item>Typo [description]</item>
 </array>
 
 <array name="politicscommands">
@@ -178,7 +203,12 @@
 <item>Demote [victim]</item>
 <item>Empower [char] [priv]</item>
 <item>Induct [playername]</item>
+<item>Withdraw [amount]</item>
+<item>War [organization]</item>
 <item>Enlist</item>
+<item>Overthrow</item>
+<item>Outcast [playername]</item>
+<item>Setwages [amount]</item>
 </array>
 
 <array name="groupcommands">

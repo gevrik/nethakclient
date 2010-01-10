@@ -24,6 +24,7 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.Selection;
 import android.text.SpannableString;
+import android.text.method.BaseKeyListener;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	protected static final int MENU_DISCONNECT = 2;
 	protected static final int MENU_OPTIONS = 3;
 	protected static final int MENU_HELP = 4;
+	protected static final int MENU_TOGGLE = 5;
 	protected PowerManager.WakeLock mWakeLock;
 	
 
@@ -74,6 +76,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	//private SendStack recvData = new SendStack(50);
 	
 	//Selection cmdbuftext;
+	
+	int current_mode = 0;
 	
 	private int historypos = 0;
 
@@ -125,6 +129,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         //menu.add(0, MENU_CONNECT, 0, "Connect");
         menu.add(0, MENU_DISCONNECT, 0, "Community");
         menu.add(0, MENU_HELP, 0, "Help");
+        menu.add(0, MENU_TOGGLE, 0, "UI");
         return true;
     }
     
@@ -306,6 +311,18 @@ public class Dungeoneers extends Activity implements OnClickListener {
         case MENU_HELP:
 			Intent e = new Intent(this, Website.class);
 			startActivity(e);
+        	return true;
+        case MENU_TOGGLE:
+        	View cmd = (View)findViewById(R.id.CommandBox);
+        	int visibility = cmd.getVisibility();
+        		if (visibility == 4)
+        		{
+        			cmd.setVisibility(0);
+        		}
+        		else
+        		{
+        			cmd.setVisibility(4);
+        		}
         	return true;
         }
         return false;
@@ -526,25 +543,268 @@ public class Dungeoneers extends Activity implements OnClickListener {
         
         View commandButton = findViewById(R.id.command_button);
         commandButton.setOnClickListener(this);
+
+        View toggleButton = findViewById(R.id.toggle_button);
+        toggleButton.setOnClickListener(this);
+        
+        View qButton = findViewById(R.id.key_q);
+        qButton.setOnClickListener(this);
+        View wButton = findViewById(R.id.key_w);
+        wButton.setOnClickListener(this);
+        View eButton = findViewById(R.id.key_e);
+        eButton.setOnClickListener(this);
+        View rButton = findViewById(R.id.key_r);
+        rButton.setOnClickListener(this);
+        View tButton = findViewById(R.id.key_t);
+        tButton.setOnClickListener(this);
+        View yButton = findViewById(R.id.key_y);
+        yButton.setOnClickListener(this);
+        View uButton = findViewById(R.id.key_u);
+        uButton.setOnClickListener(this);
+        View iButton = findViewById(R.id.key_i);
+        iButton.setOnClickListener(this);
+        View oButton = findViewById(R.id.key_o);
+        oButton.setOnClickListener(this);
+        View pButton = findViewById(R.id.key_p);
+        pButton.setOnClickListener(this);
+
+        View aButton = findViewById(R.id.key_a);
+        aButton.setOnClickListener(this);
+        View sButton = findViewById(R.id.key_s);
+        sButton.setOnClickListener(this);
+        View dButton = findViewById(R.id.key_d);
+        dButton.setOnClickListener(this);
+        View fButton = findViewById(R.id.key_f);
+        fButton.setOnClickListener(this);
+        View gButton = findViewById(R.id.key_g);
+        gButton.setOnClickListener(this);
+        View hButton = findViewById(R.id.key_h);
+        hButton.setOnClickListener(this);
+        View jButton = findViewById(R.id.key_j);
+        jButton.setOnClickListener(this);
+        View kButton = findViewById(R.id.key_k);
+        kButton.setOnClickListener(this);
+        View lButton = findViewById(R.id.key_l);
+        lButton.setOnClickListener(this);
+
+        View zButton = findViewById(R.id.key_z);
+        zButton.setOnClickListener(this);
+        View xButton = findViewById(R.id.key_x);
+        xButton.setOnClickListener(this);
+        View cButton = findViewById(R.id.key_c);
+        cButton.setOnClickListener(this);
+        View vButton = findViewById(R.id.key_v);
+        vButton.setOnClickListener(this);
+        View bButton = findViewById(R.id.key_b);
+        bButton.setOnClickListener(this);
+        View nButton = findViewById(R.id.key_n);
+        nButton.setOnClickListener(this);
+        View mButton = findViewById(R.id.key_m);
+        mButton.setOnClickListener(this);   
+        
+        View bsButton = findViewById(R.id.key_bs);
+        bsButton.setOnClickListener(this);
+        View enButton = findViewById(R.id.key_en);
+        enButton.setOnClickListener(this); 
         
     }
     
 	public void onClick(View v) {
+		
+		EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
+		
 		switch (v.getId()) {
 
-		case R.id.north_button:
-			EditText cmd = (EditText)findViewById(R.id.cmdText);
-			cmd.setText("north");
-			sendData.push(cmd.getText() + "\r\n");
-			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+		case R.id.key_q:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "q");
+			Spannable cmdbufferq = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferq, cmdkeyboard.getLayout());
+		break;		
+
+		case R.id.key_w:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "w");
+			Spannable cmdbufferw = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferw, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_e:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "e");
+			Spannable cmdbuffere = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffere, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_r:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "r");
+			Spannable cmdbufferr = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferr, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_t:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "t");
+			Spannable cmdbuffert = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffert, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_y:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "y");
+			Spannable cmdbuffery = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffery, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_u:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "u");
+			Spannable cmdbufferu = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferu, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_i:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "i");
+			Spannable cmdbufferi = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferi, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_o:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "o");
+			Spannable cmdbuffero = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffero, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_p:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "p");
+			Spannable cmdbufferp = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferp, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_a:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "a");
+			Spannable cmdbuffera = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffera, cmdkeyboard.getLayout());
+		break;		
+
+		case R.id.key_s:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "s");
+			Spannable cmdbuffers = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffers, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_d:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "d");
+			Spannable cmdbufferd = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferd, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_f:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "f");
+			Spannable cmdbufferf = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferf, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_g:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "g");
+			Spannable cmdbufferg = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferg, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_h:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "h");
+			Spannable cmdbufferh = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferh, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_j:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "j");
+			Spannable cmdbufferj = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferj, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_k:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "k");
+			Spannable cmdbufferk = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferk, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_l:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
+			Spannable cmdbufferl = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferl, cmdkeyboard.getLayout());
+		break;
+		
+		
+		case R.id.key_z:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
+			Spannable cmdbufferz = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferz, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_x:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "x");
+			Spannable cmdbufferx = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferx, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_c:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "c");
+			Spannable cmdbufferc = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferc, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_v:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "v");
+			Spannable cmdbufferv = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferv, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_m:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "m");
+			Spannable cmdbufferm = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferm, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_b:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "b");
+			Spannable cmdbufferb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferb, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_n:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "n");
+			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_bs:		
+			
+			//TextView number = cmdText;
+			CharSequence text = cmdkeyboard.getText();
+			if (!(text instanceof Editable)) {
+		          cmdkeyboard.setText(text, BufferType.EDITABLE);
+		        }
+		        Editable editable = (Editable)cmdkeyboard.getText();
+		        // Now that we have the editable, edit it.
+		        // This line is not from the Android source.
+		        if (text.length() > 0) {
+		          editable.delete(text.length() - 1, text.length());
+		        }
+			
+			
+			//Editable editable = (Editable)cmdkeyboard.getText();
+			//Spannable cmdbufferbs = (Spannable)cmdkeyboard.getText();
+			//editable.delete(cmdbufferbs.length() - 1, cmdbufferbs.length());
+			//Selection.moveToRightEdge(cmdbufferbs, cmdkeyboard.getLayout());
+		break;
+		
+		case R.id.key_en:
+			EditText cmdenterx = (EditText)findViewById(R.id.cmdText);
+			sendData.push(cmdenterx.getText() + "\r\n");
+			addText(cmdenterx.getText() + "\n", Color.WHITE, Color.BLACK);
 
 			historypos = 0;
 
 			if(commandHistory.size() > 1)
 			{
-				if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				if(!(cmdenterx.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
 				{
-					commandHistory.add(cmd.getText().toString());
+					commandHistory.add(cmdenterx.getText().toString());
 					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
 					{
 						commandHistory.remove(0);
@@ -553,8 +813,17 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			}
 			else
 			{
-				commandHistory.add(cmd.getText().toString());
+				commandHistory.add(cmdenterx.getText().toString());
 			}
+			cmdenterx.setText("");
+		break;
+		
+		
+		case R.id.north_button:
+			EditText cmd = (EditText)findViewById(R.id.cmdText);
+			cmd.setText("north");
+			sendData.push(cmd.getText() + "\r\n");
+			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");
 		break;
 		
@@ -563,24 +832,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmde.setText("east");
 			sendData.push(cmde.getText() + "\r\n");
 			addText(cmde.getText() + "\n", Color.WHITE, Color.BLACK);
-
-			historypos = 0;
-
-			if(commandHistory.size() > 1)
-			{
-				if(!(cmde.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-				{
-					commandHistory.add(cmde.getText().toString());
-					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-					{
-						commandHistory.remove(0);
-					}
-				}
-			}
-			else
-			{
-				commandHistory.add(cmde.getText().toString());
-			}
 			cmde.setText("");
 		break;
 
@@ -589,25 +840,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		cmdw.setText("west");
 		sendData.push(cmdw.getText() + "\r\n");
 		addText(cmdw.getText() + "\n", Color.WHITE, Color.BLACK);
-
-		historypos = 0;
-
-		if(commandHistory.size() > 1)
-		{
-			if(!(cmdw.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-			{
-				commandHistory.add(cmdw.getText().toString());
-				if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-				{
-					commandHistory.remove(0);
-				}
-			}
-		}
-		else
-		{
-			commandHistory.add(cmdw.getText().toString());
-		}
-		cmdw.setText("");		
+		cmdw.setText("");
 		break;
 
 		case R.id.south_button:
@@ -615,24 +848,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmds.setText("south");
 			sendData.push(cmds.getText() + "\r\n");
 			addText(cmds.getText() + "\n", Color.WHITE, Color.BLACK);
-
-			historypos = 0;
-
-			if(commandHistory.size() > 1)
-			{
-				if(!(cmds.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-				{
-					commandHistory.add(cmds.getText().toString());
-					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-					{
-						commandHistory.remove(0);
-					}
-				}
-			}
-			else
-			{
-				commandHistory.add(cmds.getText().toString());
-			}
 			cmds.setText("");
 		break;
 		
@@ -641,24 +856,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdup.setText("up");
 			sendData.push(cmdup.getText() + "\r\n");
 			addText(cmdup.getText() + "\n", Color.WHITE, Color.BLACK);
-
-			historypos = 0;
-
-			if(commandHistory.size() > 1)
-			{
-				if(!(cmdup.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-				{
-					commandHistory.add(cmdup.getText().toString());
-					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-					{
-						commandHistory.remove(0);
-					}
-				}
-			}
-			else
-			{
-				commandHistory.add(cmdup.getText().toString());
-			}
 			cmdup.setText("");
 		break;
 		
@@ -667,24 +864,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmddown.setText("down");
 			sendData.push(cmddown.getText() + "\r\n");
 			addText(cmddown.getText() + "\n", Color.WHITE, Color.BLACK);
-
-			historypos = 0;
-
-			if(commandHistory.size() > 1)
-			{
-				if(!(cmddown.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-				{
-					commandHistory.add(cmddown.getText().toString());
-					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-					{
-						commandHistory.remove(0);
-					}
-				}
-			}
-			else
-			{
-				commandHistory.add(cmddown.getText().toString());
-			}
 			cmddown.setText("");
 		break;
 		
@@ -693,24 +872,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdlook.setText("look");
 			sendData.push(cmdlook.getText() + "\r\n");
 			addText(cmdlook.getText() + "\n", Color.WHITE, Color.BLACK);
-
-			historypos = 0;
-
-			if(commandHistory.size() > 1)
-			{
-				if(!(cmdlook.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-				{
-					commandHistory.add(cmdlook.getText().toString());
-					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-					{
-						commandHistory.remove(0);
-					}
-				}
-			}
-			else
-			{
-				commandHistory.add(cmdlook.getText().toString());
-			}
 			cmdlook.setText("");
 		break;	
 		
@@ -738,6 +899,28 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			}
 			//cmdenter.setText("");
 		break;	
+		
+		case R.id.toggle_button:
+	    	View cmda = (View)findViewById(R.id.CommandBox);
+        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+        	int visibilitya = cmda.getVisibility();
+        	int visibilitykb = cmdkb.getVisibility();
+        		if (visibilitya == 0 && visibilitykb == 4)
+        		{
+        			cmda.setVisibility(4);
+        			cmdkb.setVisibility(0);
+        		}
+        		else if (visibilitya == 4 && visibilitykb == 0)
+        		{        			
+        			cmda.setVisibility(4);
+        			cmdkb.setVisibility(4);
+        		}
+        		else
+        		{
+        			cmda.setVisibility(0);
+        			cmdkb.setVisibility(4);
+        		}
+		break;
 
 
 			case R.id.command_button:

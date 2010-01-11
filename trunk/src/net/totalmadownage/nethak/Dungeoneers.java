@@ -379,11 +379,9 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				}
 				case KeyEvent.KEYCODE_BACK:
 				{
+					openNewGameDialog();
+					//sendData.push("quit\r\n");
 					//Dungeoneers.this.finish();
-					//return false;
-			    	//SavePrefs();
-					sendData.push("quit\r\n");
-					Dungeoneers.this.finish();
 				//	return false;
 				}
 				case KeyEvent.KEYCODE_ENTER:
@@ -425,7 +423,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    
-             
+        //setTheme(R.style.MyTheme);
         requestWindowFeature(Window.FEATURE_NO_TITLE); 
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); 
         //setContentView(R.layout.splashscreen);
@@ -437,7 +435,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         
         EditText cmd = (EditText)findViewById(R.id.cmdText);
         TextView textview = (TextView)findViewById(R.id.MainText);
-        Selection cmdbuftext;
+        //Selection cmdbuftext;
         
 		//tlisten = new ThreadListener();
         //connectionThread = new Thread(new TelnetConnectionThread(Hostname,Port,sendData,tlisten));
@@ -606,6 +604,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
         bsButton.setOnClickListener(this);
         View enButton = findViewById(R.id.key_en);
         enButton.setOnClickListener(this); 
+        View spaceButton = findViewById(R.id.key_space);
+        spaceButton.setOnClickListener(this); 
         
     }
     
@@ -771,6 +771,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
 		break;
+
+		case R.id.key_space:
+			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
+			Spannable cmdbuffersp = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffersp, cmdkeyboard.getLayout());
+		break;
 		
 		case R.id.key_bs:		
 			
@@ -934,6 +940,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	//private static final String TAG = "Dungeoneers" ;
 	/** Ask the user what difficulty level they want */
 	private void openNewGameDialog() {
+	/*
 	new AlertDialog.Builder(this)
 	.setTitle("Numbers")
 	.setItems(R.array.numbers,
@@ -943,8 +950,25 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	startGame(i);
 	}
 	})
-	.show();
+	.show(); */
+		
+		new AlertDialog.Builder(this)
+		.setMessage("Are you sure you want to exit?")
+		.setCancelable(false)
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		        	   Dungeoneers.this.finish();
+		           }
+		       })
+		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		                dialog.cancel();
+		           }
+		       }).show();
+		//AlertDialog alert = builder.create();	
+		
 	}
+	
 	/** Start a new game with the given difficulty level */
 	private void startGame(int i) {
 	//Log.d(TAG, "clicked on " + i);
@@ -954,8 +978,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	
 	private void openCommonDialog() {
 		new AlertDialog.Builder(this)
+		//.setContentView(R.layout.custom_dialog)
 		.setTitle("Choose category")
+		.setInverseBackgroundForced(true)
 		.setItems(R.array.commoncommands,
+		
 		new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialoginterface,
 		int i) {

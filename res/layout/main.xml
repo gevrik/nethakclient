@@ -6,6 +6,7 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent" 
 xmlns:android="http://schemas.android.com/apk/res/android">
 
+
 <EditText 
 android:layout_height="wrap_content" 
 android:layout_below="@+id/commandView" 
@@ -15,8 +16,22 @@ android:background="@color/color_black"
 android:text="Commands" 
 android:id="@+id/cmdText" 
 android:singleLine="true" 
-android:textSize="10pt" android:layout_alignParentBottom="true"></EditText>
+android:textSize="10pt"
+android:layout_alignParentBottom="true">
+</EditText>
 
+
+<!-- 
+<EditText 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/commandView" 
+android:layout_width="fill_parent" 
+android:text="Commands" 
+android:id="@+id/cmdText" 
+android:singleLine="true" 
+android:layout_alignParentBottom="true"></EditText>
+-->
+ 
 <TextView 
 android:typeface="monospace" 
 android:layout_width="fill_parent" 
@@ -32,7 +47,7 @@ android:textColor="@color/color_white"
 android:layout_above="@+id/cmdText" 
 android:layout_height="fill_parent" 
 android:textStyle="normal" 
-android:textSize="4pt" 
+android:textSize="10sp" 
 android:autoLink="all" android:linksClickable="true"></TextView>
 
 <ImageButton
@@ -47,6 +62,96 @@ android:background="@drawable/travel_button"
 />
 
 <TableLayout
+android:id="@+id/CommandBox" 
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:layout_centerInParent="true" 
+android:visibility="visible" android:layout_alignParentTop="true">
+
+<TableRow android:layout_marginTop="5px">
+<ImageButton
+android:id="@+id/up_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/up_buttona"
+android:background="@drawable/up_buttona"
+/>
+<ImageButton
+android:id="@+id/north_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/north_buttona"
+android:background="@drawable/north_buttona"
+/>
+<ImageButton
+android:id="@+id/down_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/down_buttona"
+android:background="@drawable/down_buttona"
+/>
+</TableRow>
+
+<TableRow>
+<ImageButton
+android:id="@+id/west_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/west_buttona"
+android:background="@drawable/west_buttona"
+/>
+<ImageButton
+android:id="@+id/command_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/comm_button"
+android:background="@drawable/comm_button"
+/>
+<ImageButton
+android:id="@+id/east_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/east_buttona"
+android:background="@drawable/east_buttona"
+/>
+</TableRow>
+
+<TableRow>
+<ImageButton
+android:id="@+id/enter_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/enter_buttona"
+android:background="@drawable/enter_buttona"
+/>
+<ImageButton
+android:id="@+id/south_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/south_buttona"
+android:background="@drawable/south_buttona"
+/>
+<ImageButton
+android:id="@+id/look_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/look_buttona"
+android:background="@drawable/look_buttona"
+/>
+</TableRow>
+
+</TableLayout>
+
+<TableLayout
 android:id="@+id/KeyboardBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
@@ -56,16 +161,16 @@ android:layout_alignParentTop="true" android:layout_centerInParent="true" androi
 
 <ImageButton
 android:id="@+id/key_q"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_q"
-android:background="@drawable/key_q" android:layout_marginRight="8px"/>
+android:background="@drawable/key_q" android:layout_marginRight="2px"/>
 
 <ImageButton
 android:id="@+id/key_w"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_w"
@@ -74,8 +179,8 @@ android:background="@drawable/key_w"
 
 <ImageButton
 android:id="@+id/key_e"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_e"
@@ -84,8 +189,8 @@ android:background="@drawable/key_e"
 
 <ImageButton
 android:id="@+id/key_r"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_r"
@@ -94,8 +199,8 @@ android:background="@drawable/key_r"
 
 <ImageButton
 android:id="@+id/key_t"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_t"
@@ -104,8 +209,8 @@ android:background="@drawable/key_t"
 
 <ImageButton
 android:id="@+id/key_y"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_y"
@@ -114,8 +219,8 @@ android:background="@drawable/key_y"
 
 <ImageButton
 android:id="@+id/key_u"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_u"
@@ -124,8 +229,8 @@ android:background="@drawable/key_u"
 
 <ImageButton
 android:id="@+id/key_i"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_i"
@@ -134,8 +239,8 @@ android:background="@drawable/key_i"
 
 <ImageButton
 android:id="@+id/key_o"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_o"
@@ -144,9 +249,10 @@ android:background="@drawable/key_o"
 
 <ImageButton
 android:id="@+id/key_p"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
+android:layout_marginRight="2px"
 android:src="@drawable/key_p"
 android:background="@drawable/key_p"
 />
@@ -157,16 +263,16 @@ android:background="@drawable/key_p"
 
 <ImageButton
 android:id="@+id/key_a"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_a"
-android:background="@drawable/key_a" android:layout_marginRight="8px"/>
+android:background="@drawable/key_a" android:layout_marginRight="2px"/>
 
 <ImageButton
 android:id="@+id/key_s"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_s"
@@ -175,8 +281,8 @@ android:background="@drawable/key_s"
 
 <ImageButton
 android:id="@+id/key_d"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_d"
@@ -185,8 +291,8 @@ android:background="@drawable/key_d"
 
 <ImageButton
 android:id="@+id/key_f"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_f"
@@ -195,8 +301,8 @@ android:background="@drawable/key_f"
 
 <ImageButton
 android:id="@+id/key_g"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_g"
@@ -205,8 +311,8 @@ android:background="@drawable/key_g"
 
 <ImageButton
 android:id="@+id/key_h"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_h"
@@ -215,8 +321,8 @@ android:background="@drawable/key_h"
 
 <ImageButton
 android:id="@+id/key_j"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_j"
@@ -225,8 +331,8 @@ android:background="@drawable/key_j"
 
 <ImageButton
 android:id="@+id/key_k"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_k"
@@ -235,7 +341,7 @@ android:background="@drawable/key_k"
 
 <ImageButton
 android:id="@+id/key_l"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_l"
@@ -248,16 +354,16 @@ android:background="@drawable/key_l"
 
 <ImageButton
 android:id="@+id/key_z"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_z"
-android:background="@drawable/key_z" android:layout_marginRight="8px"/>
+android:background="@drawable/key_z" android:layout_marginRight="2px"/>
 
 <ImageButton
 android:id="@+id/key_x"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_x"
@@ -266,8 +372,8 @@ android:background="@drawable/key_x"
 
 <ImageButton
 android:id="@+id/key_c"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_c"
@@ -276,8 +382,8 @@ android:background="@drawable/key_c"
 
 <ImageButton
 android:id="@+id/key_v"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_v"
@@ -286,8 +392,8 @@ android:background="@drawable/key_v"
 
 <ImageButton
 android:id="@+id/key_b"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_b"
@@ -296,8 +402,8 @@ android:background="@drawable/key_b"
 
 <ImageButton
 android:id="@+id/key_n"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_n"
@@ -306,8 +412,8 @@ android:background="@drawable/key_n"
 
 <ImageButton
 android:id="@+id/key_m"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_m"
@@ -315,18 +421,19 @@ android:background="@drawable/key_m"
 />
 
 <ImageButton
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:id="@+id/key_space"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
-android:src="@drawable/key_ph"
-android:background="@drawable/key_ph"
+android:src="@drawable/key_space"
+android:background="@drawable/key_space"
 />
 
 <ImageButton
 android:id="@+id/key_bs"
-android:layout_marginRight="8px"
-android:layout_width="22px"
+android:layout_marginRight="2px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_bs"
@@ -335,7 +442,7 @@ android:background="@drawable/key_bs"
 
 <ImageButton
 android:id="@+id/key_en"
-android:layout_width="22px"
+android:layout_width="28px"
 android:layout_height="28px"
 android:scaleType="center"
 android:src="@drawable/key_en"
@@ -346,94 +453,5 @@ android:background="@drawable/key_en"
 
 </TableLayout>
 
-<TableLayout
-android:id="@+id/CommandBox" 
-android:layout_height="wrap_content"
-android:layout_width="wrap_content"
-android:layout_alignParentRight="true" 
-android:visibility="visible">
-
-<TableRow android:layout_marginTop="40px">
-<ImageButton
-android:id="@+id/up_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/up_button"
-android:background="@drawable/up_button"
-/>
-<ImageButton
-android:id="@+id/north_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/north_button"
-android:background="@drawable/north_button"
-/>
-<ImageButton
-android:id="@+id/down_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/down_button"
-android:background="@drawable/down_button"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/west_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/west_button"
-android:background="@drawable/west_button"
-/>
-<ImageButton
-android:id="@+id/command_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/stop_button"
-android:background="@drawable/stop_button"
-/>
-<ImageButton
-android:id="@+id/east_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/east_button"
-android:background="@drawable/east_button"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/enter_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/combat_button"
-android:background="@drawable/combat_button"
-/>
-<ImageButton
-android:id="@+id/south_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/south_button"
-android:background="@drawable/south_button"
-/>
-<ImageButton
-android:id="@+id/look_button"
-android:layout_width="30px"
-android:layout_height="30px"
-android:scaleType="center"
-android:src="@drawable/look_button"
-android:background="@drawable/look_button"
-/>
-</TableRow>
-
-</TableLayout>
 
 </RelativeLayout>

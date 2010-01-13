@@ -17,7 +17,8 @@ android:text="Commands"
 android:id="@+id/cmdText" 
 android:singleLine="true" 
 android:textSize="10pt"
-android:layout_alignParentBottom="true">
+android:layout_alignParentBottom="true"
+android:inputType="none">
 </EditText>
 
 
@@ -31,6 +32,22 @@ android:id="@+id/cmdText"
 android:singleLine="true" 
 android:layout_alignParentBottom="true"></EditText>
 -->
+
+<Spinner  android:id="@+id/spinner1" android:layout_width="wrap_content"
+ android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
+ </Spinner>
+ 
+  <Button android:id="@+id/button1" android:layout_width="wrap_content"
+ android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/spinner1"
+ android:layout_marginTop="1px" android:visibility="invisible" android:layout_centerInParent="true"></Button>  
+                               
+<Spinner  android:id="@+id/spinnermodify" android:layout_width="wrap_content"
+ android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
+ </Spinner>
+ 
+  <Button android:id="@+id/buttonmodify" android:layout_width="wrap_content"
+ android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/spinnermodify"
+ android:layout_marginTop="1px" android:visibility="invisible" android:layout_centerInParent="true"></Button> 
  
 <TextView 
 android:typeface="monospace" 
@@ -66,7 +83,7 @@ android:id="@+id/CommandBox"
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
 android:layout_centerInParent="true" 
-android:visibility="visible" android:layout_alignParentTop="true">
+android:visibility="invisible" android:layout_alignParentTop="true">
 
 <TableRow android:layout_marginTop="5px">
 <ImageButton
@@ -155,14 +172,14 @@ android:background="@drawable/look_buttona"
 android:id="@+id/KeyboardBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:layout_alignParentTop="true" android:layout_centerInParent="true" android:visibility="invisible">
+android:layout_alignParentTop="true" android:layout_centerInParent="true" android:visibility="visible">
 
 <TableRow android:layout_marginTop="40px" android:layout_marginBottom="10px">
 
 <ImageButton
 android:id="@+id/key_q"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_q"
 android:background="@drawable/key_q" android:layout_marginRight="2px"/>
@@ -171,7 +188,7 @@ android:background="@drawable/key_q" android:layout_marginRight="2px"/>
 android:id="@+id/key_w"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_w"
 android:background="@drawable/key_w"
@@ -181,7 +198,7 @@ android:background="@drawable/key_w"
 android:id="@+id/key_e"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_e"
 android:background="@drawable/key_e"
@@ -191,7 +208,7 @@ android:background="@drawable/key_e"
 android:id="@+id/key_r"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_r"
 android:background="@drawable/key_r"
@@ -201,7 +218,7 @@ android:background="@drawable/key_r"
 android:id="@+id/key_t"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_t"
 android:background="@drawable/key_t"
@@ -211,7 +228,7 @@ android:background="@drawable/key_t"
 android:id="@+id/key_y"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_y"
 android:background="@drawable/key_y"
@@ -221,7 +238,7 @@ android:background="@drawable/key_y"
 android:id="@+id/key_u"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_u"
 android:background="@drawable/key_u"
@@ -231,7 +248,7 @@ android:background="@drawable/key_u"
 android:id="@+id/key_i"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_i"
 android:background="@drawable/key_i"
@@ -241,7 +258,7 @@ android:background="@drawable/key_i"
 android:id="@+id/key_o"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_o"
 android:background="@drawable/key_o"
@@ -250,7 +267,7 @@ android:background="@drawable/key_o"
 <ImageButton
 android:id="@+id/key_p"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:layout_marginRight="2px"
 android:src="@drawable/key_p"
@@ -264,7 +281,7 @@ android:background="@drawable/key_p"
 <ImageButton
 android:id="@+id/key_a"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_a"
 android:background="@drawable/key_a" android:layout_marginRight="2px"/>
@@ -273,7 +290,7 @@ android:background="@drawable/key_a" android:layout_marginRight="2px"/>
 android:id="@+id/key_s"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_s"
 android:background="@drawable/key_s"
@@ -283,7 +300,7 @@ android:background="@drawable/key_s"
 android:id="@+id/key_d"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_d"
 android:background="@drawable/key_d"
@@ -293,7 +310,7 @@ android:background="@drawable/key_d"
 android:id="@+id/key_f"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_f"
 android:background="@drawable/key_f"
@@ -303,7 +320,7 @@ android:background="@drawable/key_f"
 android:id="@+id/key_g"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_g"
 android:background="@drawable/key_g"
@@ -313,7 +330,7 @@ android:background="@drawable/key_g"
 android:id="@+id/key_h"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_h"
 android:background="@drawable/key_h"
@@ -323,7 +340,7 @@ android:background="@drawable/key_h"
 android:id="@+id/key_j"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_j"
 android:background="@drawable/key_j"
@@ -333,7 +350,7 @@ android:background="@drawable/key_j"
 android:id="@+id/key_k"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_k"
 android:background="@drawable/key_k"
@@ -342,10 +359,19 @@ android:background="@drawable/key_k"
 <ImageButton
 android:id="@+id/key_l"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_l"
 android:background="@drawable/key_l"
+/>
+
+<ImageButton
+android:id="@+id/key_num"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_num"
+android:background="@drawable/key_num"
 />
 
 </TableRow>
@@ -355,7 +381,7 @@ android:background="@drawable/key_l"
 <ImageButton
 android:id="@+id/key_z"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_z"
 android:background="@drawable/key_z" android:layout_marginRight="2px"/>
@@ -364,7 +390,7 @@ android:background="@drawable/key_z" android:layout_marginRight="2px"/>
 android:id="@+id/key_x"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_x"
 android:background="@drawable/key_x"
@@ -374,7 +400,7 @@ android:background="@drawable/key_x"
 android:id="@+id/key_c"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_c"
 android:background="@drawable/key_c"
@@ -384,7 +410,7 @@ android:background="@drawable/key_c"
 android:id="@+id/key_v"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_v"
 android:background="@drawable/key_v"
@@ -394,7 +420,7 @@ android:background="@drawable/key_v"
 android:id="@+id/key_b"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_b"
 android:background="@drawable/key_b"
@@ -404,7 +430,7 @@ android:background="@drawable/key_b"
 android:id="@+id/key_n"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_n"
 android:background="@drawable/key_n"
@@ -414,7 +440,7 @@ android:background="@drawable/key_n"
 android:id="@+id/key_m"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_m"
 android:background="@drawable/key_m"
@@ -424,7 +450,7 @@ android:background="@drawable/key_m"
 android:id="@+id/key_space"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_space"
 android:background="@drawable/key_space"
@@ -434,7 +460,7 @@ android:background="@drawable/key_space"
 android:id="@+id/key_bs"
 android:layout_marginRight="2px"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_bs"
 android:background="@drawable/key_bs"
@@ -443,10 +469,121 @@ android:background="@drawable/key_bs"
 <ImageButton
 android:id="@+id/key_en"
 android:layout_width="28px"
-android:layout_height="28px"
+android:layout_height="42px"
 android:scaleType="center"
 android:src="@drawable/key_en"
 android:background="@drawable/key_en"
+/>
+
+</TableRow>
+
+</TableLayout>
+
+<TableLayout
+android:id="@+id/NumberBox" 
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:layout_marginTop="2px"
+android:layout_centerInParent="true" android:layout_below="@id/KeyboardBox" android:visibility="invisible">
+
+<TableRow>
+
+<ImageButton
+android:id="@+id/key_1"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_1"
+android:background="@drawable/key_1" android:layout_marginRight="2px"/>
+
+<ImageButton
+android:id="@+id/key_2"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_2"
+android:background="@drawable/key_2"
+/>
+
+<ImageButton
+android:id="@+id/key_3"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_3"
+android:background="@drawable/key_3"
+/>
+
+<ImageButton
+android:id="@+id/key_4"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_4"
+android:background="@drawable/key_4"
+/>
+
+<ImageButton
+android:id="@+id/key_5"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_5"
+android:background="@drawable/key_5"
+/>
+
+<ImageButton
+android:id="@+id/key_6"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_6"
+android:background="@drawable/key_6"
+/>
+
+<ImageButton
+android:id="@+id/key_7"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_7"
+android:background="@drawable/key_7"
+/>
+
+<ImageButton
+android:id="@+id/key_8"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_8"
+android:background="@drawable/key_8"
+/>
+
+<ImageButton
+android:id="@+id/key_9"
+android:layout_marginRight="2px"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:src="@drawable/key_9"
+android:background="@drawable/key_9"
+/>
+
+<ImageButton
+android:id="@+id/key_0"
+android:layout_width="28px"
+android:layout_height="42px"
+android:scaleType="center"
+android:layout_marginRight="2px"
+android:src="@drawable/key_0"
+android:background="@drawable/key_0"
 />
 
 </TableRow>

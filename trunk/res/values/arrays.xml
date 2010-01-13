@@ -35,12 +35,8 @@
 <item>Interaction</item>
 <item>Shopping</item>
 <item>Banking</item>
-<item>Support</item>
-<item>Politics</item>
-<item>Settings</item>
 <item>Organization</item>
 <item>Group</item>
-<item>Global Board</item>
 </array>
 
 <array name="infocommands">
@@ -66,13 +62,10 @@
 <item>Dig</item>
 <item>Exits</item>
 <item>Glance</item>
-<item>Unlock [dir]</item>
-<item>Unlock [dir] [code]</item>
-<item>Scan [dir]</item>
-<item>Glance [entity]</item>
 <item>Examine [object]</item>
 <item>Drop [item]</item>
-<item>Bury [item]</item>
+<item>Unlock [dir] [code]</item>
+<item>Scan [dir]</item>
 </array>
 
 <array name="talkcommands">
@@ -92,7 +85,9 @@
 </array>
 
 <array name="combatcommands">
+<item>Kill virus</item>
 <item>Kill ICE</item>
+<item>Kill program</item>
 <item>Kill [target]</item>
 <item>Blast [dir] [target]</item>
 <item>Consider [target]</item>
@@ -109,43 +104,20 @@
 <array name="travelcommands">
 <item>Home</item>
 <item>Enter</item>
-<item>Connect Turing (lobby)</item>
-<item>Connect Moderns (lobby)</item>
-<item>Connect Chatsubo (lobby)</item>
-<item>Connect Turing (list)</item>
-<item>Connect Moderns (list)</item>
-<item>Connect Chatsubo (list)</item>
-<item>Connect Turing [id]</item>
-<item>Connect Moderns [id]</item>
-<item>Connect Chatsubo [id]</item>
-<item>Connect [system] [id]</item>
+<item>Connect [grid] (id) (code)</item>
 </array>
 
 <array name="constructcommands">
-<item>construct north</item>
-<item>construct east</item>
-<item>construct south</item>
-<item>construct west</item>
-<item>construct up</item>
-<item>construct down</item>
-<item>modify terminal</item>
-<item>modify database</item>
-<item>modify inside</item>
-<item>modify subserver</item>
-<item>modify datamine</item>
-<item>modify info</item>
-<item>modify mail</item>
-<item>modify bank</item>
-<item>modify logout</item>
-<item>modify trade</item>
-<item>modify supply</item>
-<item>modify pawn</item>
-<item>modify firewall</item>
-<item>modify employment</item>
+<item>construct [dir]</item>
+<item>modify [type]</item>
+<item>bridge [dir] connect [id]</item>
+<item>bridge [dir] door</item>
+<item>bridge [dir] keycode [code]</item>
+<item>node description [editor]</item>
 </array>
 
 <array name="interactcommands">
-<item>Give package ICE (jobs)</item>
+<item>Give package program</item>
 <item>Give [object] [entity]</item>
 <item>Wield [object]</item>
 <item>Wear [object]</item>
@@ -172,9 +144,9 @@
 </array>
 
 <array name="bankingcommands">
+<item>Balance</item>
 <item>Deposit [amount]</item>
 <item>Withdraw [amount]</item>
-<item>Balance</item>
 <item>Transfer [a] [p]</item>
 </array>
 
@@ -205,10 +177,10 @@
 <item>Induct [playername]</item>
 <item>Withdraw [amount]</item>
 <item>War [organization]</item>
-<item>Enlist</item>
-<item>Overthrow</item>
 <item>Outcast [playername]</item>
 <item>Setwages [amount]</item>
+<item>Enlist</item>
+<item>Overthrow</item>
 </array>
 
 <array name="groupcommands">
@@ -223,6 +195,37 @@
 <item>Gnote catchup</item>
 <item>Gboard [name]</item>
 <item>Gnote write</item>
+</array>
+
+<array name="citygrids">
+<item>Ascension</item>
+<item>Beijing</item>
+<item>Berlin</item>
+<item>Bosat</item>
+<item>Cairo</item>
+<item>Chiba</item>
+<item>Chicago</item>
+<item>Dakar</item>
+<item>Delhi</item>
+<item>Denver</item>
+<item>Havana</item>
+<item>Hongkong</item>
+<item>Honolulu</item>
+<item>London</item>
+<item>LosAngeles</item>
+<item>Madrid</item>
+<item>Melbourne</item>
+<item>Moscow</item>
+<item>Nairobi</item>
+<item>Newash</item>
+<item>PanamaCity</item>
+<item>Paris</item>
+<item>Rio</item>
+<item>Rome</item>
+<item>SaltlakeCity</item>
+<item>Seattle</item>
+<item>Stockholm</item>
+<item>Straylight</item>
 </array>
 
 </resources>

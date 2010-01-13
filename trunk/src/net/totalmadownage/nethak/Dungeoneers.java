@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,10 +18,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.os.Vibrator;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.Spannable;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -42,7 +48,7 @@ import net.totalmadownage.nethak.R.layout;
 
 public class Dungeoneers extends Activity implements OnClickListener {
     /** Called when the activity is first created. */
-
+	
 	//protected static final int MENU_CONNECT = 1;
 	protected static final int MENU_DISCONNECT = 2;
 	protected static final int MENU_OPTIONS = 3;
@@ -50,6 +56,10 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	protected static final int MENU_TOGGLE = 5;
 	protected PowerManager.WakeLock mWakeLock;
 	
+    Spinner   spinner1;
+    Button    button1;
+    Spinner		spinnermodify;
+    Button		buttonmodify;
 
 	protected static final int HISTORY_BUFFER_SIZE = 20;
 	
@@ -70,7 +80,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	private boolean scrolllocked = false; //false follows scroll true stays
 	
 	String Hostname = "";
-	int Port = 23;
+	int Port = 7666;
 	private SendStack sendData;
 	private ThreadListener tlisten;
 	//private SendStack recvData = new SendStack(50);
@@ -314,14 +324,18 @@ public class Dungeoneers extends Activity implements OnClickListener {
         	return true;
         case MENU_TOGGLE:
         	View cmd = (View)findViewById(R.id.CommandBox);
+        	View cmdkey = (View)findViewById(R.id.KeyboardBox);
         	int visibility = cmd.getVisibility();
-        		if (visibility == 4)
+        	int visibilitykey = cmdkey.getVisibility();
+        		if (visibility == 4 && visibilitykey == 4)
         		{
         			cmd.setVisibility(0);
+        			//cmdkey.setVisibility(0);
         		}
         		else
         		{
         			cmd.setVisibility(4);
+        			cmdkey.setVisibility(4);
         		}
         	return true;
         }
@@ -434,17 +448,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
         this.mWakeLock.acquire();
         
         EditText cmd = (EditText)findViewById(R.id.cmdText);
-        TextView textview = (TextView)findViewById(R.id.MainText);
-        //Selection cmdbuftext;
-        
-		//tlisten = new ThreadListener();
-        //connectionThread = new Thread(new TelnetConnectionThread(Hostname,Port,sendData,tlisten));
-        //connectionThread.start(); 
-
-        
-        //ServerListing = new ArrayList<ServerInfo>();
-        
-        //LoadPrefs();
+        cmd.setInputType(InputType.TYPE_NULL);
+        TextView textview = (TextView)findViewById(R.id.MainText);             
         
         if(savedInstanceState == null)
         {
@@ -459,10 +464,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
             if(connectionThread == null)
             {
             
-            	//ConnectReady cready = new OnReadyListener();
-            	//ServerListDialog dialog = new ServerListDialog(this, cready, ServerListing);
-                //dialog.show();
-            	
+           	
         		tlisten = new ThreadListener();
         		sendData = new SendStack(50);
                 connectionThread = new Thread(new TelnetConnectionThread("kults.genesismuds.com",7666,sendData,tlisten));
@@ -600,6 +602,30 @@ public class Dungeoneers extends Activity implements OnClickListener {
         View mButton = findViewById(R.id.key_m);
         mButton.setOnClickListener(this);   
         
+        View oneButton = findViewById(R.id.key_1);
+        oneButton.setOnClickListener(this);
+        View twoButton = findViewById(R.id.key_2);
+        twoButton.setOnClickListener(this);
+        View threeButton = findViewById(R.id.key_3);
+        threeButton.setOnClickListener(this);
+        View fourButton = findViewById(R.id.key_4);
+        fourButton.setOnClickListener(this);
+        View fiveButton = findViewById(R.id.key_5);
+        fiveButton.setOnClickListener(this);
+        View sixButton = findViewById(R.id.key_6);
+        sixButton.setOnClickListener(this);
+        View sevenButton = findViewById(R.id.key_7);
+        sevenButton.setOnClickListener(this);
+        View eightButton = findViewById(R.id.key_8);
+        eightButton.setOnClickListener(this);
+        View nineButton = findViewById(R.id.key_9);
+        nineButton.setOnClickListener(this);
+        View tenButton = findViewById(R.id.key_0);
+        tenButton.setOnClickListener(this);
+        
+        View numButton = findViewById(R.id.key_num);
+        numButton.setOnClickListener(this);
+        
         View bsButton = findViewById(R.id.key_bs);
         bsButton.setOnClickListener(this);
         View enButton = findViewById(R.id.key_en);
@@ -607,126 +633,333 @@ public class Dungeoneers extends Activity implements OnClickListener {
         View spaceButton = findViewById(R.id.key_space);
         spaceButton.setOnClickListener(this); 
         
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clicker()); 
+
+    	spinnermodify = (Spinner) 
+     	findViewById  (R.id.spinnermodify);  
+    	
+    	buttonmodify  = (Button)
+    	findViewById (R.id.buttonmodify);                                               
+        
+    	ArrayAdapter<String> adaptermodify = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
+    	adaptermodify.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinnermodify.setAdapter(adaptermodify);         
+    	buttonmodify.setOnClickListener(  new clickermodify()); 
+    	
+    	
     }
+    
+    private static final String[] arraydirs = {        "north ", "east ", "south ", "west ",
+        "up ", "down " }; 
+
+    private static final String[] arraydirsconnect = {        "north connect ", "east connect ", "south connect ", "west connect ",
+        "up connect ", "down connect " }; 
+    
+    private static final String[] arraydirskeycode = {        "north keycode ", "east keycode ", "south keycode ", "west keycode ",
+        "up keycode ", "down keycode " }; 
+    
+    private static final String[] arraydirsdoor = {        "north door", "east door", "south door", "west door",
+        "up door", "down door" }; 
+    
+    private static final String[] arrayorgs = {        "turing", "moderns", "freelancers" }; 
+    
+    private static final String[] arraysystems = {        "ascension ", "beijing ", "berlin ", "bosat ", "cairo ", "chiba ", "chicago ",
+    	"dakar ", "delhi ", "denver ", "havana ", "hongkong ", "honolulu ", "london ", "losangeles ", "madrid ", "melbourne ", "moscow ",
+    	"nairobi ", "newash ", "panamacity ", "paris ", "rio ", "rome ", "saltlake ", "stockholm ", "seattle ", "straylight " }; 
+        
+    class  clicker implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+    	       
+		    	View cmda = (View)findViewById(R.id.CommandBox);
+	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+	        	View cmdnum = (View)findViewById(R.id.NumberBox);
+	        	View cmdspin = (View)findViewById(R.id.spinner1);
+	        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+	        	cmda.setVisibility(4);
+	        	cmdkb.setVisibility(0);
+	        	cmdnum.setVisibility(4);
+	        	cmdspin.setVisibility(4);
+	        	cmdconfirm.setVisibility(4);
+    	       
+    	         cmd.setText(cmd.getText() + s);    
+    				Spannable cmdbufferh = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
+    	}                                         
+
+    }  
+    
+    class  clickerkeynum implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+    	       
+		    	View cmda = (View)findViewById(R.id.CommandBox);
+	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+	        	View cmdnum = (View)findViewById(R.id.NumberBox);
+	        	View cmdspin = (View)findViewById(R.id.spinner1);
+	        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+	        	cmda.setVisibility(4);
+	        	cmdkb.setVisibility(0);
+	        	cmdnum.setVisibility(0);
+	        	cmdspin.setVisibility(4);
+	        	cmdconfirm.setVisibility(4);
+    	       
+    	         cmd.setText(cmd.getText() + s);    
+    				Spannable cmdbufferh = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
+    	}                                         
+
+    } 
+    
+    class  clickercommand implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+    	       
+		    	View cmda = (View)findViewById(R.id.CommandBox);
+	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+	        	View cmdnum = (View)findViewById(R.id.NumberBox);
+	        	View cmdspin = (View)findViewById(R.id.spinner1);
+	        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+	        	cmda.setVisibility(0);
+	        	cmdkb.setVisibility(4);
+	        	cmdnum.setVisibility(4);
+	        	cmdspin.setVisibility(4);
+	        	cmdconfirm.setVisibility(4);
+    	       
+    	         cmd.setText(cmd.getText() + s);    
+    				
+					sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	         
+    	}                                         
+
+    } 
+    
+    private static final String[] arraymodify = {        "database", "terminal", "subserver", "agent",
+        "trade", "supply", "pawn", "coding", "firewall", "bank", "employment" }; 
+    
+    class  clickermodify implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinnermodify.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+    	       
+		    	View cmda = (View)findViewById(R.id.CommandBox);
+	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+	        	View cmdspin = (View)findViewById(R.id.spinnermodify);
+	        	View cmdconfirm = (View)findViewById(R.id.buttonmodify);
+
+	        	cmda.setVisibility(0);
+	        	cmdkb.setVisibility(4);
+	        	cmdspin.setVisibility(4);
+	        	cmdconfirm.setVisibility(4);
+    	       
+    	         cmd.setText(cmd.getText() + s);    
+    				Spannable cmdbufferh = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
+    	}                                         
+
+    }  
     
 	public void onClick(View v) {
 		
+	     Vibrator vb = ( Vibrator )getApplication().getSystemService( Service.VIBRATOR_SERVICE ); 
 		EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
 		
 		switch (v.getId()) {
 
+		case R.id.key_num:
+				    	
+        	View cmdnum = (View)findViewById(R.id.NumberBox);
+        	int visibilitynum = cmdnum.getVisibility();
+        		if (visibilitynum == 0)
+        		{
+        			cmdnum.setVisibility(4);
+        		}
+        		else
+        		{
+        			cmdnum.setVisibility(0);
+        		}
+			
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
 		case R.id.key_q:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "q");
 			Spannable cmdbufferq = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferq, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;		
 
 		case R.id.key_w:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "w");
 			Spannable cmdbufferw = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferw, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_e:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "e");
 			Spannable cmdbuffere = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffere, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_r:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "r");
 			Spannable cmdbufferr = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferr, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_t:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "t");
 			Spannable cmdbuffert = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffert, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_y:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "y");
 			Spannable cmdbuffery = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffery, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_u:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "u");
 			Spannable cmdbufferu = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferu, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_i:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "i");
 			Spannable cmdbufferi = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferi, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_o:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "o");
 			Spannable cmdbuffero = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffero, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_p:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "p");
 			Spannable cmdbufferp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferp, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_a:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "a");
 			Spannable cmdbuffera = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffera, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;		
 
 		case R.id.key_s:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "s");
 			Spannable cmdbuffers = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffers, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_d:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "d");
 			Spannable cmdbufferd = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferd, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_f:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "f");
 			Spannable cmdbufferf = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferf, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_g:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "g");
 			Spannable cmdbufferg = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferg, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_h:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "h");
 			Spannable cmdbufferh = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferh, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_j:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "j");
 			Spannable cmdbufferj = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferj, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_k:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "k");
 			Spannable cmdbufferk = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferk, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_l:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
 			Spannable cmdbufferl = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferl, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		
@@ -734,49 +967,135 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
 			Spannable cmdbufferz = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferz, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_x:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "x");
 			Spannable cmdbufferx = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferx, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_c:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "c");
 			Spannable cmdbufferc = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferc, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_v:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "v");
 			Spannable cmdbufferv = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferv, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_m:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "m");
 			Spannable cmdbufferm = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferm, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_b:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "b");
 			Spannable cmdbufferb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferb, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.key_n:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "n");
 			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 
 		case R.id.key_space:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbuffersp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersp, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
+		
+		
+		
+		
+		
+		case R.id.key_1:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
+			Spannable cmdbufferone = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferone, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_2:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
+			Spannable cmdbuffertwo = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffertwo, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_3:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
+			Spannable cmdbufferthree = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferthree, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		
+		case R.id.key_4:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
+			Spannable cmdbufferfour = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferfour, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_5:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
+			Spannable cmdbufferfive = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferfive, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_6:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
+			Spannable cmdbuffersix = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffersix, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_7:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
+			Spannable cmdbufferseven = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferseven, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_8:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
+			Spannable cmdbuffereight = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffereight, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_9:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
+			Spannable cmdbuffernine = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffernine, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		case R.id.key_0:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
+			Spannable cmdbufferten = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferten, cmdkeyboard.getLayout());
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
+		break;
+		
+		
+		
 		
 		case R.id.key_bs:		
 			
@@ -792,7 +1111,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		          editable.delete(text.length() - 1, text.length());
 		        }
 			
-			
+		        vb.vibrate( new long[]{0,50,0,0}, -1 );
 			//Editable editable = (Editable)cmdkeyboard.getText();
 			//Spannable cmdbufferbs = (Spannable)cmdkeyboard.getText();
 			//editable.delete(cmdbufferbs.length() - 1, cmdbufferbs.length());
@@ -821,6 +1140,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			{
 				commandHistory.add(cmdenterx.getText().toString());
 			}
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 			cmdenterx.setText("");
 		break;
 		
@@ -831,6 +1151,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmd.getText() + "\r\n");
 			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.east_button:
@@ -839,6 +1160,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmde.getText() + "\r\n");
 			addText(cmde.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmde.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 
 		case R.id.west_button:
@@ -847,6 +1169,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		sendData.push(cmdw.getText() + "\r\n");
 		addText(cmdw.getText() + "\n", Color.WHITE, Color.BLACK);
 		cmdw.setText("");
+		vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 
 		case R.id.south_button:
@@ -855,6 +1178,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmds.getText() + "\r\n");
 			addText(cmds.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmds.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.up_button:
@@ -863,6 +1187,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdup.getText() + "\r\n");
 			addText(cmdup.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdup.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.down_button:
@@ -871,6 +1196,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmddown.getText() + "\r\n");
 			addText(cmddown.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmddown.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 		
 		case R.id.look_button:
@@ -879,6 +1205,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdlook.getText() + "\r\n");
 			addText(cmdlook.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdlook.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;	
 		
 		case R.id.enter_button:
@@ -904,33 +1231,34 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				commandHistory.add(cmdenter.getText().toString());
 			}
 			//cmdenter.setText("");
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;	
 		
 		case R.id.toggle_button:
 	    	View cmda = (View)findViewById(R.id.CommandBox);
         	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+        	View cmdnumber = (View)findViewById(R.id.NumberBox);
         	int visibilitya = cmda.getVisibility();
-        	int visibilitykb = cmdkb.getVisibility();
-        		if (visibilitya == 0 && visibilitykb == 4)
+        	//int visibilitykb = cmdkb.getVisibility();
+        		if (visibilitya == 0)
         		{
         			cmda.setVisibility(4);
         			cmdkb.setVisibility(0);
-        		}
-        		else if (visibilitya == 4 && visibilitykb == 0)
-        		{        			
-        			cmda.setVisibility(4);
-        			cmdkb.setVisibility(4);
         		}
         		else
         		{
         			cmda.setVisibility(0);
         			cmdkb.setVisibility(4);
+        			cmdnumber.setVisibility(4);
         		}
+        		
+        		vb.vibrate( new long[]{0,50,0,0}, -1 );
 		break;
 
 
 			case R.id.command_button:
 			openCommonDialog();
+			vb.vibrate( new long[]{0,50,0,0}, -1 );
 			break;
 
 		}
@@ -940,17 +1268,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	//private static final String TAG = "Dungeoneers" ;
 	/** Ask the user what difficulty level they want */
 	private void openNewGameDialog() {
-	/*
-	new AlertDialog.Builder(this)
-	.setTitle("Numbers")
-	.setItems(R.array.numbers,
-	new DialogInterface.OnClickListener() {
-	public void onClick(DialogInterface dialoginterface,
-	int i) {
-	startGame(i);
-	}
-	})
-	.show(); */
 		
 		new AlertDialog.Builder(this)
 		.setMessage("Are you sure you want to exit?")
@@ -965,20 +1282,20 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		                dialog.cancel();
 		           }
 		       }).show();
-		//AlertDialog alert = builder.create();	
 		
 	}
-	
-	/** Start a new game with the given difficulty level */
-	private void startGame(int i) {
-	//Log.d(TAG, "clicked on " + i);
-	
-		sendData.push(i + "\r\n");
-	}	
+
+	/*
+	private void openCommonDialog() {
+
+		
+		
+		
+		}
+	*/
 	
 	private void openCommonDialog() {
 		new AlertDialog.Builder(this)
-		//.setContentView(R.layout.custom_dialog)
 		.setTitle("Choose category")
 		.setInverseBackgroundForced(true)
 		.setItems(R.array.commoncommands,
@@ -991,7 +1308,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		})
 		.show();
 		}
-	
 	
 		/** Start a new game with the given difficulty level */
 		private void startCommand(int i) {
@@ -1084,6 +1400,54 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				})
 				.show();
 			}	
+			else if (i == 7) {
+				new AlertDialog.Builder(this)
+				.setTitle("Shop Commands")
+				.setItems(R.array.shopcommands,
+				new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialoginterface,
+				int i) {
+				startCommandshop(i);
+				}
+				})
+				.show();
+			}	
+			else if (i == 8) {
+				new AlertDialog.Builder(this)
+				.setTitle("Bank Commands")
+				.setItems(R.array.bankingcommands,
+				new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialoginterface,
+				int i) {
+				startCommandsbanking(i);
+				}
+				})
+				.show();
+			}	
+			else if (i == 9) {
+				new AlertDialog.Builder(this)
+				.setTitle("Organization Commands")
+				.setItems(R.array.organizationcommands,
+				new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialoginterface,
+				int i) {
+				startCommandsorganization(i);
+				}
+				})
+				.show();
+			}	
+			else if (i == 10) {
+				new AlertDialog.Builder(this)
+				.setTitle("Group Commands")
+				.setItems(R.array.groupcommands,
+				new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialoginterface,
+				int i) {
+				startCommandsgroup(i);
+				}
+				})
+				.show();
+			}				
 			else sendData.push(i + "\r\n");
 			}	
 		
@@ -1143,7 +1507,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 					
 				}
-				else if (i == 2) {
+				else if (i == 3) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("systems");
@@ -1170,7 +1534,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 					
 				}
-				else if (i == 3) {
+				else if (i == 4) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("regions");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1195,7 +1559,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					}
 					cmdscore.setText("");
 				}
-				else if (i == 4) {
+				else if (i == 5) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("organizations");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1220,7 +1584,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					}
 					cmdscore.setText("");
 				}	
-				else if (i == 5) {
+				else if (i == 6) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("affected");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1246,7 +1610,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 				}
 				
-				else if (i == 6) {
+				else if (i == 7) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("commands");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1272,7 +1636,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 				}				
 				
-				else if (i == 7) {
+				else if (i == 8) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("equipment");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1298,7 +1662,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 				}
 				
-				else if (i == 8) {
+				else if (i == 9) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("inventory");
 					sendData.push(cmdscore.getText() + "\r\n");
@@ -1324,12 +1688,76 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("");
 				}
 				
-				else if (i == 9) {
+				else if (i == 10) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("compare ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+						
+				}
+				
+				else if (i == 11) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("showorg ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayorgs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
+						
+				}
+				
+				else if (i == 12) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("showsystem ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 						
 				}
 				
@@ -1496,17 +1924,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					}
 					cmdscore.setText("");
 				}
-				
+							
 				else if (i == 6) {
-					
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("glance ", BufferType.SPANNABLE);
-					Spannable cmdbuffer = (Spannable)cmdscore.getText();
-					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-						
-				}
-				
-				else if (i == 7) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("examine ", BufferType.SPANNABLE);
@@ -1515,7 +1934,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 						
 				}
 				
-				else if (i == 8) {
+				else if (i == 7) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("drop ", BufferType.SPANNABLE);
@@ -1523,13 +1942,68 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
 						
 				}
+
+				else if (i == 8) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("unlock ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickerkeynum()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
+						
+				}
 				
 				else if (i == 9) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("bury ", BufferType.SPANNABLE);
+					cmdscore.setText("scan ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 						
 				}
 				
@@ -1598,9 +2072,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					cmdscore.setText("say ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-					
-					
-					
+															
 				}
 				else if (i == 3) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
@@ -1608,13 +2080,13 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
 					}
+													
 				else if (i == 4) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("schat ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
-					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-					
-				}
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());				
+					}
 				
 				else if (i == 5) {
 
@@ -1687,6 +2159,13 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
 					
 				}
+				else if (i == 9) {
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("ooc ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
 				
 				else sendData.push(i + "\r\n");
 				}
@@ -1748,213 +2227,96 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					
 				}
 				else if (i == 2) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect turing 34");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
 					
-				}
-				else if (i == 3) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect moderns 60");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
-				}
-				
-				else if (i == 4) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect moderns 86");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
-				}
-				
-				else if (i == 5) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect turing");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
-				}
-				
-				else if (i == 6) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect moderns");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
-				}
-				
-				else if (i == 7) {
-
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect chatsubo");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
-				}
-						
-				else if (i == 8) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect turing ", BufferType.SPANNABLE);
-					Spannable cmdbuffer = (Spannable)cmdscore.getText();
-					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-					
-				}
-				
-				else if (i == 9) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect moderns ", BufferType.SPANNABLE);
-					Spannable cmdbuffer = (Spannable)cmdscore.getText();
-					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-					
-				}
-				
-				else if (i == 10) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("connect chatsubo ", BufferType.SPANNABLE);
-					Spannable cmdbuffer = (Spannable)cmdscore.getText();
-					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-					
-				}
-				
-				else if (i == 11) {
+					/*
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("connect ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+					// add system list
+					
+					new AlertDialog.Builder(this)
+					//.setContentView(R.layout.custom_dialog)
+					.setTitle("Choose City Grid")
+					.setInverseBackgroundForced(true)
+					.setItems(R.array.commoncommands,
+					
+					new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialoginterface,
+					int i) {
+					startCitygrids(i);
+					}
+					})
+					.show();
+					*/
+										
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("connect ", BufferType.SPANNABLE);
+						Spannable cmdbuffer = (Spannable)cmdscore.getText();
+						Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+											
+				    	spinner1 = (Spinner) 
+				     	findViewById  (R.id.spinner1);  
+				    	
+				    	button1    = (Button)
+				    	findViewById (R.id.button1);                                               
+				        
+				    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
+				    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+				    	spinner1.setAdapter(adapter);         
+				    	button1.setOnClickListener(  new clickerkeynum()); 
+				    	
+				    	View cmda = (View)findViewById(R.id.CommandBox);
+			        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+			        	View cmdnum = (View)findViewById(R.id.NumberBox);
+			        	View cmdspin = (View)findViewById(R.id.spinner1);
+			        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+			        	cmda.setVisibility(4);
+			        	cmdkb.setVisibility(4);
+			        	cmdnum.setVisibility(4);
+			        	cmdspin.setVisibility(0);
+			        	cmdconfirm.setVisibility(0);
 					
 				}
 				
 				else sendData.push(i + "\r\n");
 				}
 		
-		
-		
+			
 		
 		private void startCommandcombat(int i) {
 			//Log.d(TAG, "clicked on " + i);
 				if (i == 0) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("kill virus");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				
+				if (i == 1) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("kill ICE");
@@ -1982,7 +2344,35 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					
 				}
 				
-				else if (i == 1) {
+				if (i == 2) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("kill program");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				
+				else if (i == 3) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("kill ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
@@ -1990,29 +2380,229 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					
 				}
 				
-				else if (i == 2) {
+				else if (i == 4) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("blast ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clicker()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
+
 					
 				}
 				
-				else if (i == 3) {
+				else if (i == 5) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 					cmdscore.setText("consider ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
 				}
 					
-					else if (i == 4) {
+					else if (i == 6) {
 						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
 						cmdscore.setText("flee ", BufferType.SPANNABLE);
 						Spannable cmdbuffer = (Spannable)cmdscore.getText();
 						Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+											
+				    	spinner1 = (Spinner) 
+				     	findViewById  (R.id.spinner1);  
+				    	
+				    	button1    = (Button)
+				    	findViewById (R.id.button1);                                               
+				        
+				    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+				    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+				    	spinner1.setAdapter(adapter);         
+				    	button1.setOnClickListener(  new clickercommand()); 
+				    	
+				    	View cmda = (View)findViewById(R.id.CommandBox);
+			        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+			        	View cmdnum = (View)findViewById(R.id.NumberBox);
+			        	View cmdspin = (View)findViewById(R.id.spinner1);
+			        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+			        	cmda.setVisibility(4);
+			        	cmdkb.setVisibility(4);
+			        	cmdnum.setVisibility(4);
+			        	cmdspin.setVisibility(0);
+			        	cmdconfirm.setVisibility(0);
 						
 					}
-									
+				
+					else if (i == 7) {
+
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("rest");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");
+						
+					}
+				
+					else if (i == 8) {
+
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("sleep");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");
+						
+					}
+					else if (i == 9) {
+
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("wake");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");
+						
+					}
+					else if (i == 10) {
+
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("sit");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");
+						
+					}
+				
+				
+					else if (i == 11) {
+
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("stand");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");
+						
+					}
+				
+					else if (i == 12) {
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("setblaster ", BufferType.SPANNABLE);
+						Spannable cmdbuffer = (Spannable)cmdscore.getText();
+						Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+						
+					}
+				
+					else if (i == 13) {
+						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+						cmdscore.setText("shove ", BufferType.SPANNABLE);
+						Spannable cmdbuffer = (Spannable)cmdscore.getText();
+						Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+						
+					}
+				
 				else sendData.push(i + "\r\n");
 				}
 		
@@ -2021,487 +2611,158 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				if (i == 0) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct north");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+					cmdscore.setText("construct ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-					
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
+		        	
 				}
 				else if (i == 1) {
 
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct east");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+					cmdscore.setText("modify ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 					
 				}
 				else if (i == 2) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct south");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+					cmdscore.setText("bridge ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsconnect);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickerkeynum()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
+		        	
 					
 				}
 				else if (i == 3) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct west");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+					cmdscore.setText("bridge ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsdoor);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickercommand()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 				}
 				else if (i == 4) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct up");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+					cmdscore.setText("bridge ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirskeycode);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickerkeynum()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 				}
 				else if (i == 5) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("construct down");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 6) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify terminal");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 7) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify database");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 8) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify inside");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 9) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify subserver");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 10) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify datamine");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 11) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify info");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 12) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify mail");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 13) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify bank");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 14) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify logout");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 15) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify trade");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 16) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify supply");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 17) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify pawn");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 18) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify firewall");
-					sendData.push(cmdscore.getText() + "\r\n");
-					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
-
-					historypos = 0;
-
-					if(commandHistory.size() > 1)
-					{
-						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
-						{
-							commandHistory.add(cmdscore.getText().toString());
-							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
-							{
-								commandHistory.remove(0);
-							}
-						}
-					}
-					else
-					{
-						commandHistory.add(cmdscore.getText().toString());
-					}
-					cmdscore.setText("");
-				}
-				else if (i == 19) {
-					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("modify employment");
+					cmdscore.setText("nodedescription");
 					sendData.push(cmdscore.getText() + "\r\n");
 					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
 
@@ -2532,7 +2793,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				if (i == 0) {
 					
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("give package ice");
+					cmdscore.setText("give package program");
 					sendData.push(cmdscore.getText() + "\r\n");
 					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
 
@@ -2591,9 +2852,32 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				
 				else if (i == 5) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-					cmdscore.setText("lock ", BufferType.SPANNABLE);
+					cmdscore.setText("bridge ", BufferType.SPANNABLE);
 					Spannable cmdbuffer = (Spannable)cmdscore.getText();
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+										
+			    	spinner1 = (Spinner) 
+			     	findViewById  (R.id.spinner1);  
+			    	
+			    	button1    = (Button)
+			    	findViewById (R.id.button1);                                               
+			        
+			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	spinner1.setAdapter(adapter);         
+			    	button1.setOnClickListener(  new clickerkeynum()); 
+			    	
+			    	View cmda = (View)findViewById(R.id.CommandBox);
+		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+		        	View cmdnum = (View)findViewById(R.id.NumberBox);
+		        	View cmdspin = (View)findViewById(R.id.spinner1);
+		        	View cmdconfirm = (View)findViewById(R.id.button1);
+
+		        	cmda.setVisibility(4);
+		        	cmdkb.setVisibility(4);
+		        	cmdnum.setVisibility(4);
+		        	cmdspin.setVisibility(0);
+		        	cmdconfirm.setVisibility(0);
 					
 				}
 				
@@ -2628,10 +2912,379 @@ public class Dungeoneers extends Activity implements OnClickListener {
 					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
 					
 				}
+
+				else if (i == 10) {
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("teach ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 11) {
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("visible");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}				
 				
 				else sendData.push(i + "\r\n");
 				}
+		
+		private void startCommandshop(int i) {
+			//Log.d(TAG, "clicked on " + i);
+				if (i == 0) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("list");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
 
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				else if (i == 1) {
+
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("buy ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 2) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("sell ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 3) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("repair ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 4) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("value ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 5) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("buyskill");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				
+				
+				
+				else if (i == 6) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("buyskill ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else sendData.push(i + "\r\n");
+				}
+		
+
+
+		private void startCommandsbanking(int i) {
+			//Log.d(TAG, "clicked on " + i);
+				if (i == 0) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("bank balance");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				else if (i == 1) {
+
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("bank deposit ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 2) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("bank withdraw ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 3) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("bank transfer ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+			
+				else sendData.push(i + "\r\n");
+				}
+		
+
+		private void startCommandsorganization(int i) {
+			//Log.d(TAG, "clicked on " + i);
+				if (i == 0) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("donate ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 1) {
+
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("demote ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 2) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("empower ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				
+				else if (i == 3) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("induct ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 4) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("withdraw ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 5) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("war ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 6) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("outcast ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 7) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("outcast ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+				}
+				else if (i == 8) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("enlist");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+				else if (i == 9) {
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("overthrow");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+					
+				}
+			
+				else sendData.push(i + "\r\n");
+				}		
+
+		private void startCommandsgroup(int i) {
+			//Log.d(TAG, "clicked on " + i);
+				if (i == 0) {
+
+					
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("follow ", BufferType.SPANNABLE);
+					Spannable cmdbuffer = (Spannable)cmdscore.getText();
+					Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+					
+					
+				}
+				else if (i == 1) {
+
+					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+					cmdscore.setText("group");
+					sendData.push(cmdscore.getText() + "\r\n");
+					addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmdscore.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmdscore.getText().toString());
+					}
+					cmdscore.setText("");
+
+					
+				}
+				else sendData.push(i + "\r\n");
+				}
 		
 		
     public void errormessage(String text)
@@ -2800,5 +3453,232 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		}
 
    }
+	
+	/*
+	private void startCitygrids(int i) {
+		//Log.d(TAG, "clicked on " + i);
+			if (i == 0) {
+				
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "ascension ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
+				
+			}
+			else if (i == 1) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "beijing ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 2) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "berlin ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 3) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "bosat ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 4) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "cairo ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 5) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "chiba ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 6) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "chicago ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 7) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "dakar ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 8) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "delhi ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 9) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "denver ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 10) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "havana ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 11) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "hongkong ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 12) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "honolulu ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			else if (i == 13) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "london ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			else if (i == 14) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "losangeles ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			else if (i == 15) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "madrid ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 16) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "melbourne ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 17) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "moscow ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 18) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "nairobi ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 19) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "newash ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 20) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "panamacity ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 21) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "paris ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 22) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "rio ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 23) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "rome ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 24) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "saltlake ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			else if (i == 25) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "seattle ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 26) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "stockholm ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+			
+			else if (i == 27) {
+
+				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
+				cmdscore.setText(cmdscore.getText() + "straylight ", BufferType.SPANNABLE);
+				Spannable cmdbuffer = (Spannable)cmdscore.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
+				}
+
+			else sendData.push(i + "\r\n");
+			}
+			*/
 
 }

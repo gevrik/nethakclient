@@ -670,12 +670,14 @@ public class Dungeoneers extends Activity implements OnClickListener {
     private static final String[] arraydirsdoor = {        "north door", "east door", "south door", "west door",
         "up door", "down door" }; 
     
-    private static final String[] arrayorgs = {        "turing", "moderns", "freelancers" }; 
+    private static final String[] arrayorgs = {        "turing", "moderns" }; 
     
+    private static final String[] arraysystems = {        "berlin", "seattle", "straylight" };
+    /*
     private static final String[] arraysystems = {        "ascension ", "beijing ", "berlin ", "bosat ", "cairo ", "chiba ", "chicago ",
     	"dakar ", "delhi ", "denver ", "havana ", "hongkong ", "honolulu ", "london ", "losangeles ", "madrid ", "melbourne ", "moscow ",
     	"nairobi ", "newash ", "panamacity ", "paris ", "rio ", "rome ", "saltlake ", "stockholm ", "seattle ", "straylight " }; 
-        
+    */    
     class  clicker implements  Button.OnClickListener
 
     { 

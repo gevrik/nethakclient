@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen>
+v 0.2
+
+- added settings screen
+- added screen orientation to settings
+- added software keyboard to settings
+</PreferenceScreen>

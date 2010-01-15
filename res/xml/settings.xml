@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+   xmlns:android="http://schemas.android.com/apk/res/android" >
+   <CheckBoxPreference
+      android:key="screen"
+      android:title="Portrait Mode"
+      android:summary="On: Portrait Off: Landscape"
+      android:defaultValue="true" />
+   <CheckBoxPreference
+      android:key="keyboard"
+      android:title="NetHak Keyboard only"
+      android:summary="On: NetHak IME Off: Android IME"
+      android:defaultValue="true" />
+   <CheckBoxPreference
+      android:key="vibration"
+      android:title="Haptic Feedback"
+      android:summary="On/Off"
+      android:defaultValue="false" />
+</PreferenceScreen>

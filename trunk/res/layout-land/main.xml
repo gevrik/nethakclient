@@ -82,8 +82,7 @@ android:background="@drawable/travel_button"
 android:id="@+id/CommandBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:layout_centerInParent="true" 
-android:visibility="invisible" android:layout_alignParentTop="true">
+android:visibility="visible" android:layout_alignParentRight="true" android:layout_centerInParent="true">
 
 <TableRow android:layout_marginTop="5px">
 <ImageButton
@@ -172,7 +171,7 @@ android:background="@drawable/look_buttona"
 android:id="@+id/KeyboardBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:layout_alignParentTop="true" android:layout_centerInParent="true" android:visibility="visible">
+android:layout_alignParentTop="true" android:visibility="invisible" android:layout_alignParentRight="true" android:layout_marginTop="10sp">
 
 <TableRow android:layout_marginTop="40px" android:layout_marginBottom="10px">
 
@@ -484,7 +483,7 @@ android:id="@+id/NumberBox"
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
 android:layout_marginTop="2px"
-android:layout_centerInParent="true" android:layout_below="@id/KeyboardBox" android:visibility="invisible">
+android:layout_below="@id/KeyboardBox" android:visibility="invisible" android:layout_alignParentRight="true">
 
 <TableRow>
 

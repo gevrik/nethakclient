@@ -3,6 +3,7 @@ package net.totalmadownage.nethak;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
 //import android.view.Menu;
@@ -20,10 +21,19 @@ public class nethak extends Activity implements OnClickListener {
     this.requestWindowFeature(Window.FEATURE_NO_TITLE);
     //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
 	setContentView(R.layout.mainmenu);
+	
+    if (Prefs.getScreen(getBaseContext())) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    else
+    {
+  	  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
+	
 	View newButton = findViewById(R.id.new_button);
 	newButton.setOnClickListener(this);
-	//View aboutButton = findViewById(R.id.about_button);
-	//aboutButton.setOnClickListener(this);
+	View settingsButton = findViewById(R.id.settings_button);
+	settingsButton.setOnClickListener(this);
 	View helpButton = findViewById(R.id.help_button);
 	helpButton.setOnClickListener(this);
 	View websiteButton = findViewById(R.id.website_button);
@@ -38,6 +48,9 @@ public class nethak extends Activity implements OnClickListener {
 		//Intent i = new Intent(this, About.class);
 		//startActivity(i);
 		//break;
+		case R.id.settings_button:
+			   startActivity(new Intent(this, Prefs.class));
+			   break;
 		case R.id.help_button:
 			Intent f = new Intent(this, Website.class);
 			startActivity(f);

@@ -36,6 +36,8 @@ public class nethak extends Activity implements OnClickListener {
 	settingsButton.setOnClickListener(this);
 	View helpButton = findViewById(R.id.help_button);
 	helpButton.setOnClickListener(this);
+	View helpuiButton = findViewById(R.id.uihelp_button);
+	helpuiButton.setOnClickListener(this);
 	View websiteButton = findViewById(R.id.website_button);
 	websiteButton.setOnClickListener(this);
 	View exitButton = findViewById(R.id.exit_button);
@@ -55,6 +57,10 @@ public class nethak extends Activity implements OnClickListener {
 			Intent f = new Intent(this, Website.class);
 			startActivity(f);
 		break;
+		case R.id.uihelp_button:
+			   Intent i = new Intent(this, About.class);
+			   startActivity(i);
+			   break;
 		case R.id.website_button:
 			Intent e = new Intent(this, Community.class);
 			startActivity(e);

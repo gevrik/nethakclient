@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen>
+v 0.3
+
+- added haptic feedback to settings
+- changes NetHak keyboard layout
+
 v 0.2
 
 - added settings screen

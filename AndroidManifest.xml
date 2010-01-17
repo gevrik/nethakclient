@@ -30,6 +30,12 @@
 		android:label="NetHak Online Help"
 		/>
 		
+		<activity android:name=".About"
+      android:label="@string/about_title"
+      android:theme="@android:style/Theme.Dialog" >
+		</activity>
+		
+		
 		<activity android:name=".Community"
 		android:label="NetHak Community"
 		/>

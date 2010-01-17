@@ -23,11 +23,18 @@ android:layout_gravity="center_horizontal" android:orientation="horizontal">
 
 	<Button
 	android:id="@+id/new_button"
-	android:layout_width="300px"
+	android:layout_width="150px"
 	android:layout_height="38px"
 	android:layout_marginBottom="5dip"
 	android:text="PLAY"
-	android:layout_span="2"
+	/>
+	
+	<Button
+	android:id="@+id/settings_button"
+	android:layout_width="150px"
+	android:layout_height="38px"
+	android:layout_marginBottom="5dip"
+	android:text="SETTINGS"
 	/>
 	
 	</TableRow>
@@ -35,11 +42,11 @@ android:layout_gravity="center_horizontal" android:orientation="horizontal">
 	<TableRow>
 	
 		<Button
-	android:id="@+id/settings_button"
+	android:id="@+id/uihelp_button"
 	android:layout_width="150px"
 	android:layout_height="38px"
 	android:layout_marginBottom="5dip"
-	android:text="SETTINGS"
+	android:text="UI HELP"
 	/>
 	
 	<Button

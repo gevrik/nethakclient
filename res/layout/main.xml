@@ -33,13 +33,19 @@ android:singleLine="true"
 android:layout_alignParentBottom="true"></EditText>
 -->
 
-<Spinner  android:id="@+id/spinner1" android:layout_width="wrap_content"
- android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
- </Spinner>
- 
-  <Button android:id="@+id/button1" android:layout_width="wrap_content"
- android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/spinner1"
- android:layout_marginTop="1px" android:visibility="invisible" android:layout_centerInParent="true"></Button>  
+
+<ImageButton android:id="@+id/toggle_button" android:layout_alignParentRight="true" android:layout_alignParentTop="true"
+ android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/travel_button"
+  android:background="@drawable/travel_button" />
+
+<ImageButton android:id="@+id/uiback_button" android:layout_alignParentTop="true"
+ android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/arrow_back"
+  android:background="@drawable/arrow_back" android:layout_toLeftOf="@id/toggle_button" android:layout_marginRight="10px" android:visibility="invisible"/>
+
+<Spinner  android:id="@+id/spinner1" android:visibility="invisible" android:layout_width="200px" android:layout_height="50px" android:layout_below="@+id/toggle_button" android:layout_alignParentRight="true" android:background="@drawable/spinner_button" android:textColor="@color/color_white" style="@style/SpecialText" android:paddingLeft="7px"> 
+ </Spinner>  
+
+  <Button android:id="@+id/button1" android:visibility="invisible" android:text="OK" android:layout_height="50px" android:layout_below="@+id/spinner1" android:layout_alignParentRight="true" android:background="@drawable/ok_button" android:layout_width="50px" android:textColor="@color/color_white" ></Button>
                                
 <Spinner  android:id="@+id/spinnermodify" android:layout_width="wrap_content"
  android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
@@ -67,23 +73,133 @@ android:textStyle="normal"
 android:textSize="10sp" 
 android:autoLink="all" android:linksClickable="true"></TextView>
 
+
+
+<TableLayout
+android:id="@+id/NumblockBox" 
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:visibility="invisible" android:layout_alignParentRight="true" android:layout_below="@+id/toggle_button">
+
+<TableRow android:layout_marginTop="5px">
 <ImageButton
-android:id="@+id/toggle_button"
-android:layout_alignParentRight="true" 
-android:layout_alignParentTop="true"
-android:layout_width="30px"
-android:layout_height="30px"
+android:id="@+id/one_button"
+android:layout_width="50px"
+android:layout_height="50px"
 android:scaleType="center"
-android:src="@drawable/travel_button"
-android:background="@drawable/travel_button"
+android:src="@drawable/one_button"
+android:background="@drawable/one_button"
 />
+<ImageButton
+android:id="@+id/two_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/two_button"
+android:background="@drawable/two_button"
+/>
+<ImageButton
+android:id="@+id/three_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/three_button"
+android:background="@drawable/three_button"
+/>
+</TableRow>
+
+<TableRow>
+<ImageButton
+android:id="@+id/four_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/four_button"
+android:background="@drawable/four_button"
+/>
+<ImageButton
+android:id="@+id/five_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/five_button"
+android:background="@drawable/five_button"
+/>
+<ImageButton
+android:id="@+id/six_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/six_button"
+android:background="@drawable/six_button"
+/>
+</TableRow>
+
+<TableRow>
+<ImageButton
+android:id="@+id/seven_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/seven_button"
+android:background="@drawable/seven_button"
+/>
+<ImageButton
+android:id="@+id/eight_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/eight_button"
+android:background="@drawable/eight_button"
+/>
+<ImageButton
+android:id="@+id/nine_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/nine_button"
+android:background="@drawable/nine_button"
+/>
+</TableRow>
+
+<TableRow>
+
+<ImageButton
+android:id="@+id/space_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/small_space"
+android:background="@drawable/small_space"
+/>
+
+<ImageButton
+android:id="@+id/null_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/null_button"
+android:background="@drawable/null_button"
+/>
+
+<ImageButton
+android:id="@+id/nbbs_button"
+android:layout_width="50px"
+android:layout_height="50px"
+android:scaleType="center"
+android:src="@drawable/numblock_bs"
+android:background="@drawable/numblock_bs"
+/>
+
+</TableRow>
+
+</TableLayout>
 
 <TableLayout
 android:id="@+id/CommandBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:layout_centerInParent="true" 
-android:visibility="invisible" android:layout_alignParentTop="true">
+android:visibility="visible" android:layout_below="@+id/toggle_button" android:layout_alignParentRight="true">
 
 <TableRow android:layout_marginTop="5px">
 <ImageButton
@@ -172,7 +288,7 @@ android:background="@drawable/look_buttona"
 android:id="@+id/KeyboardBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:layout_alignParentTop="true" android:layout_centerInParent="true" android:visibility="visible">
+android:layout_alignParentTop="true" android:layout_centerInParent="true" android:visibility="invisible">
 
 <TableRow android:layout_marginTop="40px" android:layout_marginBottom="10px">
 
@@ -447,33 +563,76 @@ android:background="@drawable/key_m"
 />
 
 <ImageButton
-android:id="@+id/key_space"
+android:id="@+id/key_slash"
 android:layout_marginRight="2px"
 android:layout_width="28px"
 android:layout_height="42px"
 android:scaleType="center"
-android:src="@drawable/key_space"
-android:background="@drawable/key_space"
+android:src="@drawable/key_slash"
+android:background="@drawable/key_slash"
 />
 
 <ImageButton
 android:id="@+id/key_bs"
-android:layout_marginRight="2px"
-android:layout_width="28px"
+android:layout_width="56px"
 android:layout_height="42px"
+android:layout_span="2"
 android:scaleType="center"
 android:src="@drawable/key_bs"
 android:background="@drawable/key_bs"
 />
 
+</TableRow>
+
+<TableRow android:layout_gravity="right">
+
+<ImageButton
+android:layout_width="56px"
+android:layout_height="42px"
+android:layout_span="2"
+android:scaleType="center"
+android:src="@drawable/key_lrgph"
+android:background="@drawable/key_lrgph"
+android:layout_gravity="right"/>
+
+<ImageButton
+android:layout_width="56px"
+android:layout_height="42px"
+android:layout_span="2"
+android:scaleType="center"
+android:src="@drawable/key_lrgph"
+android:background="@drawable/key_lrgph"
+android:layout_gravity="right"/>
+
+<ImageButton
+android:layout_width="56px"
+android:layout_height="42px"
+android:layout_span="2"
+android:scaleType="center"
+android:src="@drawable/key_lrgph"
+android:background="@drawable/key_lrgph"
+android:layout_gravity="right"/>
+
+<ImageButton
+android:id="@+id/key_space"
+android:layout_width="56px"
+android:layout_height="42px"
+android:layout_span="2"
+android:scaleType="center"
+android:src="@drawable/key_space"
+android:background="@drawable/key_space"
+android:layout_gravity="right"/>
+
 <ImageButton
 android:id="@+id/key_en"
-android:layout_width="28px"
+android:layout_width="56px"
 android:layout_height="42px"
+android:layout_span="2"
 android:scaleType="center"
 android:src="@drawable/key_en"
 android:background="@drawable/key_en"
-/>
+android:layout_gravity="right"/>
+
 
 </TableRow>
 

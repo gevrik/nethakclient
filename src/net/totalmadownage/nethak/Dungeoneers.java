@@ -109,7 +109,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     protected void onDestroy()
     {
     	//SavePrefs();
-		//sendData.push("quit\r\n");
+		sendData.push("quit\r\n");
     	this.mWakeLock.release();
     	super.onDestroy();
     }
@@ -640,6 +640,34 @@ public class Dungeoneers extends Activity implements OnClickListener {
         View spaceButton = findViewById(R.id.key_space);
         spaceButton.setOnClickListener(this); 
         
+        View oneaButton = findViewById(R.id.one_button);
+        oneaButton.setOnClickListener(this);
+        View twoaButton = findViewById(R.id.two_button);
+        twoaButton.setOnClickListener(this);
+        View threeaButton = findViewById(R.id.three_button);
+        threeaButton.setOnClickListener(this);
+        View fouraButton = findViewById(R.id.four_button);
+        fouraButton.setOnClickListener(this);
+        View fiveaButton = findViewById(R.id.five_button);
+        fiveaButton.setOnClickListener(this);
+        View sixaButton = findViewById(R.id.six_button);
+        sixaButton.setOnClickListener(this);
+        View sevenaButton = findViewById(R.id.seven_button);
+        sevenaButton.setOnClickListener(this);
+        View eightaButton = findViewById(R.id.eight_button);
+        eightaButton.setOnClickListener(this);
+        View nineaButton = findViewById(R.id.nine_button);
+        nineaButton.setOnClickListener(this);
+        View nullaButton = findViewById(R.id.null_button);
+        nullaButton.setOnClickListener(this);
+        View spaceaButton = findViewById(R.id.space_button);
+        spaceaButton.setOnClickListener(this);
+        View nbbsButton = findViewById(R.id.nbbs_button);
+        nbbsButton.setOnClickListener(this);
+        
+        View uibackButton = findViewById(R.id.uiback_button);
+        uibackButton.setOnClickListener(this);
+        
     	spinner1 = (Spinner) 
      	findViewById  (R.id.spinner1);  
     	
@@ -664,6 +692,10 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	
     	
     }
+
+      
+    private static final String[] arraycategories = {        "info", "nodes", "talk", "combat",
+        "travel", "building", "interact", "shopping", "banking", "organization", "group" }; 
     
     private static final String[] arraydirs = {        "north ", "east ", "south ", "west ",
         "up ", "down " }; 
@@ -679,7 +711,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     
     private static final String[] arrayorgs = {        "turing", "moderns" }; 
     
-    private static final String[] arraysystems = {        "berlin", "seattle", "straylight" };
+    private static final String[] arraysystems = {        "berlin ", "seattle ", "straylight " };
     /*
     private static final String[] arraysystems = {        "ascension ", "beijing ", "berlin ", "bosat ", "cairo ", "chiba ", "chicago ",
     	"dakar ", "delhi ", "denver ", "havana ", "hongkong ", "honolulu ", "london ", "losangeles ", "madrid ", "melbourne ", "moscow ",
@@ -723,12 +755,14 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		    	View cmda = (View)findViewById(R.id.CommandBox);
 	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
 	        	View cmdnum = (View)findViewById(R.id.NumberBox);
+	        	View cmdnumblock = (View)findViewById(R.id.NumblockBox);
 	        	View cmdspin = (View)findViewById(R.id.spinner1);
 	        	View cmdconfirm = (View)findViewById(R.id.button1);
 
 	        	cmda.setVisibility(4);
-	        	cmdkb.setVisibility(0);
-	        	cmdnum.setVisibility(0);
+	        	cmdkb.setVisibility(4);
+	        	cmdnum.setVisibility(4);
+	        	cmdnumblock.setVisibility(0);
 	        	cmdspin.setVisibility(4);
 	        	cmdconfirm.setVisibility(4);
     	       
@@ -738,6 +772,1045 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	}                                         
 
     } 
+ 
+    class  clickercategories implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+
+    	       if (s == "info") {
+    	    	   startInfo();				
+    	       }
+    	       else if (s == "nodes") {
+    	    	   startNodes();				
+    	       }  
+    	       else if (s == "talk") {
+    	    	   startTalk();				
+    	       }  
+    	       else if (s == "combat") {
+    	    	   startCombat();				
+    	       }  
+    	       else if (s == "travel") {
+    	    	   startTravel();				
+    	       }  
+    	       else if (s == "building") {
+    	    	   startConstruct();				
+    	       }  
+    	       else if (s == "interact") {
+    	    	   startInteract();				
+    	       }  
+    	       else if (s == "shopping") {
+    	    	   startShopping();				
+    	       }  
+    	       else if (s == "banking") {
+    	    	   startBank();				
+    	       }
+    	       else if (s == "organization") {
+    	    	   startOrganization();				
+    	       } 
+    	       else if (s == "group") {
+    	    	   startGroup();				
+    	       } 
+    	       else openCommonDialog();
+    	}                                         
+
+    } 
+
+    private static final String[] arraycatinfo = {        "score", "who", "skills", "systems",
+        "regions", "organizations", "affected", "commands", "equipment", "inventory", "compare ", "showorg ", "showsystem " }; 
+        
+	private void startInfo() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatinfo);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatinfo()); 
+		
+	}
+
+    class  clickercatinfo implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "compare ")
+    	         {
+    	        	cmd.setText(cmd.getText() + s); 
+    	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	         }
+    	         else if (s == "showorg ")
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	        	 startOrgs();
+    	         }
+    	         else if (s == "showsystem ")
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	        	 startSystem();
+    	         }
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+     
+    private static final String[] arraycatnodes = {        "look", "analyze", "search", "dig",
+        "exits", "glance", "examine ", "drop ", "unlock ", "scan " }; 
+    
+	private void startNodes() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatnodes);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatnodes()); 
+		
+	}
+
+    class  clickercatnodes implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "examine " || s == "drop ")
+    	         {
+    	        	cmd.setText(cmd.getText() + s); 
+    	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	         }
+    	         else if (s == "unlock ")
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	        	 startDirsNum();
+    	         }
+    	         else if (s == "scan ")
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	        	 startDirs();
+    	         }
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+
+    
+    private static final String[] arraycattalk = {        "say job", "say ", "tell ", "reply ",
+        "gchat ", "schat ", "yell ", "afk", "bio", "gtell ", "orgtalk ", "ooc " }; 
+
+	private void startTalk() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycattalk);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercattalk()); 
+		
+	}
+	
+    class  clickercattalk implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "afk" || s == "bio" || s == "say job")
+    	         {
+    	        	     	        	 
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	        	 
+    	         }
+     	         else
+    	         {
+     	        	cmd.setText(cmd.getText() + s); 
+    	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+    				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+    
+    private static final String[] arraycatcombat = {        "kill virus", "kill ICE", "kill program", "kill ",
+        "blast ", "consider ", "flee ", "rest", "sleep", "wake", "sit", "stand", "setblaster ", "shove " }; 
+    
+	private void startCombat() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatcombat);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatcombat()); 
+		
+	}
+	
+    class  clickercatcombat implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "kill " || s == "consider " || s == "setblaster " || s == "shove ")
+    	         {
+
+    	        	 cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				
+    	         }
+    	         else if (s == "blast " || s == "flee ")
+    	         {
+
+   	        	    cmd.setText(cmd.getText() + s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				
+     				startDirs();
+     				
+    	         }
+
+    	         
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+    private static final String[] arraycattravel = {        "home", "enter", "connect " }; 
+    
+	private void startTravel() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycattravel);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercattravel()); 
+		
+	}
+	
+    class  clickercattravel implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "connect ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startSystem();
+    	         }
+    	         
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+    
+    /*
+    <array name="constructcommands">
+    <item>construct [dir]</item>
+    <item>modify [type]</item>
+    <item>bridge [dir] connect [id]</item>
+    <item>bridge [dir] door</item>
+    <item>bridge [dir] keycode [code]</item>
+    <item>node description [editor]</item>
+    </array>
+    */
+    
+    private static final String[] arraycatconstruct = {        "construct ", "modify ", "bridge connect", "bridge door",
+    															"bridge keycode", "nodedescription" };    
+    
+    
+	private void startConstruct() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatconstruct);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatconstruct()); 
+		
+	}
+	
+    class  clickercatconstruct implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "construct ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirs();
+    	         }
+    	         else if (s == "modify ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startModify();
+    	         }    
+    	         else if (s == "bridge connect")
+    	         {
+
+    	        	cmd.setText("bridge "); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirsConnect();
+    	         }  
+    	         else if (s == "bridge door")
+    	         {
+
+    	        	cmd.setText("bridge "); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirsDoor();
+    	         }  
+    	         else if (s == "bridge keycode")
+    	         {
+
+    	        	cmd.setText("bridge "); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirsKeycode();
+    	         }  
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+     
+    private static final String[] arraycatinteract = {        "give package program", "give virus dataminer", "give ", "wield ",
+		"wear ", "remove ", "get ", "open ", "close ", "lock ", "unlock ", "drag ", "empty ", "fill ", "activate ", "teach ", "visible" };  
+
+	private void startInteract() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatinteract);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatinteract()); 
+		
+	}
+	
+    class  clickercatinteract implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "give " || s == "wield " || s == "drag " || s == "wear " || s == "remove " || s == "get " || s == "empty " || s == "fill " || s == "activate " || s == "teach ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+
+    	         }
+    	         else if (s == "open " || s == "close ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirs();
+    	         }    
+    	         else if (s == "lock " || s == "unlock ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirsNum();
+    	         }  
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+    
+    /*
+<array name="shopcommands">
+<item>List</item>
+<item>Buy [object]</item>
+<item>Sell [object]</item>
+<item>Repair [object]</item>
+<item>Value [object]</item>
+<item>Buyskill</item>
+<item>Buyskill [skill]</item>
+</array>
+*/
+    
+    private static final String[] arraycatshopping = {        "list", "buy ", "sell ", "repair ",
+		"value ", "buyskill", "buyskill [skill]" }; 
+    
+	private void startShopping() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatshopping);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatshopping()); 
+		
+	}
+	
+    class  clickercatshopping implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "buy " || s == "sell " || s == "repair " || s == "value ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+
+    	         }
+    	         else if (s == "buyskill [skill]")
+    	         {
+
+    	        	cmd.setText("buyskill "); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startBuyskill();
+    	         }    
+    	         else if (s == "lock " || s == "unlock ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+     				startDirsNum();
+    	         }  
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+    
+
+    private static final String[] arraycatbuyskill = {        "aid", "backstab", "blades", "blasters",
+		"codeblade", "codeblaster", "codecomlink", "codecontainer", "codedef", "codeshield", "codeutil",
+		"damboost", "disguise", "dodge", "dualwield", "firstaid", "hide", "peek", "picklock",
+		"poisonmod", "postguard", "propaganda", "quicktalk", "reinforcements", "second attack",
+		"steal", "throw"}; 
+    
+	private void startBuyskill() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatbuyskill);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercommand()); 
+		
+	}
+	
+	/*
+	<array name="bankingcommands">
+	<item>Balance</item>
+	<item>Deposit [amount]</item>
+	<item>Withdraw [amount]</item>
+	<item>Transfer [a] [p]</item>
+	</array>
+    */
+	
+    private static final String[] arraycatbank = { "balance", "deposit ", "withdraw ", "transfer " }; 
+    
+	private void startBank() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatbank);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatbank()); 
+		
+	}
+	
+    class  clickercatbank implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "deposit " || s == "withdraw " || s == "transfer ")
+    	         {
+
+    	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+
+    	         }
+    	         else
+    	         {
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+
+    
+    private static final String[] arraycatorganization = { "donate ", "demote ", "empower ", "induct ", "withdraw ", "war ", "outcast ",
+    	"setwages ", "enlist", "overthrow" }; 
+    
+	private void startOrganization() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatorganization);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatorganization()); 
+		
+	}
+	
+    class  clickercatorganization implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "enlist" || s == "overthrow")
+    	         {
+
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	        	 
+    	         }
+    	         else
+    	         {
+
+     	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+	
+    private static final String[] arraycatgroup = { "follow ", "group" }; 
+    
+	private void startGroup() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatgroup);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercatgroup()); 
+		
+	}
+	
+    class  clickercatgroup implements  Button.OnClickListener
+
+    { 
+    	public   void  onClick(View   v)
+                  {        
+    	       String       s = (String) spinner1.getSelectedItem(); 
+    	       EditText cmd = (EditText)findViewById(R.id.cmdText);
+   	           	         
+    	         if (s == "group")
+    	         {
+
+    	        	 cmd.setText(cmd.getText() + s); 
+    	        	 sendData.push(cmd.getText() + "\r\n");
+					addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
+
+					historypos = 0;
+
+					if(commandHistory.size() > 1)
+					{
+						if(!(cmd.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+						{
+							commandHistory.add(cmd.getText().toString());
+							if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+							{
+								commandHistory.remove(0);
+							}
+						}
+					}
+					else
+					{
+						commandHistory.add(cmd.getText().toString());
+					}
+					cmd.setText("");
+    	        	 
+    	         }
+    	         else
+    	         {
+
+     	        	cmd.setText(s); 
+     	        	Spannable cmdbufferw = (Spannable)cmd.getText();
+     				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
+
+    	         }
+    	         
+    	}                                         
+
+    } 
+    
+	private void startDirsKeycode() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirskeycode);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickerkeynum()); 
+		
+	}
+	
+	private void startDirsDoor() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsdoor);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercommand()); 
+		
+	}
+    
+	private void startDirsConnect() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsconnect);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickerkeynum()); 
+		
+	}
+    
+	private void startDirsNum() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickerkeynum()); 
+		
+	}
+	
+	private void startModify() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercommand()); 
+		
+	}
+
+	private void startDirs() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercommand()); 
+		
+	}
+
+	
+	private void startOrgs() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayorgs);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercommand()); 
+		
+	}
+	
+	private void startSystem() {
+		
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickerkeynum()); 
+		
+	}
     
     class  clickercommand implements  Button.OnClickListener
 
@@ -835,140 +1908,233 @@ public class Dungeoneers extends Activity implements OnClickListener {
         			cmdnum.setVisibility(0);
         		}
 			
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			
 		break;
+
+		
+		case R.id.one_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
+			Spannable cmdbufferoneb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferoneb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.two_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
+			Spannable cmdbuffertwob = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffertwob, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.three_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
+			Spannable cmdbufferthreeb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferthreeb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.four_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
+			Spannable cmdbufferfourb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferfourb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.five_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
+			Spannable cmdbufferfiveb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferfiveb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.six_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
+			Spannable cmdbuffersixb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffersixb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.seven_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
+			Spannable cmdbuffersevenb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffersevenb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.eight_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
+			Spannable cmdbuffereightb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffereightb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.nine_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
+			Spannable cmdbuffernineb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffernineb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.null_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
+			Spannable cmdbuffernullb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffernullb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
+		case R.id.space_button:
+			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
+			Spannable cmdbufferspaceb = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferspaceb, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
+		
+		case R.id.nbbs_button:
+			CharSequence texta = cmdkeyboard.getText();
+			if (!(texta instanceof Editable)) {
+		          cmdkeyboard.setText(texta, BufferType.EDITABLE);
+		        }
+		        Editable editablea = (Editable)cmdkeyboard.getText();
+
+		        if (texta.length() > 0) {
+		          editablea.delete(texta.length() - 1, texta.length());
+		        }
+			
+		        if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
 		
 		case R.id.key_q:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "q");
 			Spannable cmdbufferq = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferq, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;		
 
 		case R.id.key_w:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "w");
 			Spannable cmdbufferw = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferw, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_e:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "e");
 			Spannable cmdbuffere = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffere, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_r:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "r");
 			Spannable cmdbufferr = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferr, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_t:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "t");
 			Spannable cmdbuffert = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffert, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_y:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "y");
 			Spannable cmdbuffery = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffery, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_u:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "u");
 			Spannable cmdbufferu = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferu, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_i:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "i");
 			Spannable cmdbufferi = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferi, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_o:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "o");
 			Spannable cmdbuffero = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffero, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_p:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "p");
 			Spannable cmdbufferp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferp, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_a:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "a");
 			Spannable cmdbuffera = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffera, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;		
 
 		case R.id.key_s:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "s");
 			Spannable cmdbuffers = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffers, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_d:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "d");
 			Spannable cmdbufferd = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferd, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_f:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "f");
 			Spannable cmdbufferf = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferf, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_g:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "g");
 			Spannable cmdbufferg = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferg, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_h:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "h");
 			Spannable cmdbufferh = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferh, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_j:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "j");
 			Spannable cmdbufferj = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferj, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_k:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "k");
 			Spannable cmdbufferk = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferk, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_l:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
 			Spannable cmdbufferl = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferl, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		
@@ -976,56 +2142,56 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
 			Spannable cmdbufferz = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferz, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_x:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "x");
 			Spannable cmdbufferx = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferx, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_c:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "c");
 			Spannable cmdbufferc = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferc, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_v:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "v");
 			Spannable cmdbufferv = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferv, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_m:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "m");
 			Spannable cmdbufferm = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferm, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_b:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "b");
 			Spannable cmdbufferb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferb, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_n:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "n");
 			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 
 		case R.id.key_space:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbuffersp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersp, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		
@@ -1036,21 +2202,21 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
 			Spannable cmdbufferone = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferone, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_2:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
 			Spannable cmdbuffertwo = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffertwo, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_3:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
 			Spannable cmdbufferthree = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferthree, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		
@@ -1058,49 +2224,49 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
 			Spannable cmdbufferfour = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfour, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_5:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
 			Spannable cmdbufferfive = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfive, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_6:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
 			Spannable cmdbuffersix = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersix, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_7:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
 			Spannable cmdbufferseven = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferseven, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_8:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
 			Spannable cmdbuffereight = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffereight, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_9:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
 			Spannable cmdbuffernine = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffernine, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.key_0:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
 			Spannable cmdbufferten = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferten, cmdkeyboard.getLayout());
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		
@@ -1108,23 +2274,18 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		
 		case R.id.key_bs:		
 			
-			//TextView number = cmdText;
 			CharSequence text = cmdkeyboard.getText();
 			if (!(text instanceof Editable)) {
 		          cmdkeyboard.setText(text, BufferType.EDITABLE);
 		        }
 		        Editable editable = (Editable)cmdkeyboard.getText();
-		        // Now that we have the editable, edit it.
-		        // This line is not from the Android source.
+
 		        if (text.length() > 0) {
 		          editable.delete(text.length() - 1, text.length());
 		        }
 			
-		        vb.vibrate( new long[]{0,50,0,0}, -1 );
-			//Editable editable = (Editable)cmdkeyboard.getText();
-			//Spannable cmdbufferbs = (Spannable)cmdkeyboard.getText();
-			//editable.delete(cmdbufferbs.length() - 1, cmdbufferbs.length());
-			//Selection.moveToRightEdge(cmdbufferbs, cmdkeyboard.getLayout());
+		        if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+
 		break;
 		
 		case R.id.key_en:
@@ -1149,7 +2310,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			{
 				commandHistory.add(cmdenterx.getText().toString());
 			}
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 			cmdenterx.setText("");
 		break;
 		
@@ -1160,7 +2321,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmd.getText() + "\r\n");
 			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.east_button:
@@ -1169,7 +2330,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmde.getText() + "\r\n");
 			addText(cmde.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmde.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 
 		case R.id.west_button:
@@ -1178,7 +2339,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		sendData.push(cmdw.getText() + "\r\n");
 		addText(cmdw.getText() + "\n", Color.WHITE, Color.BLACK);
 		cmdw.setText("");
-		vb.vibrate( new long[]{0,50,0,0}, -1 );
+		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 
 		case R.id.south_button:
@@ -1187,7 +2348,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmds.getText() + "\r\n");
 			addText(cmds.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmds.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.up_button:
@@ -1196,7 +2357,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdup.getText() + "\r\n");
 			addText(cmdup.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdup.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.down_button:
@@ -1205,7 +2366,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmddown.getText() + "\r\n");
 			addText(cmddown.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmddown.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.look_button:
@@ -1214,7 +2375,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdlook.getText() + "\r\n");
 			addText(cmdlook.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdlook.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;	
 		
 		case R.id.enter_button:
@@ -1240,34 +2401,58 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				commandHistory.add(cmdenter.getText().toString());
 			}
 			//cmdenter.setText("");
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;	
 		
 		case R.id.toggle_button:
 	    	View cmda = (View)findViewById(R.id.CommandBox);
         	View cmdkb = (View)findViewById(R.id.KeyboardBox);
         	View cmdnumber = (View)findViewById(R.id.NumberBox);
+        	View cmdnumblock = (View)findViewById(R.id.NumblockBox);
+        	View cmdspin = (View)findViewById(R.id.spinner1);
+        	View cmdconfirm = (View)findViewById(R.id.button1);
+        	View cmduibackbutton = (View)findViewById(R.id.uiback_button);
         	int visibilitya = cmda.getVisibility();
-        	//int visibilitykb = cmdkb.getVisibility();
+        	
         		if (visibilitya == 0)
         		{
         			cmda.setVisibility(4);
-        			cmdkb.setVisibility(0);
+        			cmdkb.setVisibility(4);
+        			cmdnumber.setVisibility(4);
+        			cmdnumblock.setVisibility(0);
+        			cmdspin.setVisibility(4);
+        			cmdconfirm.setVisibility(4);
+        			cmduibackbutton.setVisibility(4);
         		}
         		else
         		{
         			cmda.setVisibility(0);
         			cmdkb.setVisibility(4);
         			cmdnumber.setVisibility(4);
+        			cmdnumblock.setVisibility(4);
+        			cmdspin.setVisibility(4);
+        			cmdconfirm.setVisibility(4);
+        			cmduibackbutton.setVisibility(4);
         		}
         		
-        		vb.vibrate( new long[]{0,50,0,0}, -1 );
+        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
+		
+		case R.id.uiback_button:
+
+			openCommonDialog();
+        		
+        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 
 
 			case R.id.command_button:
 			openCommonDialog();
-			vb.vibrate( new long[]{0,50,0,0}, -1 );
+        	View cmduibackbuttona = (View)findViewById(R.id.uiback_button);
+        	
+        	cmduibackbuttona.setVisibility(0);
+        	
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 			break;
 
 		}
@@ -1294,28 +2479,32 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		
 	}
 
-	/*
-	private void openCommonDialog() {
-
-		
-		
-		
-		}
-	*/
 	
 	private void openCommonDialog() {
-		new AlertDialog.Builder(this)
-		.setTitle("Choose category")
-		.setInverseBackgroundForced(true)
-		.setItems(R.array.commoncommands,
+			
+    	spinner1 = (Spinner) 
+     	findViewById  (R.id.spinner1);  
+    	
+    	button1    = (Button)
+    	findViewById (R.id.button1);                                               
+        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycategories);        
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	spinner1.setAdapter(adapter);         
+    	button1.setOnClickListener(  new clickercategories()); 
+    	
+    	View cmda = (View)findViewById(R.id.CommandBox);
+    	View cmdkb = (View)findViewById(R.id.KeyboardBox);
+    	View cmdnum = (View)findViewById(R.id.NumberBox);
+    	View cmdspin = (View)findViewById(R.id.spinner1);
+    	View cmdconfirm = (View)findViewById(R.id.button1);
+
+    	cmda.setVisibility(4);
+    	cmdkb.setVisibility(4);
+    	cmdnum.setVisibility(4);
+    	cmdspin.setVisibility(0);
+    	cmdconfirm.setVisibility(0);
 		
-		new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialoginterface,
-		int i) {
-		startCommand(i);
-		}
-		})
-		.show();
 		}
 	
 		/** Start a new game with the given difficulty level */
@@ -1458,6 +2647,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				.show();
 			}				
 			else sendData.push(i + "\r\n");
+			
 			}	
 		
 		private void startCommanda(int i) {
@@ -3463,231 +4653,4 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
    }
 	
-	/*
-	private void startCitygrids(int i) {
-		//Log.d(TAG, "clicked on " + i);
-			if (i == 0) {
-				
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "ascension ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-				
-			}
-			else if (i == 1) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "beijing ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 2) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "berlin ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 3) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "bosat ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 4) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "cairo ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 5) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "chiba ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 6) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "chicago ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 7) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "dakar ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 8) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "delhi ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 9) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "denver ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 10) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "havana ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 11) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "hongkong ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 12) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "honolulu ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			else if (i == 13) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "london ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			else if (i == 14) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "losangeles ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			else if (i == 15) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "madrid ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 16) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "melbourne ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 17) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "moscow ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 18) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "nairobi ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 19) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "newash ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 20) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "panamacity ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 21) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "paris ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 22) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "rio ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 23) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "rome ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 24) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "saltlake ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			else if (i == 25) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "seattle ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 26) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "stockholm ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-			
-			else if (i == 27) {
-
-				EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-				cmdscore.setText(cmdscore.getText() + "straylight ", BufferType.SPANNABLE);
-				Spannable cmdbuffer = (Spannable)cmdscore.getText();
-				Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());					
-				}
-
-			else sendData.push(i + "\r\n");
-			}
-			*/
-
 }

@@ -552,7 +552,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
         commandButton.setOnClickListener(this);
 
         View toggleButton = findViewById(R.id.toggle_button);
-        toggleButton.setOnClickListener(this);
+        toggleButton.setOnClickListener(this);        
+        View uinumbButton = findViewById(R.id.uinumb_button);
+        uinumbButton.setOnClickListener(this);
+        View uibackButton = findViewById(R.id.uiback_button);
+        uibackButton.setOnClickListener(this);
         
         View qButton = findViewById(R.id.key_q);
         qButton.setOnClickListener(this);
@@ -593,6 +597,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
         kButton.setOnClickListener(this);
         View lButton = findViewById(R.id.key_l);
         lButton.setOnClickListener(this);
+        View qmlsButton = findViewById(R.id.key_qm_ls);
+        qmlsButton.setOnClickListener(this);
 
         View zButton = findViewById(R.id.key_z);
         zButton.setOnClickListener(this);
@@ -607,7 +613,20 @@ public class Dungeoneers extends Activity implements OnClickListener {
         View nButton = findViewById(R.id.key_n);
         nButton.setOnClickListener(this);
         View mButton = findViewById(R.id.key_m);
-        mButton.setOnClickListener(this);   
+        mButton.setOnClickListener(this);
+        View dotButton = findViewById(R.id.key_dot);
+        dotButton.setOnClickListener(this);
+        View slashlsButton = findViewById(R.id.key_slash);
+        slashlsButton.setOnClickListener(this);
+        View commalsButton = findViewById(R.id.key_comma);
+        commalsButton.setOnClickListener(this);
+        
+        View delButton = findViewById(R.id.key_del);
+        delButton.setOnClickListener(this);
+        View spacelsButton = findViewById(R.id.key_spacels);
+        spacelsButton.setOnClickListener(this); 
+        View enterlsButton = findViewById(R.id.key_enterls);
+        enterlsButton.setOnClickListener(this); 
         
         View oneButton = findViewById(R.id.key_1);
         oneButton.setOnClickListener(this);
@@ -629,10 +648,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         nineButton.setOnClickListener(this);
         View tenButton = findViewById(R.id.key_0);
         tenButton.setOnClickListener(this);
-        
-        View numButton = findViewById(R.id.key_num);
-        numButton.setOnClickListener(this);
-        
+                
         View bsButton = findViewById(R.id.key_bs);
         bsButton.setOnClickListener(this);
         View enButton = findViewById(R.id.key_en);
@@ -664,10 +680,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         spaceaButton.setOnClickListener(this);
         View nbbsButton = findViewById(R.id.nbbs_button);
         nbbsButton.setOnClickListener(this);
-        
-        View uibackButton = findViewById(R.id.uiback_button);
-        uibackButton.setOnClickListener(this);
-        
+               
     	spinner1 = (Spinner) 
      	findViewById  (R.id.spinner1);  
     	
@@ -1895,6 +1908,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		
 		switch (v.getId()) {
 
+		
+		/*
 		case R.id.key_num:
 				    	
         	View cmdnum = (View)findViewById(R.id.NumberBox);
@@ -1911,7 +1926,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 			
 		break;
-
+	*/
 		
 		case R.id.one_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
@@ -2137,6 +2152,13 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
+		case R.id.key_qm_ls:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
+			Spannable cmdbufferqmls = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferqmls, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
+		
 		
 		case R.id.key_z:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
@@ -2186,6 +2208,49 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
+		
+		case R.id.key_dot:
+			cmdkeyboard.setText(cmdkeyboard.getText() + ".");
+			Spannable cmdbufferdot = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferdot, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
+		
+		case R.id.key_slash:
+			cmdkeyboard.setText(cmdkeyboard.getText() + "/");
+			Spannable cmdbufferslash = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferslash, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
+		
+		case R.id.key_comma:
+			cmdkeyboard.setText(cmdkeyboard.getText() + ",");
+			Spannable cmdbuffercomma = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbuffercomma, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;		
+		
+		
+		case R.id.uinumb_button:
+	    	View cmdaui = (View)findViewById(R.id.CommandBox);
+        	View cmdkbui = (View)findViewById(R.id.KeyboardBox);
+        	View cmdnumberui = (View)findViewById(R.id.NumberBox);
+        	View cmdnumblockui = (View)findViewById(R.id.NumblockBox);
+        	View cmdspinui = (View)findViewById(R.id.spinner1);
+        	View cmdconfirmui = (View)findViewById(R.id.button1);
+        	View cmduibackbuttonui = (View)findViewById(R.id.uiback_button);
+        	        	
+        			cmdaui.setVisibility(4);
+        			cmdkbui.setVisibility(4);
+        			cmdnumberui.setVisibility(4);
+        			cmdnumblockui.setVisibility(0);
+        			cmdspinui.setVisibility(4);
+        			cmdconfirmui.setVisibility(4);
+        			cmduibackbuttonui.setVisibility(4);
+ 
+        		
+        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;		
 
 		case R.id.key_space:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
@@ -2194,8 +2259,26 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
+		case R.id.key_spacels:
+			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
+			Spannable cmdbufferspls = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferspls, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
 		
+		case R.id.key_del:
+			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
+			Spannable cmdbufferdel = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferdel, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
 		
+		case R.id.key_enterls:
+			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
+			Spannable cmdbufferenls = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(cmdbufferenls, cmdkeyboard.getLayout());
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;
 		
 		
 		case R.id.key_1:

@@ -17,43 +17,33 @@ android:background="@color/color_black"
 android:text="Commands" 
 android:id="@+id/cmdText" 
 android:singleLine="true" 
-android:textSize="10pt"
-android:layout_alignParentBottom="true"
->
+android:textSize="10pt" android:layout_alignParentBottom="true">
 </EditText>
 
-
-<!-- 
-<EditText 
-android:layout_height="wrap_content" 
-android:layout_below="@+id/commandView" 
-android:layout_width="fill_parent" 
-android:text="Commands" 
-android:id="@+id/cmdText" 
-android:singleLine="true" 
-android:layout_alignParentBottom="true"></EditText>
--->
-
-
-<ImageButton android:id="@+id/toggle_button" android:layout_alignParentRight="true" android:layout_alignParentTop="true"
- android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/travel_button"
-  android:background="@drawable/travel_button" />
+<ImageButton android:id="@+id/toggle_button" android:layout_alignParentRight="true" android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/travel_button"
+  android:background="@drawable/travel_button" android:layout_marginRight="2px" android:layout_alignParentTop="true"/>
   
-  <ImageButton android:id="@+id/uinumb_button" android:layout_alignParentTop="true"
- android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/numblock_button"
-  android:background="@drawable/numblock_button" android:layout_toLeftOf="@id/toggle_button" android:visibility="visible"/>
+  <ImageButton android:id="@+id/numb_button" android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/numblock_button"
+  android:background="@drawable/numblock_button" android:layout_toLeftOf="@id/toggle_button" android:visibility="visible" android:layout_alignParentTop="true"/>
 
-<ImageButton android:id="@+id/uiback_button" android:layout_alignParentTop="true"
- android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/keyboard_button"
-  android:background="@drawable/keyboard_button" android:layout_toLeftOf="@id/uinumb_button" android:visibility="visible"/>
+<ImageButton android:id="@+id/uiback_button" android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/keyboard_button"
+  android:background="@drawable/keyboard_button" android:layout_toLeftOf="@id/numb_button" android:visibility="visible" android:layout_alignParentTop="true"/>
 
 
 
-<Spinner  android:id="@+id/spinner1" android:visibility="invisible" android:layout_width="200px" android:layout_height="50px" android:layout_below="@+id/toggle_button" android:layout_alignParentRight="true"> 
+<Spinner  android:id="@+id/spinner1" android:layout_alignParentRight="true" android:layout_marginRight="2px" android:visibility="visible" android:layout_height="wrap_content" android:background="@drawable/spinner_button" android:layout_width="148px" style="@style/Widget.DropDownItem.Spinner" android:layout_below="@+id/toggle_button"> 
  </Spinner>  
 
-  <Button android:id="@+id/button1" android:visibility="invisible" android:text="OK" android:layout_height="50px" android:layout_below="@+id/spinner1" android:layout_alignParentRight="true" android:layout_width="100px"></Button>
-                               
+  <ImageButton android:id="@+id/commandindex_button" android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/commandindex_button" android:background="@drawable/commandindex_button" android:visibility="visible" android:layout_alignParentTop="true" android:layout_toLeftOf="@id/uiback_button"/><Button android:id="@+id/button1" android:visibility="visible" android:layout_width="30px" android:layout_height="30px" android:background="@drawable/choosecommand_button" android:layout_toLeftOf="@+id/commandindex_button"></Button>
+  <!-- 
+  <Button android:id="@+id/button3" android:visibility="visible" android:layout_alignParentBottom="true" android:layout_width="30px"
+   android:layout_height="30px" android:layout_toLeftOf="@+id/button1" android:background="@drawable/commandindex_button"></Button>
+   -->
+  <Button android:id="@+id/button2" android:visibility="invisible" android:text="index" android:layout_alignParentRight="true" android:layout_width="58px" android:layout_above="@+id/spinner1" android:layout_marginRight="2px" android:layout_marginBottom="2px" android:layout_height="50px"></Button>                             
+
+
+  
+
 <Spinner  android:id="@+id/spinnermodify" android:layout_width="wrap_content"
  android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
  </Spinner>
@@ -74,11 +64,10 @@ android:focusableInTouchMode="true"
 android:editable="false" 
 android:gravity="bottom" 
 android:textColor="@color/color_white" 
-android:layout_above="@+id/cmdText" 
 android:layout_height="fill_parent" 
 android:textStyle="normal" 
 android:textSize="10sp" 
-android:autoLink="all" android:linksClickable="true"></TextView>
+android:autoLink="all" android:linksClickable="true" android:layout_above="@+id/cmdText"></TextView>
 
 
 
@@ -86,7 +75,7 @@ android:autoLink="all" android:linksClickable="true"></TextView>
 android:id="@+id/NumblockBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:visibility="invisible" android:layout_alignParentRight="true" android:layout_below="@+id/toggle_button">
+android:visibility="invisible" android:layout_alignParentRight="true" android:layout_below="@+id/spinner1">
 
 <TableRow android:layout_marginTop="5px">
 <ImageButton
@@ -176,8 +165,8 @@ android:id="@+id/space_button"
 android:layout_width="50px"
 android:layout_height="50px"
 android:scaleType="center"
-android:src="@drawable/key_space_ls"
-android:background="@drawable/key_space_ls"
+android:src="@drawable/small_space"
+android:background="@drawable/small_space"
 />
 
 <ImageButton
@@ -206,7 +195,7 @@ android:background="@drawable/numblock_bs"
 android:id="@+id/CommandBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:visibility="visible" android:layout_below="@+id/toggle_button" android:layout_alignParentRight="true">
+android:layout_alignParentRight="true" android:layout_below="@+id/spinner1" android:visibility="invisible">
 
 <TableRow android:layout_marginTop="5px">
 <ImageButton
@@ -295,7 +284,7 @@ android:background="@drawable/look_buttona"
 android:id="@+id/KeyboardBox" 
 android:layout_height="wrap_content"
 android:layout_width="wrap_content"
-android:visibility="visible" android:layout_centerHorizontal="true" android:layout_marginTop="32px">
+android:layout_centerHorizontal="true" android:layout_below="@+id/spinner1" android:visibility="invisible">
 
 <TableRow android:layout_marginTop="2px">
 
@@ -638,116 +627,7 @@ android:layout_gravity="right"/>
 
 </TableLayout>
 
-<TableLayout
-android:id="@+id/NumberBox" 
-android:layout_height="wrap_content"
-android:layout_width="wrap_content"
-android:layout_marginTop="2px"
-android:layout_centerInParent="true" android:layout_below="@id/KeyboardBox" android:visibility="invisible">
 
-<TableRow>
-
-<ImageButton
-android:id="@+id/key_1"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_1"
-android:background="@drawable/key_1" android:layout_marginRight="2px"/>
-
-<ImageButton
-android:id="@+id/key_2"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_2"
-android:background="@drawable/key_2"
-/>
-
-<ImageButton
-android:id="@+id/key_3"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_3"
-android:background="@drawable/key_3"
-/>
-
-<ImageButton
-android:id="@+id/key_4"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_4"
-android:background="@drawable/key_4"
-/>
-
-<ImageButton
-android:id="@+id/key_5"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_5"
-android:background="@drawable/key_5"
-/>
-
-<ImageButton
-android:id="@+id/key_6"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_6"
-android:background="@drawable/key_6"
-/>
-
-<ImageButton
-android:id="@+id/key_7"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_7"
-android:background="@drawable/key_7"
-/>
-
-<ImageButton
-android:id="@+id/key_8"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_8"
-android:background="@drawable/key_8"
-/>
-
-<ImageButton
-android:id="@+id/key_9"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_9"
-android:background="@drawable/key_9"
-/>
-
-<ImageButton
-android:id="@+id/key_0"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:layout_marginRight="2px"
-android:src="@drawable/key_0"
-android:background="@drawable/key_0"
-/>
-
-</TableRow>
-
-</TableLayout>
 
 
 </RelativeLayout>

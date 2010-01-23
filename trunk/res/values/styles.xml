@@ -1,31 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<resources>
-    <style name="SpecialText" parent="@android:style/TextAppearance">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-</resources>
-
+<resources> 
+<style name="MyTheme"> 
+<item name="android:spinnerDropDownItemStyle">@style/Widget.DropDownItem.Spinner</item> 
 <!-- 
-<resources>
-  <style name="MyTheme" parent="@android:Theme">
-    <item name="android:textAppearance">@style/MyDefaultTextAppearance</item>
-    <item name="android:spinnerDropDownItemStyle">@style/Widget.DropDownItem.Spinner</item>
-  </style>
-
-  <style name="MyDefaultTextAppearance" parent="@android:style/TextAppearance">
-    <item name="android:textSize">16pt</item>
-    <item name="android:textColor">#FFFFFF</item>
-    <item name="android:background">#000000</item>
-    <item name="android:textStyle">normal</item>
-  </style>
-  
-  <style name="Widget.DropDownItem.Spinner" parent="@android:style/Widget.DropDownItem.Spinner"> 
-	<item name="android:textStyle">bold</item> 
-	<item name="android:textColor">@color/color_white</item> 
-  </style> 
-
-  
-</resources>
+<item name="android:alertDialogStyle">@style/AlertDialog</item> 
  -->
+</style> 
+
+
+<style name="Widget.DropDownItem.Spinner" parent="@android:style/Widget.DropDownItem.Spinner"> 
+<item name="android:textStyle">bold</item> 
+<item name="android:textColor">#FFFFFF</item> 
+</style> 
+
+<!--  
+<style name="AlertDialog" parent="@android:style/AlertDialog"> 
+<item name="android:topDark">@drawable/my_popup_top_dark</item> 
+<item name="android:bottomBright">@drawable/my_popup_bottom_dark</item> 
+</style>
+-->
+ 
+</resources> 

@@ -8,11 +8,11 @@ import  android.preference.PreferenceManager;
 public class Prefs extends PreferenceActivity {
    // Option names and default values
    private static final String OPT_SCREEN = "screen" ;
-   private static final boolean OPT_SCREEN_DEF = true;
+   private static final boolean OPT_SCREEN_DEF = false;
    private static final String OPT_KEYBOARD = "keyboard" ;
-   private static final boolean OPT_KEYBOARD_DEF = false;
+   private static final boolean OPT_KEYBOARD_DEF = true;
    private static final String OPT_VIBRATION = "vibration" ;
-   private static final boolean OPT_VIBRATION_DEF = false;
+   private static final boolean OPT_VIBRATION_DEF = true;
    @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);

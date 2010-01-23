@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.TextView.BufferType;
 import android.text.Editable;
 import android.text.InputType;
@@ -443,19 +444,30 @@ public class Dungeoneers extends Activity implements OnClickListener {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); 
         //setContentView(R.layout.splashscreen);
         setContentView(R.layout.main);
-        
-        if (!Prefs.getScreen(getBaseContext())) {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
-        
+                
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE); 
         this.mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag"); 
         this.mWakeLock.acquire();
         
         EditText cmd = (EditText)findViewById(R.id.cmdText);
+        /*
         if (Prefs.getKeyboard(getBaseContext())) {
         cmd.setInputType(InputType.TYPE_NULL);
         }
+        */
+        if (!Prefs.getScreen(getBaseContext())) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            //cmd.setInputType(InputType.TYPE_NULL);
+            }
+        
+        Toast msg = Toast.makeText(Dungeoneers.this, "Please check the SETTINGS in the main menu for portrait/landscape mode and " +
+        		"haptic feedback seetings! Read the guides under MENU -> Community if this" +
+        		" is your first time in the game.", Toast.LENGTH_LONG);
+
+        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
+
+        msg.show();
+        
         TextView textview = (TextView)findViewById(R.id.MainText);             
         
         if(savedInstanceState == null)
@@ -531,7 +543,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		textview.scrollTo(0, (textview.getLineCount() * textview.getLineHeight()) - textview.getHeight());
 		
 	     // Set up click listeners for all the buttons
-        View northButton = findViewById(R.id.north_button);
+        
+		View commandindexButton = findViewById(R.id.commandindex_button);
+        commandindexButton.setOnClickListener(this);
+		
+		View northButton = findViewById(R.id.north_button);
         northButton.setOnClickListener(this);
         View eastButton = findViewById(R.id.east_button);
         eastButton.setOnClickListener(this);
@@ -553,8 +569,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
         View toggleButton = findViewById(R.id.toggle_button);
         toggleButton.setOnClickListener(this);        
-        View uinumbButton = findViewById(R.id.uinumb_button);
-        uinumbButton.setOnClickListener(this);
+        View numbButton = findViewById(R.id.numb_button);
+        numbButton.setOnClickListener(this);
         View uibackButton = findViewById(R.id.uiback_button);
         uibackButton.setOnClickListener(this);
         
@@ -627,35 +643,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         spacelsButton.setOnClickListener(this); 
         View enterlsButton = findViewById(R.id.key_enterls);
         enterlsButton.setOnClickListener(this); 
-        
-        View oneButton = findViewById(R.id.key_1);
-        oneButton.setOnClickListener(this);
-        View twoButton = findViewById(R.id.key_2);
-        twoButton.setOnClickListener(this);
-        View threeButton = findViewById(R.id.key_3);
-        threeButton.setOnClickListener(this);
-        View fourButton = findViewById(R.id.key_4);
-        fourButton.setOnClickListener(this);
-        View fiveButton = findViewById(R.id.key_5);
-        fiveButton.setOnClickListener(this);
-        View sixButton = findViewById(R.id.key_6);
-        sixButton.setOnClickListener(this);
-        View sevenButton = findViewById(R.id.key_7);
-        sevenButton.setOnClickListener(this);
-        View eightButton = findViewById(R.id.key_8);
-        eightButton.setOnClickListener(this);
-        View nineButton = findViewById(R.id.key_9);
-        nineButton.setOnClickListener(this);
-        View tenButton = findViewById(R.id.key_0);
-        tenButton.setOnClickListener(this);
                 
-        View bsButton = findViewById(R.id.key_bs);
-        bsButton.setOnClickListener(this);
-        View enButton = findViewById(R.id.key_en);
-        enButton.setOnClickListener(this); 
-        View spaceButton = findViewById(R.id.key_space);
-        spaceButton.setOnClickListener(this); 
-        
         View oneaButton = findViewById(R.id.one_button);
         oneaButton.setOnClickListener(this);
         View twoaButton = findViewById(R.id.two_button);
@@ -685,12 +673,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
      	findViewById  (R.id.spinner1);  
     	
     	button1    = (Button)
-    	findViewById (R.id.button1);                                               
-        
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
+    	findViewById (R.id.button1);   
+    	        
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycategories);        
     	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
-    	button1.setOnClickListener(  new clicker()); 
+    	button1.setOnClickListener(  new clickercategories()); 
 
     	spinnermodify = (Spinner) 
      	findViewById  (R.id.spinnermodify);  
@@ -737,19 +725,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
                   {        
     	       String       s = (String) spinner1.getSelectedItem(); 
     	       EditText cmd = (EditText)findViewById(R.id.cmdText);
-    	       
-		    	View cmda = (View)findViewById(R.id.CommandBox);
-	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-	        	View cmdnum = (View)findViewById(R.id.NumberBox);
-	        	View cmdspin = (View)findViewById(R.id.spinner1);
-	        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-	        	cmda.setVisibility(4);
-	        	cmdkb.setVisibility(0);
-	        	cmdnum.setVisibility(4);
-	        	cmdspin.setVisibility(4);
-	        	cmdconfirm.setVisibility(4);
-    	       
+    	           	       
     	         cmd.setText(cmd.getText() + s);    
     				Spannable cmdbufferh = (Spannable)cmd.getText();
     				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
@@ -764,21 +740,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
                   {        
     	       String       s = (String) spinner1.getSelectedItem(); 
     	       EditText cmd = (EditText)findViewById(R.id.cmdText);
-    	       
-		    	View cmda = (View)findViewById(R.id.CommandBox);
-	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-	        	View cmdnum = (View)findViewById(R.id.NumberBox);
-	        	View cmdnumblock = (View)findViewById(R.id.NumblockBox);
-	        	View cmdspin = (View)findViewById(R.id.spinner1);
-	        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-	        	cmda.setVisibility(4);
-	        	cmdkb.setVisibility(4);
-	        	cmdnum.setVisibility(4);
-	        	cmdnumblock.setVisibility(0);
-	        	cmdspin.setVisibility(4);
-	        	cmdconfirm.setVisibility(4);
-    	       
+    	           	       
     	         cmd.setText(cmd.getText() + s);    
     				Spannable cmdbufferh = (Spannable)cmd.getText();
     				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
@@ -1832,19 +1794,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
                   {        
     	       String       s = (String) spinner1.getSelectedItem(); 
     	       EditText cmd = (EditText)findViewById(R.id.cmdText);
-    	       
-		    	View cmda = (View)findViewById(R.id.CommandBox);
-	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-	        	View cmdnum = (View)findViewById(R.id.NumberBox);
-	        	View cmdspin = (View)findViewById(R.id.spinner1);
-	        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-	        	cmda.setVisibility(0);
-	        	cmdkb.setVisibility(4);
-	        	cmdnum.setVisibility(4);
-	        	cmdspin.setVisibility(4);
-	        	cmdconfirm.setVisibility(4);
-    	       
+    	           	       
     	         cmd.setText(cmd.getText() + s);    
     				
 					sendData.push(cmd.getText() + "\r\n");
@@ -1883,17 +1833,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
                   {        
     	       String       s = (String) spinnermodify.getSelectedItem(); 
     	       EditText cmd = (EditText)findViewById(R.id.cmdText);
-    	       
-		    	View cmda = (View)findViewById(R.id.CommandBox);
-	        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-	        	View cmdspin = (View)findViewById(R.id.spinnermodify);
-	        	View cmdconfirm = (View)findViewById(R.id.buttonmodify);
-
-	        	cmda.setVisibility(0);
-	        	cmdkb.setVisibility(4);
-	        	cmdspin.setVisibility(4);
-	        	cmdconfirm.setVisibility(4);
-    	       
+    	          	       
     	         cmd.setText(cmd.getText() + s);    
     				Spannable cmdbufferh = (Spannable)cmd.getText();
     				Selection.moveToRightEdge(cmdbufferh, cmd.getLayout());
@@ -1907,26 +1847,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
 		
 		switch (v.getId()) {
-
-		
-		/*
-		case R.id.key_num:
-				    	
-        	View cmdnum = (View)findViewById(R.id.NumberBox);
-        	int visibilitynum = cmdnum.getVisibility();
-        		if (visibilitynum == 0)
-        		{
-        			cmdnum.setVisibility(4);
-        		}
-        		else
-        		{
-        			cmdnum.setVisibility(0);
-        		}
-			
-        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-			
-		break;
-	*/
 		
 		case R.id.one_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
@@ -2153,7 +2073,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		break;
 		
 		case R.id.key_qm_ls:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
+			cmdkeyboard.setText(cmdkeyboard.getText() + "?");
 			Spannable cmdbufferqmls = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferqmls, cmdkeyboard.getLayout());
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
@@ -2230,35 +2150,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;		
 		
-		
-		case R.id.uinumb_button:
-	    	View cmdaui = (View)findViewById(R.id.CommandBox);
-        	View cmdkbui = (View)findViewById(R.id.KeyboardBox);
-        	View cmdnumberui = (View)findViewById(R.id.NumberBox);
-        	View cmdnumblockui = (View)findViewById(R.id.NumblockBox);
-        	View cmdspinui = (View)findViewById(R.id.spinner1);
-        	View cmdconfirmui = (View)findViewById(R.id.button1);
-        	View cmduibackbuttonui = (View)findViewById(R.id.uiback_button);
-        	        	
-        			cmdaui.setVisibility(4);
-        			cmdkbui.setVisibility(4);
-        			cmdnumberui.setVisibility(4);
-        			cmdnumblockui.setVisibility(0);
-        			cmdspinui.setVisibility(4);
-        			cmdconfirmui.setVisibility(4);
-        			cmduibackbuttonui.setVisibility(4);
- 
-        		
-        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;		
-
-		case R.id.key_space:
-			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
-			Spannable cmdbuffersp = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbuffersp, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
 		case R.id.key_spacels:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbufferspls = (Spannable)cmdkeyboard.getText();
@@ -2267,122 +2158,31 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		break;	
 		
 		case R.id.key_del:
-			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
-			Spannable cmdbufferdel = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferdel, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_enterls:
-			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
-			Spannable cmdbufferenls = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferenls, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		
-		case R.id.key_1:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
-			Spannable cmdbufferone = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferone, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_2:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
-			Spannable cmdbuffertwo = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbuffertwo, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_3:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
-			Spannable cmdbufferthree = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferthree, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		
-		case R.id.key_4:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
-			Spannable cmdbufferfour = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferfour, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_5:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
-			Spannable cmdbufferfive = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferfive, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_6:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
-			Spannable cmdbuffersix = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbuffersix, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_7:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
-			Spannable cmdbufferseven = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferseven, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_8:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
-			Spannable cmdbuffereight = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbuffereight, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_9:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
-			Spannable cmdbuffernine = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbuffernine, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		case R.id.key_0:
-			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
-			Spannable cmdbufferten = (Spannable)cmdkeyboard.getText();
-			Selection.moveToRightEdge(cmdbufferten, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-		break;
-		
-		
-		
-		
-		case R.id.key_bs:		
-			
-			CharSequence text = cmdkeyboard.getText();
-			if (!(text instanceof Editable)) {
-		          cmdkeyboard.setText(text, BufferType.EDITABLE);
+			CharSequence textaa = cmdkeyboard.getText();
+			if (!(textaa instanceof Editable)) {
+		          cmdkeyboard.setText(textaa, BufferType.EDITABLE);
 		        }
-		        Editable editable = (Editable)cmdkeyboard.getText();
+		        Editable editableaa = (Editable)cmdkeyboard.getText();
 
-		        if (text.length() > 0) {
-		          editable.delete(text.length() - 1, text.length());
+		        if (textaa.length() > 0) {
+		          editableaa.delete(textaa.length() - 1, textaa.length());
 		        }
 			
 		        if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-
 		break;
 		
-		case R.id.key_en:
-			EditText cmdenterx = (EditText)findViewById(R.id.cmdText);
-			sendData.push(cmdenterx.getText() + "\r\n");
-			addText(cmdenterx.getText() + "\n", Color.WHITE, Color.BLACK);
+		case R.id.key_enterls:
+			EditText cmdenter = (EditText)findViewById(R.id.cmdText);
+			sendData.push(cmdenter.getText() + "\r\n");
+			addText(cmdenter.getText() + "\n", Color.WHITE, Color.BLACK);
 
 			historypos = 0;
 
 			if(commandHistory.size() > 1)
 			{
-				if(!(cmdenterx.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				if(!(cmdenter.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
 				{
-					commandHistory.add(cmdenterx.getText().toString());
+					commandHistory.add(cmdenter.getText().toString());
 					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
 					{
 						commandHistory.remove(0);
@@ -2391,12 +2191,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			}
 			else
 			{
-				commandHistory.add(cmdenterx.getText().toString());
+				commandHistory.add(cmdenter.getText().toString());
 			}
+			cmdenter.setText("");
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
-			cmdenterx.setText("");
 		break;
-		
+	
 		
 		case R.id.north_button:
 			EditText cmd = (EditText)findViewById(R.id.cmdText);
@@ -2462,17 +2262,17 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		break;	
 		
 		case R.id.enter_button:
-			EditText cmdenter = (EditText)findViewById(R.id.cmdText);
-			sendData.push(cmdenter.getText() + "\r\n");
-			addText(cmdenter.getText() + "\n", Color.WHITE, Color.BLACK);
+			EditText cmdentera = (EditText)findViewById(R.id.cmdText);
+			sendData.push(cmdentera.getText() + "\r\n");
+			addText(cmdentera.getText() + "\n", Color.WHITE, Color.BLACK);
 
 			historypos = 0;
 
 			if(commandHistory.size() > 1)
 			{
-				if(!(cmdenter.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				if(!(cmdentera.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
 				{
-					commandHistory.add(cmdenter.getText().toString());
+					commandHistory.add(cmdentera.getText().toString());
 					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
 					{
 						commandHistory.remove(0);
@@ -2481,59 +2281,71 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			}
 			else
 			{
-				commandHistory.add(cmdenter.getText().toString());
+				commandHistory.add(cmdentera.getText().toString());
 			}
 			//cmdenter.setText("");
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;	
 		
+		case R.id.commandindex_button:
+			openCommonDialog();        	
+			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;	
+		
 		case R.id.toggle_button:
-	    	View cmda = (View)findViewById(R.id.CommandBox);
-        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-        	View cmdnumber = (View)findViewById(R.id.NumberBox);
-        	View cmdnumblock = (View)findViewById(R.id.NumblockBox);
-        	View cmdspin = (View)findViewById(R.id.spinner1);
-        	View cmdconfirm = (View)findViewById(R.id.button1);
-        	View cmduibackbutton = (View)findViewById(R.id.uiback_button);
-        	int visibilitya = cmda.getVisibility();
+			View cmda = (View)findViewById(R.id.CommandBox);
+			int visibilitya = cmda.getVisibility();
         	
-        		if (visibilitya == 0)
-        		{
-        			cmda.setVisibility(4);
-        			cmdkb.setVisibility(4);
-        			cmdnumber.setVisibility(4);
-        			cmdnumblock.setVisibility(0);
-        			cmdspin.setVisibility(4);
-        			cmdconfirm.setVisibility(4);
-        			cmduibackbutton.setVisibility(4);
-        		}
-        		else
-        		{
-        			cmda.setVisibility(0);
-        			cmdkb.setVisibility(4);
-        			cmdnumber.setVisibility(4);
-        			cmdnumblock.setVisibility(4);
-        			cmdspin.setVisibility(4);
-        			cmdconfirm.setVisibility(4);
-        			cmduibackbutton.setVisibility(4);
-        		}
+    		if (visibilitya == 0)
+    		{
+    			cmda.setVisibility(4);
+    		}
+    		else
+    		{
+    			cmda.setVisibility(0);
+    		}
+        		
         		
         		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
 		
 		case R.id.uiback_button:
-
-			openCommonDialog();
+			View cmdaa = (View)findViewById(R.id.KeyboardBox);
+			int visibilityaa = cmdaa.getVisibility();
+        	
+    		if (visibilityaa == 0)
+    		{
+    			cmdaa.setVisibility(4);
+    		}
+    		else
+    		{
+    			cmdaa.setVisibility(0);
+    		}      		
         		
         		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 		break;
+		
+		case R.id.numb_button:
+			
+			View cmdab = (View)findViewById(R.id.NumblockBox);
+			int visibilityab = cmdab.getVisibility();
+        	
+    		if (visibilityab == 0)
+    		{
+    			cmdab.setVisibility(4);
+    		}
+    		else
+    		{
+    			cmdab.setVisibility(0);
+    		}  
+ 
+        		
+        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+		break;		
 
 
 			case R.id.command_button:
 			openCommonDialog();
-        	View cmduibackbuttona = (View)findViewById(R.id.uiback_button);
-        	
-        	cmduibackbuttona.setVisibility(0);
         	
 			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
 			break;
@@ -2575,19 +2387,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercategories()); 
-    	
-    	View cmda = (View)findViewById(R.id.CommandBox);
-    	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-    	View cmdnum = (View)findViewById(R.id.NumberBox);
-    	View cmdspin = (View)findViewById(R.id.spinner1);
-    	View cmdconfirm = (View)findViewById(R.id.button1);
-
-    	cmda.setVisibility(4);
-    	cmdkb.setVisibility(4);
-    	cmdnum.setVisibility(4);
-    	cmdspin.setVisibility(0);
-    	cmdconfirm.setVisibility(0);
-		
+    			
 		}
 	
 		/** Start a new game with the given difficulty level */
@@ -2999,13 +2799,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	
 			    	View cmda = (View)findViewById(R.id.CommandBox);
 		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
 		        	View cmdspin = (View)findViewById(R.id.spinner1);
 		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
 		        	cmda.setVisibility(4);
 		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
 		        	cmdspin.setVisibility(0);
 		        	cmdconfirm.setVisibility(0);
 						
@@ -3031,13 +2829,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	
 			    	View cmda = (View)findViewById(R.id.CommandBox);
 		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
 		        	View cmdspin = (View)findViewById(R.id.spinner1);
 		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
 		        	cmda.setVisibility(4);
 		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
 		        	cmdspin.setVisibility(0);
 		        	cmdconfirm.setVisibility(0);
 						
@@ -3242,19 +3038,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
-			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
-						
+			    							
 				}
 				
 				else if (i == 9) {
@@ -3275,17 +3059,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 						
 				}
 				
@@ -3551,13 +3324,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				    	
 				    	View cmda = (View)findViewById(R.id.CommandBox);
 			        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-			        	View cmdnum = (View)findViewById(R.id.NumberBox);
 			        	View cmdspin = (View)findViewById(R.id.spinner1);
 			        	View cmdconfirm = (View)findViewById(R.id.button1);
 
 			        	cmda.setVisibility(4);
 			        	cmdkb.setVisibility(4);
-			        	cmdnum.setVisibility(4);
 			        	cmdspin.setVisibility(0);
 			        	cmdconfirm.setVisibility(0);
 					
@@ -3678,16 +3449,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clicker()); 
-			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
+			  
 
 					
 				}
@@ -3716,17 +3478,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				    	spinner1.setAdapter(adapter);         
 				    	button1.setOnClickListener(  new clickercommand()); 
 				    	
-				    	View cmda = (View)findViewById(R.id.CommandBox);
-			        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-			        	View cmdnum = (View)findViewById(R.id.NumberBox);
-			        	View cmdspin = (View)findViewById(R.id.spinner1);
-			        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-			        	cmda.setVisibility(4);
-			        	cmdkb.setVisibility(4);
-			        	cmdnum.setVisibility(4);
-			        	cmdspin.setVisibility(0);
-			        	cmdconfirm.setVisibility(0);
 						
 					}
 				
@@ -3908,17 +3660,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 		        	
 				}
 				else if (i == 1) {
@@ -3941,13 +3682,11 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	
 			    	View cmda = (View)findViewById(R.id.CommandBox);
 		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
 		        	View cmdspin = (View)findViewById(R.id.spinner1);
 		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
 		        	cmda.setVisibility(4);
 		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
 		        	cmdspin.setVisibility(0);
 		        	cmdconfirm.setVisibility(0);
 					
@@ -3969,18 +3708,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
-			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 		        	
 					
 				}
@@ -4000,18 +3727,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
-			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 				}
 				else if (i == 4) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
@@ -4029,18 +3745,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
-			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
 
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 				}
 				else if (i == 5) {
 					EditText cmdscore = (EditText)findViewById(R.id.cmdText);
@@ -4149,17 +3854,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
 			    	
-			    	View cmda = (View)findViewById(R.id.CommandBox);
-		        	View cmdkb = (View)findViewById(R.id.KeyboardBox);
-		        	View cmdnum = (View)findViewById(R.id.NumberBox);
-		        	View cmdspin = (View)findViewById(R.id.spinner1);
-		        	View cmdconfirm = (View)findViewById(R.id.button1);
-
-		        	cmda.setVisibility(4);
-		        	cmdkb.setVisibility(4);
-		        	cmdnum.setVisibility(4);
-		        	cmdspin.setVisibility(0);
-		        	cmdconfirm.setVisibility(0);
 					
 				}
 				

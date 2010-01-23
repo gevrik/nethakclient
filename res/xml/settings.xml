@@ -6,11 +6,14 @@
       android:title="Portrait Mode"
       android:summary="On: Portrait Off: Landscape"
       android:defaultValue="true" />
-   <CheckBoxPreference
+   
+   <!-- <CheckBoxPreference
       android:key="keyboard"
       android:title="NetHak Keyboard only"
       android:summary="On: NetHak IME Off: Android IME"
       android:defaultValue="true" />
+    -->
+    
    <CheckBoxPreference
       android:key="vibration"
       android:title="Haptic Feedback"

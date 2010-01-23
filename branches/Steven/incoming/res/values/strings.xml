@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="app_name">NetHak</string>
+<string name="app_desc">NetHak MMO Client</string>
+<string name="about_title">User Interface</string>
+<string name="str_nums">0123456789</string>
+<color name="color_white">#FFFFFF</color>
+<string name="str_chars">abcdefghijklmnopqrstuvwxyz.-0123456789</string>
+<color name="color_invis">#00000000</color>
+<color name="color_black">#000000</color>
+
+</resources>

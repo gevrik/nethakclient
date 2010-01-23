@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ListTextView" android:editable="false" android:height="30px" android:width="3000px" android:layout_height="wrap_content" android:layout_width="wrap_content" android:focusable="false" android:focusableInTouchMode="false" android:selectAllOnFocus="false" android:textColorHighlight="@color/color_invis" android:textSize="15pt" android:singleLine="true">
+</TextView>

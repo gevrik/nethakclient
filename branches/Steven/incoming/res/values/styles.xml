@@ -1,0 +1,22 @@
+<resources> 
+<style name="MyTheme"> 
+<item name="android:spinnerDropDownItemStyle">@style/Widget.DropDownItem.Spinner</item> 
+<!-- 
+<item name="android:alertDialogStyle">@style/AlertDialog</item> 
+ -->
+</style> 
+
+
+<style name="Widget.DropDownItem.Spinner" parent="@android:style/Widget.DropDownItem.Spinner"> 
+<item name="android:textStyle">bold</item> 
+<item name="android:textColor">#FFFFFF</item> 
+</style> 
+
+<!--  
+<style name="AlertDialog" parent="@android:style/AlertDialog"> 
+<item name="android:topDark">@drawable/my_popup_top_dark</item> 
+<item name="android:bottomBright">@drawable/my_popup_bottom_dark</item> 
+</style>
+-->
+ 
+</resources> 

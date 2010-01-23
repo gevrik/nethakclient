@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<array name="numbers">
+<item>"0"</item>
+<item>"1"</item>
+<item>"2"</item>
+<item>"3"</item>
+<item>"4"</item>
+<item>"5"</item>
+<item>"6"</item>
+<item>"7"</item>
+<item>"8"</item>
+<item>"9"</item>
+<item>"10"</item>
+<item>"11"</item>
+<item>"12"</item>
+<item>"13"</item>
+<item>"14"</item>
+<item>"15"</item>
+<item>"16"</item>
+<item>"17"</item>
+<item>"18"</item>
+<item>"19"</item>
+<item>"20"</item>
+</array>
+
+<array name="commoncommands">
+<item>Info</item>
+<item>Nodes</item>
+<item>Talk</item>
+<item>Combat</item>
+<item>Travel</item>
+<item>Construct</item>
+<item>Interaction</item>
+<item>Shopping</item>
+<item>Banking</item>
+<item>Organization</item>
+<item>Group</item>
+</array>
+
+<array name="infocommands">
+<item>Score</item>
+<item>Who</item>
+<item>Skills</item>
+<item>Systems</item>
+<item>Regions</item>
+<item>Organizations</item>
+<item>Affected</item>
+<item>Commands</item>
+<item>Equipment</item>
+<item>Inventory</item>
+<item>Compare [i1] [i2]</item>
+<item>Showorg [org]</item>
+<item>Showsystem [sys]</item>
+</array>
+
+<array name="nodescommands">
+<item>Look</item>
+<item>Analyze</item>
+<item>Search</item>
+<item>Dig</item>
+<item>Exits</item>
+<item>Glance</item>
+<item>Examine [object]</item>
+<item>Drop [item]</item>
+<item>Unlock [dir] [code]</item>
+<item>Scan [dir]</item>
+</array>
+
+<array name="talkcommands">
+<item>Say 'Hi'</item>
+<item>Say 'Job'</item>
+<item>Say [text]</item>
+<item>Tell [target] [text]</item>
+<item>Reply [text]</item>
+<item>Gchat [text]</item>
+<item>Schat [text]</item>
+<item>Yell [text]</item>
+<item>Afk</item>
+<item>Bio</item>
+<item>Gtell [text]</item>
+<item>Orgtalk [text]</item>
+<item>OOC [text]</item>
+</array>
+
+<array name="combatcommands">
+<item>Kill virus</item>
+<item>Kill ICE</item>
+<item>Kill program</item>
+<item>Kill [target]</item>
+<item>Blast [dir] [target]</item>
+<item>Consider [target]</item>
+<item>Flee [dir]</item>
+<item>Rest</item>
+<item>Sleep</item>
+<item>Wake</item>
+<item>Sit</item>
+<item>Stand</item>
+<item>Setblaster [mode]</item>
+<item>Shove [target]</item>
+</array>
+
+<array name="travelcommands">
+<item>Home</item>
+<item>Enter</item>
+<item>Connect [grid] (id) (code)</item>
+</array>
+
+<array name="constructcommands">
+<item>construct [dir]</item>
+<item>modify [type]</item>
+<item>bridge [dir] connect [id]</item>
+<item>bridge [dir] door</item>
+<item>bridge [dir] keycode [code]</item>
+<item>node description [editor]</item>
+</array>
+
+<array name="interactcommands">
+<item>Give package program</item>
+<item>Give [object] [entity]</item>
+<item>Wield [object]</item>
+<item>Wear [object]</item>
+<item>Remove [object]</item>
+<item>Get [object]</item>
+<item>Close [entity]</item>
+<item>Lock [dir] [code]</item>
+<item>Drag [victim] [dir]</item>
+<item>Empty [container]</item>
+<item>Fill [container]</item>
+<item>Activate [object]</item>
+<item>Teach [target] [skill]</item>
+<item>Visible</item>
+</array>
+
+<array name="shopcommands">
+<item>List</item>
+<item>Buy [object]</item>
+<item>Sell [object]</item>
+<item>Repair [object]</item>
+<item>Value [object]</item>
+<item>Buyskill</item>
+<item>Buyskill [skill]</item>
+</array>
+
+<array name="bankingcommands">
+<item>Balance</item>
+<item>Deposit [amount]</item>
+<item>Withdraw [amount]</item>
+<item>Transfer [a] [p]</item>
+</array>
+
+<array name="supportcommands">
+<item>Bug [description]</item>
+<item>Typo [description]</item>
+</array>
+
+<array name="politicscommands">
+<item>Capture</item>
+</array>
+
+<array name="settingscommands">
+<item>Channels</item>
+<item>Channels [+channel]</item>
+<item>Channels [-channel]</item>
+<item>Config</item>
+<item>Channels [+option]</item>
+<item>Channels [-option]</item>
+<item>Description</item>
+<item>Forget [skill]</item>
+</array>
+
+<array name="organizationcommands">
+<item>Donate [amount]</item>
+<item>Demote [victim]</item>
+<item>Empower [char] [priv]</item>
+<item>Induct [playername]</item>
+<item>Withdraw [amount]</item>
+<item>War [organization]</item>
+<item>Outcast [playername]</item>
+<item>Setwages [amount]</item>
+<item>Enlist</item>
+<item>Overthrow</item>
+</array>
+
+<array name="groupcommands">
+<item>Follow [char]</item>
+<item>Group</item>
+</array>
+
+<array name="gnotecommands">
+<item>Gnote</item>
+<item>Gnote read [number]</item>
+<item>Gnote list</item>
+<item>Gnote catchup</item>
+<item>Gboard [name]</item>
+<item>Gnote write</item>
+</array>
+
+<array name="citygrids">
+<item>Ascension</item>
+<item>Beijing</item>
+<item>Berlin</item>
+<item>Bosat</item>
+<item>Cairo</item>
+<item>Chiba</item>
+<item>Chicago</item>
+<item>Dakar</item>
+<item>Delhi</item>
+<item>Denver</item>
+<item>Havana</item>
+<item>Hongkong</item>
+<item>Honolulu</item>
+<item>London</item>
+<item>LosAngeles</item>
+<item>Madrid</item>
+<item>Melbourne</item>
+<item>Moscow</item>
+<item>Nairobi</item>
+<item>Newash</item>
+<item>PanamaCity</item>
+<item>Paris</item>
+<item>Rio</item>
+<item>Rome</item>
+<item>SaltlakeCity</item>
+<item>Seattle</item>
+<item>Stockholm</item>
+<item>Straylight</item>
+</array>
+
+</resources>

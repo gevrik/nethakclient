@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen>
+v 0.9
+
+- added haptic feedback to settings
+- changes NetHak keyboard layout
+
+v 1.0
+
+- added settings screen
+- added screen orientation to settings
+- added software keyboard to settings
+
+v 1.1
+
+- nethak keyboard added
+- removed keyboard options from settings
+- main screen layout adjustments
+
+v 1.1.1
+
+- more layout adjustments
+
+v 1.1.2
+
+- more usability changes
+- enter on nethak keyboard clears command line
+- command menu working better
+
+
+</PreferenceScreen>

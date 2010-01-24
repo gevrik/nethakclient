@@ -8,12 +8,16 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -460,14 +464,42 @@ public class Dungeoneers extends Activity implements OnClickListener {
             //cmd.setInputType(InputType.TYPE_NULL);
             }
         
-        Toast msg = Toast.makeText(Dungeoneers.this, "Please check the SETTINGS in the main menu for portrait/landscape mode and " +
-        		"haptic feedback seetings! Read the guides under MENU -> Community if this" +
-        		" is your first time in the game.", Toast.LENGTH_LONG);
-
-        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
-
-        msg.show();
         
+        boolean showToast = false;
+        
+        try {
+        	PackageManager packm = getPackageManager();
+        	PackageInfo packinf;
+			packinf = packm.getPackageInfo("net.totalmadownage.nethak", 0);
+			
+			int currentVersion = packinf.versionCode;
+			int lastMessageShownVersion = Prefs.getLastVersionWelcomeMessageShown(getBaseContext());
+			
+			if(currentVersion > lastMessageShownVersion)
+			{
+				showToast = true;
+				Prefs.setLastVersionWelcomeMessageShown(getBaseContext(), currentVersion);
+			}
+			
+			if(Prefs.getAlwaysShowWelcomeFlag(getBaseContext()))
+			{
+				showToast = true;
+			}
+		} catch (NameNotFoundException e) {
+			//Defaulting to show the message if we can't figure out what to do safely
+			showToast = true;
+		}
+        
+        if(showToast)
+        {
+        	Toast msg = Toast.makeText(Dungeoneers.this, "Please check the SETTINGS in the main menu for portrait/landscape mode and " +
+        			"haptic feedback seetings! Read the guides under MENU -> Community if this" +
+        			" is your first time in the game.", Toast.LENGTH_LONG);
+
+        	msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
+
+        	msg.show();
+        }
         TextView textview = (TextView)findViewById(R.id.MainText);             
         
         if(savedInstanceState == null)
@@ -676,7 +708,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);   
     	        
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycategories);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercategories()); 
 
@@ -687,7 +719,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.buttonmodify);                                               
         
     	ArrayAdapter<String> adaptermodify = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
-    	adaptermodify.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adaptermodify.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinnermodify.setAdapter(adaptermodify);         
     	buttonmodify.setOnClickListener(  new clickermodify()); 
     	
@@ -805,7 +837,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatinfo);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatinfo()); 
 		
@@ -882,7 +914,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatnodes);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatnodes()); 
 		
@@ -960,7 +992,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycattalk);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercattalk()); 
 		
@@ -1025,7 +1057,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatcombat);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatcombat()); 
 		
@@ -1101,7 +1133,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycattravel);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercattravel()); 
 		
@@ -1179,7 +1211,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatconstruct);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatconstruct()); 
 		
@@ -1277,7 +1309,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatinteract);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatinteract()); 
 		
@@ -1370,7 +1402,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatshopping);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatshopping()); 
 		
@@ -1455,7 +1487,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatbuyskill);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercommand()); 
 		
@@ -1481,7 +1513,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatbank);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatbank()); 
 		
@@ -1547,7 +1579,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatorganization);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatorganization()); 
 		
@@ -1612,7 +1644,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycatgroup);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercatgroup()); 
 		
@@ -1675,7 +1707,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirskeycode);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickerkeynum()); 
 		
@@ -1690,7 +1722,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsdoor);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercommand()); 
 		
@@ -1720,7 +1752,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickerkeynum()); 
 		
@@ -1735,7 +1767,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercommand()); 
 		
@@ -1750,7 +1782,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercommand()); 
 		
@@ -1766,7 +1798,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayorgs);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercommand()); 
 		
@@ -1781,7 +1813,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickerkeynum()); 
 		
@@ -1843,8 +1875,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     
 	public void onClick(View v) {
 		
-	     Vibrator vb = ( Vibrator )getApplication().getSystemService( Service.VIBRATOR_SERVICE ); 
-		EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
+	     EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
 		
 		switch (v.getId()) {
 		
@@ -1852,77 +1883,77 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
 			Spannable cmdbufferoneb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferoneb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.two_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
 			Spannable cmdbuffertwob = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffertwob, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.three_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
 			Spannable cmdbufferthreeb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferthreeb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.four_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
 			Spannable cmdbufferfourb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfourb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.five_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
 			Spannable cmdbufferfiveb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfiveb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.six_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
 			Spannable cmdbuffersixb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersixb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.seven_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
 			Spannable cmdbuffersevenb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersevenb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.eight_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
 			Spannable cmdbuffereightb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffereightb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.nine_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
 			Spannable cmdbuffernineb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffernineb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.null_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
 			Spannable cmdbuffernullb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffernullb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.space_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbufferspaceb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferspaceb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.nbbs_button:
@@ -1936,147 +1967,147 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		          editablea.delete(texta.length() - 1, texta.length());
 		        }
 			
-		        if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.key_q:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "q");
 			Spannable cmdbufferq = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferq, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;		
 
 		case R.id.key_w:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "w");
 			Spannable cmdbufferw = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferw, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_e:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "e");
 			Spannable cmdbuffere = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffere, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_r:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "r");
 			Spannable cmdbufferr = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferr, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_t:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "t");
 			Spannable cmdbuffert = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffert, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_y:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "y");
 			Spannable cmdbuffery = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffery, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_u:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "u");
 			Spannable cmdbufferu = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferu, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_i:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "i");
 			Spannable cmdbufferi = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferi, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_o:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "o");
 			Spannable cmdbuffero = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffero, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_p:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "p");
 			Spannable cmdbufferp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferp, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_a:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "a");
 			Spannable cmdbuffera = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffera, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;		
 
 		case R.id.key_s:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "s");
 			Spannable cmdbuffers = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffers, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_d:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "d");
 			Spannable cmdbufferd = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferd, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_f:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "f");
 			Spannable cmdbufferf = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferf, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_g:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "g");
 			Spannable cmdbufferg = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferg, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_h:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "h");
 			Spannable cmdbufferh = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferh, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_j:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "j");
 			Spannable cmdbufferj = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferj, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_k:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "k");
 			Spannable cmdbufferk = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferk, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_l:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
 			Spannable cmdbufferl = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferl, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_qm_ls:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "?");
 			Spannable cmdbufferqmls = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferqmls, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		
@@ -2084,77 +2115,77 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
 			Spannable cmdbufferz = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferz, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_x:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "x");
 			Spannable cmdbufferx = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferx, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_c:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "c");
 			Spannable cmdbufferc = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferc, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_v:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "v");
 			Spannable cmdbufferv = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferv, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_m:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "m");
 			Spannable cmdbufferm = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferm, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_b:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "b");
 			Spannable cmdbufferb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferb, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_n:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "n");
 			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_dot:
 			cmdkeyboard.setText(cmdkeyboard.getText() + ".");
 			Spannable cmdbufferdot = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferdot, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_slash:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "/");
 			Spannable cmdbufferslash = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferslash, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_comma:
 			cmdkeyboard.setText(cmdkeyboard.getText() + ",");
 			Spannable cmdbuffercomma = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffercomma, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;		
 		
 		case R.id.key_spacels:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbufferspls = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferspls, cmdkeyboard.getLayout());
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.key_del:
@@ -2168,7 +2199,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		          editableaa.delete(textaa.length() - 1, textaa.length());
 		        }
 			
-		        if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.key_enterls:
@@ -2194,7 +2225,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				commandHistory.add(cmdenter.getText().toString());
 			}
 			cmdenter.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 	
 		
@@ -2204,7 +2235,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmd.getText() + "\r\n");
 			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.east_button:
@@ -2213,7 +2244,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmde.getText() + "\r\n");
 			addText(cmde.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmde.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 
 		case R.id.west_button:
@@ -2222,7 +2253,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		sendData.push(cmdw.getText() + "\r\n");
 		addText(cmdw.getText() + "\n", Color.WHITE, Color.BLACK);
 		cmdw.setText("");
-		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 
 		case R.id.south_button:
@@ -2231,7 +2262,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmds.getText() + "\r\n");
 			addText(cmds.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmds.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.up_button:
@@ -2240,7 +2271,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdup.getText() + "\r\n");
 			addText(cmdup.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdup.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.down_button:
@@ -2249,7 +2280,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmddown.getText() + "\r\n");
 			addText(cmddown.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmddown.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.look_button:
@@ -2258,7 +2289,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdlook.getText() + "\r\n");
 			addText(cmdlook.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdlook.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.enter_button:
@@ -2283,75 +2314,117 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			{
 				commandHistory.add(cmdentera.getText().toString());
 			}
-			//cmdenter.setText("");
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.commandindex_button:
 			openCommonDialog();        	
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;	
 		
 		case R.id.toggle_button:
-			View cmda = (View)findViewById(R.id.CommandBox);
-			int visibilitya = cmda.getVisibility();
+//			View cmda = (View)findViewById(R.id.CommandBox);
+//			int visibilitya = cmda.getVisibility();
+//        	
+//    		if (visibilitya == 0)
+//    		{
+//    			cmda.setVisibility(4);
+//    		}
+//    		else
+//    		{
+//    			cmda.setVisibility(0);
+//    		}
         	
-    		if (visibilitya == 0)
-    		{
-    			cmda.setVisibility(4);
-    		}
-    		else
-    		{
-    			cmda.setVisibility(0);
-    		}
+			switchKeyboardView(R.id.CommandBox);
         		
-        		
-        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;
 		
 		case R.id.uiback_button:
-			View cmdaa = (View)findViewById(R.id.KeyboardBox);
-			int visibilityaa = cmdaa.getVisibility();
+//			View cmdaa = (View)findViewById(R.id.KeyboardBox);
+//			int visibilityaa = cmdaa.getVisibility();
+//        	
+//    		if (visibilityaa == 0)
+//    		{
+//    			cmdaa.setVisibility(4);
+//    		}
+//    		else
+//    		{
+//    			cmdaa.setVisibility(0);
+//    		}      		
         	
-    		if (visibilityaa == 0)
-    		{
-    			cmdaa.setVisibility(4);
-    		}
-    		else
-    		{
-    			cmdaa.setVisibility(0);
-    		}      		
-        		
-        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			switchKeyboardView(R.id.KeyboardBox);
+			
+			vibrateOnce(); 
 		break;
 		
 		case R.id.numb_button:
 			
-			View cmdab = (View)findViewById(R.id.NumblockBox);
-			int visibilityab = cmdab.getVisibility();
-        	
-    		if (visibilityab == 0)
-    		{
-    			cmdab.setVisibility(4);
-    		}
-    		else
-    		{
-    			cmdab.setVisibility(0);
-    		}  
+//			View cmdab = (View)findViewById(R.id.NumblockBox);
+//			int visibilityab = cmdab.getVisibility();
+//        	
+//    		if (visibilityab == 0)
+//    		{
+//    			cmdab.setVisibility(4);
+//    		}
+//    		else
+//    		{
+//    			cmdab.setVisibility(0);
+//    		}  
  
+			switchKeyboardView(R.id.NumblockBox);
         		
-        		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 		break;		
 
 
 			case R.id.command_button:
 			openCommonDialog();
         	
-			if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 ); 
+			vibrateOnce(); 
 			break;
 
 		}
+	}
+
+	private void switchKeyboardView(int view)
+	{
+		View numberBoxView = (View)findViewById(R.id.NumblockBox);
+		View keyboardBoxView = (View)findViewById(R.id.KeyboardBox);
+		View commandBoxView = (View)findViewById(R.id.CommandBox);
+		
+		View viewToToggle = null;
+		
+		switch (view)
+		{
+		case R.id.KeyboardBox:
+			viewToToggle = keyboardBoxView;
+			break;
+		case R.id.NumblockBox:
+			viewToToggle = numberBoxView;
+			break;
+		case R.id.CommandBox:
+			viewToToggle = commandBoxView;
+			break;
 		}
+		
+		int initialVisibility = viewToToggle.getVisibility();
+		
+		numberBoxView.setVisibility(View.INVISIBLE);
+		keyboardBoxView.setVisibility(View.INVISIBLE);
+		commandBoxView.setVisibility(View.INVISIBLE);
+		
+		if(viewToToggle != null && initialVisibility != View.VISIBLE)
+		{
+			viewToToggle.setVisibility(View.VISIBLE);
+		}
+		
+	}
+
+	private void vibrateOnce() {
+		Vibrator vb = ( Vibrator )getApplication().getSystemService( Service.VIBRATOR_SERVICE );
+		if (Prefs.getVibration(getBaseContext())) vb.vibrate( new long[]{0,35,0,0}, -1 );
+	}
  
 	
 	//private static final String TAG = "Dungeoneers" ;
@@ -2384,7 +2457,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	findViewById (R.id.button1);                                               
         
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraycategories);        
-    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
     	spinner1.setAdapter(adapter);         
     	button1.setOnClickListener(  new clickercategories()); 
     			
@@ -2793,7 +2866,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayorgs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
@@ -2823,7 +2896,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
@@ -3035,7 +3108,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
 			    							
@@ -3055,7 +3128,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
@@ -3318,7 +3391,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				    	findViewById (R.id.button1);                                               
 				        
 				    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraysystems);        
-				    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+				    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 				    	spinner1.setAdapter(adapter);         
 				    	button1.setOnClickListener(  new clickerkeynum()); 
 				    	
@@ -3446,7 +3519,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clicker()); 
 			  
@@ -3474,7 +3547,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				    	findViewById (R.id.button1);                                               
 				        
 				    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-				    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+				    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 				    	spinner1.setAdapter(adapter);         
 				    	button1.setOnClickListener(  new clickercommand()); 
 				    	
@@ -3656,7 +3729,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
@@ -3676,7 +3749,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 			    	
@@ -3705,7 +3778,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsconnect);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
 		        	
@@ -3724,7 +3797,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirsdoor);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickercommand()); 
 
@@ -3742,7 +3815,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirskeycode);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
 
@@ -3850,7 +3923,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			    	findViewById (R.id.button1);                                               
 			        
 			    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-			    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);                   
+			    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
 			    	spinner1.setAdapter(adapter);         
 			    	button1.setOnClickListener(  new clickerkeynum()); 
 			    	
@@ -4348,6 +4421,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         
 
     }
+
     
     public Handler TCUpdateHandler = new Handler(){
     

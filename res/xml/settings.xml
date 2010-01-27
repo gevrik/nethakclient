@@ -19,4 +19,7 @@
       android:title="Haptic Feedback"
       android:summary="On/Off"
       android:defaultValue="false" />
+<CheckBoxPreference android:key="dropdown" android:title="Dropdown Style" android:defaultValue="false" android:summaryOff="Small size dropdowns" android:summaryOn="Large size dropdowns"></CheckBoxPreference>
+<CheckBoxPreference android:key="welcomemsgflag" android:summaryOff="Only show welcome message once (per version)" android:title="Welcome Message" android:defaultValue="true" android:summaryOn="Always show the welcome message"></CheckBoxPreference>
+
 </PreferenceScreen>

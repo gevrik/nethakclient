@@ -329,20 +329,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			startActivity(e);
         	return true;
         case MENU_TOGGLE:
-        	View cmd = (View)findViewById(R.id.CommandBox);
-        	View cmdkey = (View)findViewById(R.id.KeyboardBox);
-        	int visibility = cmd.getVisibility();
-        	int visibilitykey = cmdkey.getVisibility();
-        		if (visibility == 4 && visibilitykey == 4)
-        		{
-        			cmd.setVisibility(0);
-        			//cmdkey.setVisibility(0);
-        		}
-        		else
-        		{
-        			cmd.setVisibility(4);
-        			cmdkey.setVisibility(4);
-        		}
+			   Intent i = new Intent(this, About.class);
+			   startActivity(i);
         	return true;
         }
         return false;

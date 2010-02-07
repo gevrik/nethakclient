@@ -17,21 +17,30 @@ android:background="@color/color_black"
 android:text="Commands" 
 android:id="@+id/cmdText" 
 android:singleLine="true" 
-android:textSize="10pt" android:layout_alignParentBottom="true">
+android:textSize="10pt" android:layout_alignParentBottom="true" android:visibility="invisible">
 </EditText>
 
-
+<EditText 
+android:layout_height="wrap_content" 
+android:textColor="@color/color_black" 
+android:background="@color/color_white" 
+android:id="@+id/loginText" 
+android:singleLine="true" 
+android:textSize="10pt" 
+android:layout_centerInParent="true"
+android:layout_width="150px" android:layout_alignParentRight="true">
+</EditText>
   
-  <ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" android:visibility="visible" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" android:layout_above="@+id/cmdText"/>
+<TextView android:typeface="monospace" android:layout_width="150px" android:id="@+id/usernameText" android:text="username:" android:editable="false" android:textColor="@color/color_white" android:layout_height="wrap_content" android:textStyle="normal" android:textSize="10sp" android:layout_centerInParent="true" android:layout_above="@+id/loginText" android:layout_alignParentRight="true"></TextView><Button android:id="@+id/buttonmodify" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/loginText" android:layout_marginTop="1px" android:visibility="visible" android:layout_centerInParent="true" android:layout_alignParentRight="true"></Button><ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" android:layout_above="@+id/cmdText" android:visibility="invisible"/>
 
-<ImageButton android:id="@+id/uiback_button" android:background="@drawable/keyboard_button" android:visibility="visible" android:layout_alignParentRight="true" android:layout_above="@+id/numb_button" android:layout_height="40px" android:layout_width="40px"/><ImageButton android:id="@+id/toggle_button" android:layout_marginRight="2px" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/travel_button" android:layout_above="@+id/uiback_button"/>
+<ImageButton android:id="@+id/uiback_button" android:background="@drawable/keyboard_button" android:layout_alignParentRight="true" android:layout_above="@+id/numb_button" android:layout_height="40px" android:layout_width="40px" android:visibility="invisible"/><ImageButton android:id="@+id/toggle_button" android:layout_marginRight="2px" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/travel_button" android:layout_above="@+id/uiback_button" android:visibility="invisible"/>
 
 
 
-<Spinner  android:id="@+id/spinner1" android:layout_alignParentRight="true" android:layout_marginRight="2px" android:visibility="visible" android:layout_height="wrap_content" android:background="@drawable/spinner_button" android:layout_width="148px" style="@style/Widget.DropDownItem.Spinner" android:layout_alignParentTop="true"> 
+<Spinner  android:id="@+id/spinner1" android:layout_alignParentRight="true" android:layout_marginRight="2px" android:layout_height="wrap_content" android:background="@drawable/spinner_button" android:layout_width="148px" style="@style/Widget.DropDownItem.Spinner" android:layout_alignParentTop="true" android:visibility="invisible"> 
  </Spinner>  
 
-  <ImageButton android:id="@+id/commandindex_button" android:scaleType="center" android:background="@drawable/commandindex_button" android:visibility="visible" android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/spinner1" android:layout_height="40px" android:layout_width="40px"/><Button android:id="@+id/button1" android:visibility="visible" android:background="@drawable/choosecommand_button" android:layout_height="40px" android:layout_width="40px" android:layout_below="@+id/spinner1" android:layout_alignParentRight="true"></Button>
+  <ImageButton android:id="@+id/commandindex_button" android:scaleType="center" android:background="@drawable/commandindex_button" android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/spinner1" android:layout_height="40px" android:layout_width="40px" android:visibility="invisible"/><Button android:id="@+id/button1" android:background="@drawable/choosecommand_button" android:layout_height="40px" android:layout_width="40px" android:layout_below="@+id/spinner1" android:layout_alignParentRight="true" android:visibility="invisible"></Button>
   <!-- 
   <Button android:id="@+id/button3" android:visibility="visible" android:layout_alignParentBottom="true" android:layout_width="30px"
    android:layout_height="30px" android:layout_toLeftOf="@+id/button1" android:background="@drawable/commandindex_button"></Button>
@@ -45,9 +54,9 @@ android:textSize="10pt" android:layout_alignParentBottom="true">
  android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
  </Spinner>
  
-  <Button android:id="@+id/buttonmodify" android:layout_width="wrap_content"
- android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/spinnermodify"
- android:layout_marginTop="1px" android:visibility="invisible" android:layout_centerInParent="true"></Button> 
+   
+
+
  
 <TextView 
 android:typeface="monospace" 

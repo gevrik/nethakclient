@@ -44,6 +44,8 @@ import android.view.*;
 import android.view.View.OnKeyListener;
 
 import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
 
 import net.totalmadownage.nethak.ConnectionDialog.ServerAdd;
 import net.totalmadownage.nethak.ServerListDialog.ConnectReady;
@@ -480,9 +482,9 @@ public class Dungeoneers extends Activity implements OnClickListener {
         
         if(showToast)
         {
-        	Toast msg = Toast.makeText(Dungeoneers.this, "Please check the SETTINGS in the main menu for portrait/landscape mode and " +
-        			"haptic feedback seetings! Read the guides under MENU -> Community if this" +
-        			" is your first time in the game.", Toast.LENGTH_LONG);
+        	Toast msg = Toast.makeText(Dungeoneers.this, "Use the keyboard to log in." +
+        			" Once in-game, type HELP to get an overview. " +
+        			" Type 'newbie yourtext' to chat with other players.", Toast.LENGTH_LONG);
 
         	msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
 
@@ -732,7 +734,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     
     private static final String[] arrayorgs = {        "turing", "moderns" }; 
     
-    private static final String[] arraysystems = {        "berlin ", "seattle ", "straylight " };
+    private static final String[] arraysystems = {        "berlin ", "seattle ", "straylight ", "hongkong ", "london ", "denver ", "tokyo ", "chicago ", "moscow " };
     /*
     private static final String[] arraysystems = {        "ascension ", "beijing ", "berlin ", "bosat ", "cairo ", "chiba ", "chicago ",
     	"dakar ", "delhi ", "denver ", "havana ", "hongkong ", "honolulu ", "london ", "losangeles ", "madrid ", "melbourne ", "moscow ",
@@ -1871,77 +1873,66 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");
 			Spannable cmdbufferoneb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferoneb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.two_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "2");
 			Spannable cmdbuffertwob = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffertwob, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.three_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "3");
 			Spannable cmdbufferthreeb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferthreeb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.four_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "4");
 			Spannable cmdbufferfourb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfourb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.five_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "5");
 			Spannable cmdbufferfiveb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferfiveb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.six_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "6");
 			Spannable cmdbuffersixb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersixb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.seven_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "7");
 			Spannable cmdbuffersevenb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffersevenb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.eight_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "8");
 			Spannable cmdbuffereightb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffereightb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.nine_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "9");
 			Spannable cmdbuffernineb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffernineb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.null_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "0");
 			Spannable cmdbuffernullb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffernullb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;	
 		
 		case R.id.space_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbufferspaceb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferspaceb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
 		break;
 		
 		case R.id.nbbs_button:
@@ -1955,147 +1946,147 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		          editablea.delete(texta.length() - 1, texta.length());
 		        }
 			
-			vibrateOnce(); 
+			 
 		break;	
 		
 		case R.id.key_q:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "q");
 			Spannable cmdbufferq = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferq, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;		
 
 		case R.id.key_w:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "w");
 			Spannable cmdbufferw = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferw, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_e:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "e");
 			Spannable cmdbuffere = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffere, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_r:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "r");
 			Spannable cmdbufferr = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferr, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_t:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "t");
 			Spannable cmdbuffert = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffert, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_y:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "y");
 			Spannable cmdbuffery = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffery, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_u:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "u");
 			Spannable cmdbufferu = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferu, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_i:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "i");
 			Spannable cmdbufferi = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferi, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_o:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "o");
 			Spannable cmdbuffero = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffero, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_p:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "p");
 			Spannable cmdbufferp = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferp, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_a:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "a");
 			Spannable cmdbuffera = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffera, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;		
 
 		case R.id.key_s:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "s");
 			Spannable cmdbuffers = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffers, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_d:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "d");
 			Spannable cmdbufferd = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferd, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_f:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "f");
 			Spannable cmdbufferf = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferf, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_g:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "g");
 			Spannable cmdbufferg = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferg, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_h:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "h");
 			Spannable cmdbufferh = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferh, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_j:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "j");
 			Spannable cmdbufferj = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferj, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_k:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "k");
 			Spannable cmdbufferk = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferk, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_l:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "l");
 			Spannable cmdbufferl = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferl, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_qm_ls:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "?");
 			Spannable cmdbufferqmls = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferqmls, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		
@@ -2103,77 +2094,77 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			cmdkeyboard.setText(cmdkeyboard.getText() + "z");
 			Spannable cmdbufferz = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferz, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_x:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "x");
 			Spannable cmdbufferx = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferx, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_c:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "c");
 			Spannable cmdbufferc = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferc, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_v:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "v");
 			Spannable cmdbufferv = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferv, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_m:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "m");
 			Spannable cmdbufferm = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferm, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_b:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "b");
 			Spannable cmdbufferb = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferb, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_n:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "n");
 			Spannable cmdbuffern = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffern, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_dot:
 			cmdkeyboard.setText(cmdkeyboard.getText() + ".");
 			Spannable cmdbufferdot = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferdot, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_slash:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "/");
 			Spannable cmdbufferslash = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferslash, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_comma:
 			cmdkeyboard.setText(cmdkeyboard.getText() + ",");
 			Spannable cmdbuffercomma = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbuffercomma, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;		
 		
 		case R.id.key_spacels:
 			cmdkeyboard.setText(cmdkeyboard.getText() + " ");
 			Spannable cmdbufferspls = (Spannable)cmdkeyboard.getText();
 			Selection.moveToRightEdge(cmdbufferspls, cmdkeyboard.getLayout());
-			vibrateOnce(); 
+			 
 		break;	
 		
 		case R.id.key_del:
@@ -2187,7 +2178,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		          editableaa.delete(textaa.length() - 1, textaa.length());
 		        }
 			
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.key_enterls:
@@ -2213,7 +2204,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				commandHistory.add(cmdenter.getText().toString());
 			}
 			cmdenter.setText("");
-			vibrateOnce(); 
+			 
 		break;
 	
 		
@@ -2223,7 +2214,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmd.getText() + "\r\n");
 			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.east_button:
@@ -2232,7 +2223,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmde.getText() + "\r\n");
 			addText(cmde.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmde.setText("");
-			vibrateOnce(); 
+			 
 		break;
 
 		case R.id.west_button:
@@ -2241,7 +2232,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		sendData.push(cmdw.getText() + "\r\n");
 		addText(cmdw.getText() + "\n", Color.WHITE, Color.BLACK);
 		cmdw.setText("");
-			vibrateOnce(); 
+			 
 		break;
 
 		case R.id.south_button:
@@ -2250,7 +2241,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmds.getText() + "\r\n");
 			addText(cmds.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmds.setText("");
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.up_button:
@@ -2259,7 +2250,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdup.getText() + "\r\n");
 			addText(cmdup.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdup.setText("");
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.down_button:
@@ -2268,7 +2259,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmddown.getText() + "\r\n");
 			addText(cmddown.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmddown.setText("");
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.look_button:
@@ -2277,7 +2268,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			sendData.push(cmdlook.getText() + "\r\n");
 			addText(cmdlook.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmdlook.setText("");
-			vibrateOnce(); 
+			 
 		break;	
 		
 		case R.id.enter_button:
@@ -2302,12 +2293,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			{
 				commandHistory.add(cmdentera.getText().toString());
 			}
-			vibrateOnce(); 
+			 
 		break;	
 		
 		case R.id.commandindex_button:
 			openCommonDialog();        	
-			vibrateOnce(); 
+			 
 		break;	
 		
 		case R.id.toggle_button:
@@ -2325,7 +2316,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         	
 			switchKeyboardView(R.id.CommandBox);
         		
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.uiback_button:
@@ -2343,7 +2334,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         	
 			switchKeyboardView(R.id.KeyboardBox);
 			
-			vibrateOnce(); 
+			 
 		break;
 		
 		case R.id.numb_button:
@@ -2362,19 +2353,26 @@ public class Dungeoneers extends Activity implements OnClickListener {
  
 			switchKeyboardView(R.id.NumblockBox);
         		
-			vibrateOnce(); 
+			 
 		break;		
 
 
 			case R.id.command_button:
 			openCommonDialog();
         	
-			vibrateOnce(); 
+			 
 			break;
+			
+			default:
+			return; //exit without further feedback
+			}
 
-		}
-	}
-
+				//Provide haptic feedback for the clicked view
+				vibrateOnce();
+				animateView(v.getId());
+}
+	
+	
 	private void switchKeyboardView(int view)
 	{
 		View numberBoxView = (View)findViewById(R.id.NumblockBox);
@@ -4491,5 +4489,23 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		}
 
    }
+	
+	private void animateView(int a_viewId)
+	{
+	View v = findViewById(a_viewId);
+
+	AnimationSet anim = new AnimationSet(true);
+
+	AlphaAnimation alphaAnim = new AlphaAnimation(0.5f, 1.0f);
+	alphaAnim.setDuration(350);
+
+//		 TranslateAnimation transAnim = new TranslateAnimation(0, 0, 0, -5);
+//		 transAnim.setDuration(200);
+
+	anim.addAnimation(alphaAnim);
+//		 anim.addAnimation(transAnim);
+	v.startAnimation(anim);
+
+	}
 	
 }

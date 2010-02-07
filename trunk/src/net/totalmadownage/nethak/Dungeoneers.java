@@ -433,10 +433,9 @@ public class Dungeoneers extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    
-        //setTheme(R.style.MyTheme);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE); 
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-        //setContentView(R.layout.splashscreen);
+
         setContentView(R.layout.main);
                 
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE); 
@@ -444,15 +443,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
         this.mWakeLock.acquire();
         
         EditText cmd = (EditText)findViewById(R.id.cmdText);
-        /*
-        if (Prefs.getKeyboard(getBaseContext())) {
-        cmd.setInputType(InputType.TYPE_NULL);
-        }
-        */
-        if (!Prefs.getScreen(getBaseContext())) {
+        EditText usernamebox = (EditText)findViewById(R.id.loginText);
+
+        //if (!Prefs.getScreen(getBaseContext())) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            //cmd.setInputType(InputType.TYPE_NULL);
-            }
+
+          //  }
         
         
         boolean showToast = false;
@@ -705,13 +701,16 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	spinnermodify = (Spinner) 
      	findViewById  (R.id.spinnermodify);  
     	
-    	buttonmodify  = (Button)
-    	findViewById (R.id.buttonmodify);                                               
+    	//buttonmodify  = (Button)
+    	//findViewById (R.id.buttonmodify);                                               
         
-    	ArrayAdapter<String> adaptermodify = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
-    	adaptermodify.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
-    	spinnermodify.setAdapter(adaptermodify);         
-    	buttonmodify.setOnClickListener(  new clickermodify()); 
+    	//ArrayAdapter<String> adaptermodify = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraymodify);        
+    	//adaptermodify.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
+    	//spinnermodify.setAdapter(adaptermodify);         
+    	//buttonmodify.setOnClickListener(  new clickermodify()); 
+    
+		View usernameButton = findViewById(R.id.buttonmodify);
+        usernameButton.setOnClickListener(this);	
     	
     	
     }
@@ -1866,8 +1865,49 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		
 	     EditText cmdkeyboard = (EditText)findViewById(R.id.cmdText);
+	     EditText usernamebox = (EditText)findViewById(R.id.loginText);
 		
 		switch (v.getId()) {
+				
+		case R.id.buttonmodify:
+		EditText cmdusernamebox = (EditText)findViewById(R.id.loginText);
+		
+		View viscmdtext = (View)findViewById(R.id.cmdText);
+		viscmdtext.setVisibility(0);
+		
+		sendData.push(cmdusernamebox.getText() + "\r\n");
+		addText(cmdusernamebox.getText() + "\n", Color.WHITE, Color.BLACK);
+
+		cmdusernamebox.setText("");
+		
+		View visspinner = (View)findViewById(R.id.spinner1);
+		visspinner.setVisibility(0);
+		View viscommandindexbutton = (View)findViewById(R.id.commandindex_button);
+		viscommandindexbutton.setVisibility(0);
+		View visokbutton = (View)findViewById(R.id.button1);
+		visokbutton.setVisibility(0);
+		
+
+		
+		View vislogintext = (View)findViewById(R.id.loginText);
+		vislogintext.setVisibility(4);
+		
+		View visusernametext = (View)findViewById(R.id.usernameText);
+		visusernametext.setVisibility(4);
+		
+		View vismodifybutton = (View)findViewById(R.id.buttonmodify);
+		vismodifybutton.setVisibility(4);
+		
+		View visnumbbutton = (View)findViewById(R.id.numb_button);
+		visnumbbutton.setVisibility(0);
+		
+		View visuibackbutton = (View)findViewById(R.id.uiback_button);
+		visuibackbutton.setVisibility(0);
+		
+		View vistogglebutton = (View)findViewById(R.id.toggle_button);
+		vistogglebutton.setVisibility(0);
+		
+		break;
 		
 		case R.id.one_button:
 			cmdkeyboard.setText(cmdkeyboard.getText() + "1");

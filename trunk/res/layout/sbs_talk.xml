@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<LinearLayout
+android:id="@+id/widget31"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="There are many chat channels that you can use in the game. Reset the spinner with the white arrow icon. Tap the spinner and choose 'Talk' from the main categories list. Tap OK then tap the spinner again to see all the chat commands:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_talkdelve" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="After selecting an item from the list and tapping the OK icon, the corresponding chat command will be added to the command line and you can start typing your message. Press the ENTER key to send you chat message.">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="Here is a list of often used chat channels:">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="NEWBIE:" android:textStyle="bold" android:textColor="#ffff00">
+</TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="Use this channel for questions. There are many helpful players who will answer you.">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="GCHAT:" android:textStyle="bold" android:textColor="#00ffd8">
+</TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="Use this channel for global chat (everyone can read it).">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="OOC:" android:textStyle="bold" android:textColor="#ffff00">
+</TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="Use this channel for out-of-character chat (everyone can read it).">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="SAY:" android:textStyle="bold" android:textColor="#00ffd8">
+</TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="Only people and entities that are in the same node that you are in can read this.">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="The Global Board" android:textStyle="bold" android:textColor="#00ff00">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="For communication with offline players the game offers an in-game forum software. Just type GBOARD to see it:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_gboard" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="Use GBOARD to see the board (see image above). Use GNOTE on its own to read through all new posts.">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="To learn how to use the GNOTE command to write your own messages, type HELP GNOTE in-game.">
+</TextView>
+
+</LinearLayout>
+</ScrollView>

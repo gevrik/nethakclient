@@ -147,7 +147,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         //menu.add(0, MENU_CONNECT, 0, "Connect");
         menu.add(0, MENU_DISCONNECT, 0, "Community");
         menu.add(0, MENU_HELP, 0, "Help");
-        menu.add(0, MENU_TOGGLE, 0, "UI");
+        menu.add(0, MENU_TOGGLE, 0, "Guides");
         return true;
     }
     
@@ -331,8 +331,25 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			startActivity(e);
         	return true;
         case MENU_TOGGLE:
-			   Intent i = new Intent(this, About.class);
-			   startActivity(i);
+        	
+        	
+			new AlertDialog.Builder(this)
+			//.setContentView(R.layout.custom_dialog)
+			.setTitle("choose guide:")
+			.setInverseBackgroundForced(true)
+			.setItems(R.array.guides,
+			
+			new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialoginterface,
+			int i) {
+			startGuides(i);
+			}
+			})
+			.show();
+        	
+        	
+			   //Intent i = new Intent(this, About.class);
+			   //startActivity(i);
         	return true;
         }
         return false;
@@ -969,7 +986,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 
     
-    private static final String[] arraycattalk = {        "say job", "say ", "tell ", "reply ",
+    private static final String[] arraycattalk = {        "say job", "say ", "tell ", "newbie", "reply ",
         "gchat ", "schat ", "yell ", "afk", "bio", "gtell ", "orgtalk ", "ooc " }; 
 
 	private void startTalk() {
@@ -1032,7 +1049,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	}                                         
 
     } 
-
     
     private static final String[] arraycatcombat = {        "kill virus", "kill ICE", "kill program", "kill ",
         "blast ", "consider ", "flee ", "rest", "sleep", "wake", "sit", "stand", "setblaster ", "shove " }; 
@@ -1068,7 +1084,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
      				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
      				
     	         }
-    	         else if (s == "blast " || s == "flee ")
+    	         else if (s == "blast ")
     	         {
 
    	        	    cmd.setText(cmd.getText() + s); 
@@ -2398,8 +2414,13 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 
 			case R.id.command_button:
-			openCommonDialog();
+			//openCommonDialog();
         	
+				EditText cmdhome = (EditText)findViewById(R.id.cmdText);
+				cmdhome.setText("home");
+				sendData.push(cmdhome.getText() + "\r\n");
+				addText(cmdhome.getText() + "\n", Color.WHITE, Color.BLACK);
+				cmdhome.setText("");
 			 
 			break;
 			
@@ -3438,6 +3459,42 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		
 			
 		
+		private void startGuides(int i) {
+			
+			if (i == 0) {
+					
+				   Intent ig = new Intent(this, About.class);
+				   startActivity(ig);
+					
+				}
+			
+				else if (i == 1) {
+					
+					   Intent is = new Intent(this, Gsurvival.class);
+					   startActivity(is);
+					
+				}
+			
+				else if (i == 2) {
+					
+					   Intent it = new Intent(this, Gtalk.class);
+					   startActivity(it);
+					
+				}
+			
+				else if (i == 3) {
+					
+					   Intent itr = new Intent(this, Gtravel.class);
+					   startActivity(itr);
+					
+				}
+				
+				else sendData.push(i + "\r\n");
+
+		}
+
+		
+		
 		private void startCommandcombat(int i) {
 			//Log.d(TAG, "clicked on " + i);
 				if (i == 0) {
@@ -3561,22 +3618,30 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				}
 					
 					else if (i == 6) {
+
 						EditText cmdscore = (EditText)findViewById(R.id.cmdText);
-						cmdscore.setText("flee ", BufferType.SPANNABLE);
-						Spannable cmdbuffer = (Spannable)cmdscore.getText();
-						Selection.moveToRightEdge(cmdbuffer, cmdscore.getLayout());
-											
-				    	spinner1 = (Spinner) 
-				     	findViewById  (R.id.spinner1);  
-				    	
-				    	button1    = (Button)
-				    	findViewById (R.id.button1);                                               
-				        
-				    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraydirs);        
-				    	adapter.setDropDownViewResource(Prefs.getDropdowns(getBaseContext()) ? android.R.layout.simple_spinner_dropdown_item : android.R.layout.simple_spinner_item);                   
-				    	spinner1.setAdapter(adapter);         
-				    	button1.setOnClickListener(  new clickercommand()); 
-				    	
+						cmdscore.setText("flee");
+						sendData.push(cmdscore.getText() + "\r\n");
+						addText(cmdscore.getText() + "\n", Color.WHITE, Color.BLACK);
+
+						historypos = 0;
+
+						if(commandHistory.size() > 1)
+						{
+							if(!(cmdscore.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+							{
+								commandHistory.add(cmdscore.getText().toString());
+								if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+								{
+									commandHistory.remove(0);
+								}
+							}
+						}
+						else
+						{
+							commandHistory.add(cmdscore.getText().toString());
+						}
+						cmdscore.setText("");			    	
 
 						
 					}

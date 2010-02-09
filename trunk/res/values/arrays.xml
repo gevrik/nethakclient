@@ -39,6 +39,13 @@
 <item>Group</item>
 </array>
 
+<array name="guides">
+<item>Welcome</item>
+<item>Survival</item>
+<item>Talk</item>
+<item>Travel</item>
+</array>
+
 <array name="infocommands">
 <item>Score</item>
 <item>Who</item>

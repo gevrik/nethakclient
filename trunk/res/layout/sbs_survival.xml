@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<LinearLayout
+android:id="@+id/widget31"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="To initiate combat with an entity in the same node as you, first click on the icon with the white arrow that points to the right (see below).">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinback" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+android:text="This will reset the spinner (the big white box) to show the main command categories when tapped (it will show INFO category as default). It shoud look like this:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinnerreset" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Now tap on the spinner (big white box) and choose the COMBAT category from the list that pops up:"></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_maincats" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="The spinner should now look like this:"></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinnercombat" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Tap the OK button (see below)."></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinok" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Tap the spinner again to see all the commands that are available in the combat category:"></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_combatdelve" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Choose the KILL VIRUS entry from the list and your spinner should look like this:"></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinnerkillvirus" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Tap the OK button (see below)."></TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_spinok" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Your character will now fight the virus. Watch the screen to see what happens."></TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="If you feel like you will lose a fight, use the FLEE command from the combat category or just type it out."></TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Take a look at the other commands in the combat category and use HELP COMMANDNAME to get some information about them in-game."></TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="Some commands will require additional arguments (like directions and targets). The spinner will adjust to what argument the command expects. You can always reset the spinner to its main categories with the white arrow icon to the left of it."></TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_marginTop="5px" 
+android:text="You know know the basics of survival and combat."></TextView>
+
+</LinearLayout>
+</ScrollView>

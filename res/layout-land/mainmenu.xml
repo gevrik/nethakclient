@@ -45,9 +45,7 @@ android:layout_gravity="center_horizontal" android:orientation="horizontal">
 	android:id="@+id/uihelp_button"
 	android:layout_width="150px"
 	android:layout_height="38px"
-	android:layout_marginBottom="5dip"
-	android:text="UI HELP"
-	/>
+	android:layout_marginBottom="5dip" android:text="GUIDES"/>
 	
 	<Button
 	android:id="@+id/help_button"

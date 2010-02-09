@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<LinearLayout
+android:id="@+id/widget31"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="To CONNECT to a system you need to be in an ionode or a player's lobby node. Use SYSTEMS to see a list of all available city grids. In this image we are in the Straylight IO node:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_ionode" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="In this example we want to see which io nodes in Straylight (an orbital system) we could connect to. To do this, we use the CONNECT command from the Travel category and then add the city as an argument. CONNECT STRAYLIGHT and we hit the ENTER key:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_connectstray" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="Now we have a list of all available nodes that we can connect to (note that this list can be very long for some systems)! We want to connect to the node with the ID 34 (see image above). So the whole command is CONNECT STRAYLIGHT 34 - after which we will see:">
+</TextView>
+
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_straysuccess" android:layout_marginTop="5px">
+</ImageView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="Be aware that enemy io nodes are protected by bouncer ICE. So always have that FLEE command handy in case you can't deal with them yet.">
+</TextView>
+
+<TextView android:layout_width="wrap_content" android:layout_marginTop="5px" android:layout_height="wrap_content" 
+android:text="This concludes the basic travel guide. Have fun!">
+</TextView>
+
+</LinearLayout>
+</ScrollView>

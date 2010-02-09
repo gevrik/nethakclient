@@ -37,6 +37,20 @@
       android:theme="@android:style/Theme.Dialog" >
 		</activity>
 		
+				<activity android:name=".Gsurvival"
+      android:label="@string/survival_title"
+      android:theme="@android:style/Theme.Dialog" >
+		</activity>
+
+				<activity android:name=".Gtalk"
+      android:label="@string/talk_title"
+      android:theme="@android:style/Theme.Dialog" >
+		</activity>		
+		
+				<activity android:name=".Gtravel"
+      android:label="@string/travel_title"
+      android:theme="@android:style/Theme.Dialog" >
+		</activity>		
 		
 		<activity android:name=".Community"
 		android:label="NetHak Community"

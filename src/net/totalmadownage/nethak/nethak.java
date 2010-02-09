@@ -1,7 +1,9 @@
 package net.totalmadownage.nethak;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.View;
@@ -58,8 +60,23 @@ public class nethak extends Activity implements OnClickListener {
 			startActivity(f);
 		break;
 		case R.id.uihelp_button:
-			   Intent i = new Intent(this, About.class);
-			   startActivity(i);
+			   //Intent i = new Intent(this, About.class);
+			   //startActivity(i);
+			
+			new AlertDialog.Builder(this)
+			//.setContentView(R.layout.custom_dialog)
+			.setTitle("choose guide:")
+			.setInverseBackgroundForced(true)
+			.setItems(R.array.guides,
+			
+			new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialoginterface,
+			int i) {
+			startGuides(i);
+			}
+			})
+			.show();
+			
 			   break;
 		case R.id.website_button:
 			Intent e = new Intent(this, Community.class);
@@ -81,5 +98,47 @@ public class nethak extends Activity implements OnClickListener {
 		   Intent intent = new Intent(nethak.this, Dungeoneers.class);
 		   startActivity(intent);
 		   }
+	   
+		private void startGuides(int i) {
+			
+			if (i == 0) {
+					
+				   Intent ig = new Intent(this, About.class);
+				   startActivity(ig);
+					
+				}
+			
+				else if (i == 1) {
+					
+					   Intent is = new Intent(this, Gsurvival.class);
+					   startActivity(is);
+					
+				}
+			
+				else if (i == 2) {
+					
+					   Intent it = new Intent(this, Gtalk.class);
+					   startActivity(it);
+					
+				}
+			
+				else if (i == 3) {
+					
+					   Intent itr = new Intent(this, Gtravel.class);
+					   startActivity(itr);
+					
+				}
+			
+				else {
+					
+					   Intent itr = new Intent(this, Gtravel.class);
+					   startActivity(itr);
+					
+				}
+				
+
+
+		}
+
 	   
 }

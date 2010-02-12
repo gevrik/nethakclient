@@ -463,7 +463,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         EditText usernamebox = (EditText)findViewById(R.id.loginText);
 
         //if (!Prefs.getScreen(getBaseContext())) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
           //  }
         
@@ -2479,7 +2479,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	private void openNewGameDialog() {
 		
 		new AlertDialog.Builder(this)
-		.setMessage("Are you sure you want to exit?")
+		.setMessage("Are you sure you want to quit?")
 		.setCancelable(false)
 		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {

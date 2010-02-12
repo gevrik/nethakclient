@@ -1,6 +1,7 @@
 package net.totalmadownage.nethak;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -20,6 +21,8 @@ public class Website extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.website);
+	
+	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	
     webview = (WebView) findViewById(R.id.webview); 
     webview.setWebViewClient(new HelloWebViewClient()); 

@@ -3,10 +3,12 @@ package net.totalmadownage.nethak;
 import net.totalmadownage.nethak.ServerListDialog.ConnectReady;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -21,12 +23,17 @@ public class Community extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
+	
+	requestWindowFeature(Window.FEATURE_NO_TITLE);
+	
 	setContentView(R.layout.website);
+	
+	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	
     webview = (WebView) findViewById(R.id.webview); 
     webview.setWebViewClient(new HelloWebViewClient()); 
     webview.getSettings().setJavaScriptEnabled(true); 
-    webview.loadUrl("http://kults.genesismuds.com/nethak/index.php");
+    webview.loadUrl("http://nethak.totalmadownage.net");
     //webview.loadUrl("http://www.google.com");
 	
 	}

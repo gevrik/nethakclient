@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-<string name="app_name">NetHak</string>
-<string name="app_desc">NetHak MMO Client</string>
+<string name="app_name">Netrunners</string>
+<string name="app_desc">Netrunners MMO Client</string>
 <string name="about_title">Welcome</string>
 <string name="survival_title">Survival</string>
 <string name="talk_title">Talk</string>

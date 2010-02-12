@@ -18,6 +18,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -56,6 +57,12 @@ import net.totalmadownage.nethak.R.layout;
 
 public class Dungeoneers extends Activity implements OnClickListener {
     /** Called when the activity is first created. */
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	  super.onConfigurationChanged(newConfig);
+	  //setContentView(R.layout.main);
+	}
 	
 	//protected static final int MENU_CONNECT = 1;
 	protected static final int MENU_DISCONNECT = 2;
@@ -110,8 +117,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	public List<Integer> viewBufferFullColor;//= new ArrayList<Integer>();
     	public List<Integer> viewBufferFullBGColor;//= new ArrayList<Integer>();
     }
-    
-    
+       
     @Override 
     protected void onDestroy()
     {
@@ -120,8 +126,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     	this.mWakeLock.release();
     	super.onDestroy();
     }
-    
-    
+            
     public Object onRetainNonConfigurationInstance()
     {
     	TempData temp = new TempData();
@@ -466,8 +471,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
           //  }
-        
-        
+                
         boolean showToast = false;
         
         try {
@@ -495,7 +499,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
         
         if(showToast)
         {
-        	Toast msg = Toast.makeText(Dungeoneers.this, "Use the keyboard to log in." +
+        	Toast msg = Toast.makeText(Dungeoneers.this, "Tap on the input field to log in." +
         			" Once in-game, type HELP to get an overview. " +
         			" Type 'newbie yourtext' to chat with other players.", Toast.LENGTH_LONG);
 
@@ -728,8 +732,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
     
 		View usernameButton = findViewById(R.id.buttonmodify);
         usernameButton.setOnClickListener(this);	
-    	
-    	
+           	    	
     }
 
       
@@ -4612,5 +4615,5 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	v.startAnimation(anim);
 
 	}
-	
+			
 }

@@ -17,20 +17,27 @@ import android.view.WindowManager;
 public class nethak extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 	
+    @Override 
+    protected void onDestroy()
+    {
+    	super.onDestroy();
+    }
+        	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
     this.requestWindowFeature(Window.FEATURE_NO_TITLE);
     //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
+    requestWindowFeature(Window.FEATURE_NO_TITLE);
 	setContentView(R.layout.mainmenu);
 	
-    if (Prefs.getScreen(getBaseContext())) {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-    else
-    {
+//    if (Prefs.getScreen(getBaseContext())) {
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        }
+//    else
+//    {
   	  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-    }
+//    }
 	
 	View newButton = findViewById(R.id.new_button);
 	newButton.setOnClickListener(this);
@@ -87,11 +94,13 @@ public class nethak extends Activity implements OnClickListener {
 			startGame();
 			break;
 		case R.id.exit_button:
-			finish();
+			nethak.this.finish();
 			break;
 		}
 }
    	   
+	
+	
 	   /** Start a new game with the given difficulty level */
 	   private void startGame() {
 

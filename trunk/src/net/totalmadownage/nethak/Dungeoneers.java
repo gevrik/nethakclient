@@ -836,7 +836,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		View dirdownButton = findViewById(R.id.dirdown_button);
 		dirdownButton.setOnClickListener(this);
 
-				View commandButton = findViewById(R.id.command_button);
+		View commandButton = findViewById(R.id.command_button);
 		commandButton.setOnClickListener(this);
 
 		View toggleButton = findViewById(R.id.toggle_button);
@@ -3617,7 +3617,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 		case R.id.north_button:
 			EditText cmd = (EditText)findViewById(R.id.cmdText);
-			cmd.setText("east");
+			cmd.setText("north");
 			sendData.push(cmd.getText() + "\r\n");
 			addText(cmd.getText() + "\n", Color.WHITE, Color.BLACK);
 			cmd.setText("");

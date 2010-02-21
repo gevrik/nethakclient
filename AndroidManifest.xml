@@ -71,6 +71,7 @@
 		
 		<activity android:name=".Notepadv3"
 		android:screenOrientation="landscape"
+		android:theme="@android:style/Theme.Dialog"
 		/>
 		
 		<activity android:name=".NoteEdit"

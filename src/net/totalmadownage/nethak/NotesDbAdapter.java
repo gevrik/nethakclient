@@ -40,7 +40,7 @@ public class NotesDbAdapter {
     public static final String KEY_BODY = "body";
     public static final String KEY_ROWID = "_id";
 
-    private static final String TAG = "NotesDbAdapter";
+    private static final String TAG = "Netrunners";
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
     

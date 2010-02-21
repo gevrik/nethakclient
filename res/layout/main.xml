@@ -1,635 +1,1347 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout 
-android:id="@+id/RelativeLayout01" 
-android:layout_width="fill_parent" 
-android:layout_height="fill_parent" 
-xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-<EditText 
-android:layout_height="wrap_content" 
-android:layout_below="@+id/commandView" 
-android:layout_width="fill_parent" 
-android:textColor="@color/color_white" 
-android:background="@color/color_black" 
-android:text="Commands" 
-android:id="@+id/cmdText" 
-android:singleLine="true" 
-android:textSize="10pt" android:layout_alignParentBottom="true">
-</EditText>
-
-<ImageButton android:id="@+id/numb_button" android:scaleType="center"
- android:background="@drawable/numblock_button" android:layout_toLeftOf="@+id/toggle_button" 
- android:visibility="visible" android:layout_above="@+id/cmdText" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"/>
-
-<ImageButton android:id="@+id/toggle_button" android:layout_alignParentRight="true" android:scaleType="center" android:background="@drawable/travel_button" android:layout_marginRight="2px" android:layout_above="@+id/numb_button" android:layout_height="40px" android:layout_width="40px"/>
-  
-  
-
-<ImageButton android:id="@+id/uiback_button" android:layout_width="30px" android:layout_height="30px" android:scaleType="center" android:src="@drawable/keyboard_button"
-  android:background="@drawable/keyboard_button" android:visibility="invisible"/>
-
-
-
-<Spinner  android:id="@+id/spinner1" android:layout_alignParentRight="true" android:visibility="visible" android:layout_height="wrap_content" android:background="@drawable/spinner_button" style="@style/Widget.DropDownItem.Spinner" android:layout_width="118px" android:layout_marginRight="4px"> 
- </Spinner>  
-
-  <ImageButton android:id="@+id/commandindex_button" android:scaleType="center" android:background="@drawable/commandindex_button" android:visibility="visible" android:layout_toLeftOf="@id/spinner1" android:layout_width="40px" android:layout_height="40px"/><Button android:id="@+id/button1" android:visibility="visible" android:background="@drawable/choosecommand_button" android:layout_toLeftOf="@+id/commandindex_button" android:layout_below="@+id/spinner1" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"></Button>
-  <!-- 
-  <Button android:id="@+id/button3" android:visibility="visible" android:layout_alignParentBottom="true" android:layout_width="30px"
-   android:layout_height="30px" android:layout_toLeftOf="@+id/button1" android:background="@drawable/commandindex_button"></Button>
-   -->
-  <Button android:id="@+id/button2" android:visibility="invisible" android:text="index" android:layout_alignParentRight="true" android:layout_width="58px" android:layout_above="@+id/spinner1" android:layout_marginRight="2px" android:layout_marginBottom="2px" android:layout_height="50px"></Button>                             
-
-
-  
-
-<Spinner  android:id="@+id/spinnermodify" android:layout_width="wrap_content"
- android:layout_height="wrap_content" android:visibility="invisible" android:layout_centerInParent="true" android:layout_alignParentTop="true"> 
- </Spinner>
- 
-  <Button android:id="@+id/buttonmodify" android:layout_width="wrap_content"
- android:layout_height="wrap_content" android:text="confirm" android:layout_below="@id/spinnermodify"
- android:layout_marginTop="1px" android:visibility="invisible" android:layout_centerInParent="true"></Button> 
- 
-<TextView 
-android:typeface="monospace" 
-android:layout_width="fill_parent" 
-android:id="@+id/MainText" 
-android:text="MainText" 
-android:scrollbarAlwaysDrawVerticalTrack="true" 
-android:scrollbars="vertical" 
-android:focusable="true" 
-android:focusableInTouchMode="true" 
-android:editable="false" 
-android:gravity="bottom" 
-android:textColor="@color/color_white" 
-android:layout_height="fill_parent" 
-android:textStyle="normal" 
-android:textSize="10sp" 
-android:autoLink="all" android:linksClickable="true" android:layout_above="@+id/cmdText"></TextView>
-
-
-
-<TableLayout
-android:id="@+id/NumblockBox" 
-android:layout_height="wrap_content"
-android:layout_width="wrap_content"
-android:visibility="invisible" android:layout_alignParentRight="true" android:layout_below="@+id/button1">
-
-<TableRow android:layout_marginTop="5px">
-<ImageButton
-android:id="@+id/one_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/one_button"
-android:background="@drawable/one_button"
-/>
-<ImageButton
-android:id="@+id/two_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/two_button"
-android:background="@drawable/two_button"
-/>
-<ImageButton
-android:id="@+id/three_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/three_button"
-android:background="@drawable/three_button"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/four_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/four_button"
-android:background="@drawable/four_button"
-/>
-<ImageButton
-android:id="@+id/five_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/five_button"
-android:background="@drawable/five_button"
-/>
-<ImageButton
-android:id="@+id/six_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/six_button"
-android:background="@drawable/six_button"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/seven_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/seven_button"
-android:background="@drawable/seven_button"
-/>
-<ImageButton
-android:id="@+id/eight_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/eight_button"
-android:background="@drawable/eight_button"
-/>
-<ImageButton
-android:id="@+id/nine_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/nine_button"
-android:background="@drawable/nine_button"
-/>
-</TableRow>
-
-<TableRow>
-
-<ImageButton
-android:id="@+id/space_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/small_space"
-android:background="@drawable/small_space"
-/>
-
-<ImageButton
-android:id="@+id/null_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/null_button"
-android:background="@drawable/null_button"
-/>
-
-<ImageButton
-android:id="@+id/nbbs_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/numblock_bs"
-android:background="@drawable/numblock_bs"
-/>
-
-</TableRow>
-
-</TableLayout>
-
-<TableLayout
-android:id="@+id/CommandBox" 
-android:layout_height="wrap_content"
-android:layout_width="wrap_content"
-android:layout_alignParentRight="true" android:visibility="invisible" android:layout_below="@+id/button1">
-
-<TableRow android:layout_marginTop="5px">
-<ImageButton
-android:id="@+id/up_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/up_buttona"
-android:background="@drawable/up_buttona"
-/>
-<ImageButton
-android:id="@+id/north_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/north_buttona"
-android:background="@drawable/north_buttona"
-/>
-<ImageButton
-android:id="@+id/down_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/down_buttona"
-android:background="@drawable/down_buttona"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/west_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/west_buttona"
-android:background="@drawable/west_buttona"
-/>
-<ImageButton
-android:id="@+id/command_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/comm_button"
-android:background="@drawable/comm_button"
-/>
-<ImageButton
-android:id="@+id/east_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/east_buttona"
-android:background="@drawable/east_buttona"
-/>
-</TableRow>
-
-<TableRow>
-<ImageButton
-android:id="@+id/enter_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/enter_buttona"
-android:background="@drawable/enter_buttona"
-/>
-<ImageButton
-android:id="@+id/south_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/south_buttona"
-android:background="@drawable/south_buttona"
-/>
-<ImageButton
-android:id="@+id/look_button"
-android:layout_width="50px"
-android:layout_height="50px"
-android:scaleType="center"
-android:src="@drawable/look_buttona"
-android:background="@drawable/look_buttona"
-/>
-</TableRow>
-
-</TableLayout>
-
-<TableLayout
-android:id="@+id/KeyboardBox" 
-android:layout_height="wrap_content"
-android:layout_width="wrap_content"
-android:layout_centerHorizontal="true" android:layout_marginTop="30px" android:visibility="invisible">
-
-<TableRow android:layout_marginTop="2px">
-
-<ImageButton
-android:id="@+id/key_q"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_q_ls"
-android:background="@drawable/key_q_ls" android:layout_marginRight="2px"/>
-
-<ImageButton
-android:id="@+id/key_w"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_w_ls"
-android:background="@drawable/key_w_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_e"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_e_ls"
-android:background="@drawable/key_e_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_r"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_r_ls"
-android:background="@drawable/key_r_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_t"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_t_ls"
-android:background="@drawable/key_t_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_y"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_y_ls"
-android:background="@drawable/key_y_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_u"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_u_ls"
-android:background="@drawable/key_u_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_i"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_i_ls"
-android:background="@drawable/key_i_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_o"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_o_ls"
-android:background="@drawable/key_o_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_p"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:layout_marginRight="2px"
-android:src="@drawable/key_p_ls"
-android:background="@drawable/key_p_ls"
-/>
-
-</TableRow>
-
-<TableRow android:layout_marginBottom="2px">
-
-<ImageButton
-android:id="@+id/key_a"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_a_ls"
-android:background="@drawable/key_a_ls" android:layout_marginRight="2px"/>
-
-<ImageButton
-android:id="@+id/key_s"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_s_ls"
-android:background="@drawable/key_s_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_d"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_d_ls"
-android:background="@drawable/key_d_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_f"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_f_ls"
-android:background="@drawable/key_f_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_g"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_g_ls"
-android:background="@drawable/key_g_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_h"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_h_ls"
-android:background="@drawable/key_h_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_j"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_j_ls"
-android:background="@drawable/key_j_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_k"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_k_ls"
-android:background="@drawable/key_k_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_l"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_l_ls"
-android:background="@drawable/key_l_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_qm_ls"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_qm_ls"
-android:background="@drawable/key_qm_ls"
-/>
-
-</TableRow>
-
-<TableRow android:layout_marginBottom="2px">
-
-<ImageButton
-android:id="@+id/key_z"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_z_ls"
-android:background="@drawable/key_z_ls" android:layout_marginRight="2px"/>
-
-<ImageButton
-android:id="@+id/key_x"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_x_ls"
-android:background="@drawable/key_x_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_c"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_c_ls"
-android:background="@drawable/key_c_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_v"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_v_ls"
-android:background="@drawable/key_v_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_b"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_b_ls"
-android:background="@drawable/key_b_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_n"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_n_ls"
-android:background="@drawable/key_n_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_m"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_m_ls"
-android:background="@drawable/key_m_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_slash"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_slash_ls"
-android:background="@drawable/key_slash_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_dot"
-android:layout_marginRight="2px"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_dot_ls"
-android:background="@drawable/key_dot_ls"
-/>
-
-<ImageButton
-android:id="@+id/key_comma"
-android:layout_width="40px"
-android:layout_height="40px"
-android:scaleType="center"
-android:src="@drawable/key_comma_ls"
-android:background="@drawable/key_comma_ls"
-/>
-
-</TableRow>
-
-<TableRow android:layout_marginBottom="2px">
-
-<ImageButton
-android:id="@+id/key_del"
-android:layout_width="80px"
-android:layout_height="40px"
-android:layout_span="2"
-android:scaleType="center"
-android:src="@drawable/key_del_ls"
-android:background="@drawable/key_del_ls"
-android:layout_gravity="right"/>
-
-<ImageButton
-android:id="@+id/key_spacels"
-android:layout_width="240px"
-android:layout_height="40px"
-android:layout_span="6"
-android:scaleType="center"
-android:src="@drawable/key_space_ls"
-android:background="@drawable/key_space_ls"
-android:layout_gravity="right"/>
-
-<ImageButton
-android:id="@+id/key_enterls"
-android:layout_width="80px"
-android:layout_height="40px"
-android:layout_span="2"
-android:scaleType="center"
-android:src="@drawable/key_enter_ls"
-android:background="@drawable/key_enter_ls"
-android:layout_gravity="right"/>
-
-
-</TableRow>
-
-</TableLayout>
-
-
-
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<EditText android:layout_height="wrap_content"
+		android:layout_below="@+id/commandView" android:layout_width="fill_parent"
+		android:textColor="@color/color_white" android:background="@color/color_black"
+		android:text="Commands" android:id="@+id/cmdText" android:singleLine="true"
+		android:textSize="10pt" android:layout_alignParentBottom="true"
+		android:visibility="invisible">
+	</EditText>
+
+	<EditText android:layout_height="wrap_content"
+		android:textColor="@color/color_black" android:background="@color/color_white"
+		android:id="@+id/loginText" android:singleLine="true"
+		android:textSize="10pt" android:layout_centerInParent="true"
+		android:layout_width="150px" android:layout_alignParentRight="true">
+	</EditText>
+
+	<TextView android:typeface="monospace" android:layout_width="150px"
+		android:id="@+id/usernameText" android:text="username:"
+		android:editable="false" android:textColor="@color/color_white"
+		android:layout_height="wrap_content" android:textStyle="normal"
+		android:textSize="10sp" android:layout_centerInParent="true"
+		android:layout_above="@+id/loginText" android:layout_alignParentRight="true"></TextView>
+	<Button android:id="@+id/buttonmodify" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="confirm"
+		android:layout_below="@id/loginText" android:layout_marginTop="1px"
+		android:visibility="visible" android:layout_centerInParent="true"
+		android:layout_alignParentRight="true"></Button>
+	<ImageButton android:id="@+id/numb_button"
+		android:background="@drawable/numblock_button"
+		android:layout_alignParentRight="true" android:layout_height="40px"
+		android:layout_width="40px" android:layout_above="@+id/cmdText"
+		android:visibility="invisible" />
+
+	<ImageButton android:id="@+id/uiback_button"
+		android:background="@drawable/keyboard_button"
+		android:layout_alignParentRight="true" android:layout_above="@+id/numb_button"
+		android:layout_height="40px" android:layout_width="40px"
+		android:visibility="invisible" />
+	<ImageButton android:id="@+id/toggle_button"
+		android:layout_marginRight="2px" android:layout_height="40px"
+		android:layout_width="40px" android:layout_alignParentRight="true"
+		android:background="@drawable/travel_button" android:layout_above="@+id/uiback_button"
+		android:visibility="invisible" />
+		
+			<ImageButton android:id="@+id/commandtoggle_button"
+		android:layout_marginRight="2px" android:layout_height="40px"
+		android:layout_width="40px" android:layout_alignParentRight="true"
+		android:background="@drawable/bctoggle_button" android:layout_above="@+id/toggle_button"
+		android:visibility="invisible" />
+
+
+
+	<Spinner android:id="@+id/spinner1"
+		android:layout_alignParentRight="true" android:layout_marginRight="2px"
+		android:layout_height="wrap_content" android:background="@drawable/spinner_button"
+		android:layout_width="148px" style="@style/Widget.DropDownItem.Spinner"
+		android:layout_alignParentTop="true" android:visibility="invisible">
+	</Spinner>
+
+	<ImageButton android:id="@+id/commandindex_button"
+		android:scaleType="center" android:background="@drawable/commandindex_button"
+		android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/spinner1"
+		android:layout_height="40px" android:layout_width="40px"
+		android:visibility="invisible" />
+	<Button android:id="@+id/button1" android:background="@drawable/choosecommand_button"
+		android:layout_height="40px" android:layout_width="40px"
+		android:layout_below="@+id/spinner1" android:layout_alignParentRight="true"
+		android:visibility="invisible"></Button>
+	<!--
+		<Button android:id="@+id/button3" android:visibility="visible"
+		android:layout_alignParentBottom="true" android:layout_width="30px"
+		android:layout_height="30px" android:layout_toLeftOf="@+id/button1"
+		android:background="@drawable/commandindex_button"></Button>
+	-->
+	<Button android:id="@+id/button2" android:visibility="invisible"
+		android:text="index" android:layout_marginRight="2px"
+		android:layout_marginBottom="2px" android:layout_width="40px"
+		android:layout_height="40px"></Button>
+
+
+
+
+	<Spinner android:id="@+id/spinnermodify" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:visibility="invisible"
+		android:layout_centerInParent="true" android:layout_alignParentTop="true">
+	</Spinner>
+
+
+
+
+
+	<TextView android:typeface="monospace" android:layout_width="fill_parent"
+		android:id="@+id/MainText" android:text="MainText"
+		android:scrollbarAlwaysDrawVerticalTrack="true" android:scrollbars="vertical"
+		android:focusable="true" android:focusableInTouchMode="true"
+		android:editable="false" android:gravity="bottom" android:textColor="@color/color_white"
+		android:layout_height="fill_parent" android:textStyle="normal"
+		android:textSize="10sp" android:autoLink="all" android:linksClickable="true"
+		android:layout_above="@+id/cmdText"></TextView>
+
+
+
+	<TableLayout android:id="@+id/NumblockBox"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:layout_below="@+id/spinner1" android:layout_toLeftOf="@+id/button1"
+		android:visibility="invisible">
+
+		<TableRow android:layout_marginTop="5px">
+			<ImageButton android:id="@+id/one_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/one_button"
+				android:background="@drawable/one_button" />
+			<ImageButton android:id="@+id/two_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/two_button"
+				android:background="@drawable/two_button" />
+			<ImageButton android:id="@+id/three_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/three_button"
+				android:background="@drawable/three_button" />
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/four_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/four_button"
+				android:background="@drawable/four_button" />
+			<ImageButton android:id="@+id/five_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/five_button"
+				android:background="@drawable/five_button" />
+			<ImageButton android:id="@+id/six_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/six_button"
+				android:background="@drawable/six_button" />
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/seven_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/seven_button"
+				android:background="@drawable/seven_button" />
+			<ImageButton android:id="@+id/eight_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/eight_button"
+				android:background="@drawable/eight_button" />
+			<ImageButton android:id="@+id/nine_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/nine_button"
+				android:background="@drawable/nine_button" />
+		</TableRow>
+
+		<TableRow>
+
+			<ImageButton android:id="@+id/space_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/small_space"
+				android:background="@drawable/small_space" />
+
+			<ImageButton android:id="@+id/null_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/null_button"
+				android:background="@drawable/null_button" />
+
+			<ImageButton android:id="@+id/nbbs_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/numblock_bs"
+				android:background="@drawable/numblock_bs" />
+
+		</TableRow>
+
+	</TableLayout>
+
+	<TableLayout android:id="@+id/CommandBox"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:layout_below="@+id/spinner1" android:visibility="invisible"
+		android:layout_toLeftOf="@+id/button1">
+
+		<TableRow android:layout_marginTop="5px">
+			<ImageButton android:id="@+id/up_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/up_buttona"
+				android:background="@drawable/up_buttona" />
+			<ImageButton android:id="@+id/north_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/north_buttona"
+				android:background="@drawable/north_buttona" />
+			<ImageButton android:id="@+id/down_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/down_buttona"
+				android:background="@drawable/down_buttona" />
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/west_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/west_buttona"
+				android:background="@drawable/west_buttona" />
+			<ImageButton android:id="@+id/command_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/comm_button"
+				android:background="@drawable/comm_button" />
+			<ImageButton android:id="@+id/east_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/east_buttona"
+				android:background="@drawable/east_buttona" />
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/enter_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/enter_buttona"
+				android:background="@drawable/enter_buttona" />
+			<ImageButton android:id="@+id/south_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/south_buttona"
+				android:background="@drawable/south_buttona" />
+			<ImageButton android:id="@+id/look_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/look_buttona"
+				android:background="@drawable/look_buttona" />
+		</TableRow>
+
+	</TableLayout>
+
+	<TableLayout android:id="@+id/DirectionBox"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:layout_below="@+id/spinner1" android:layout_toLeftOf="@+id/button1" android:visibility="invisible">
+
+		<TableRow android:layout_marginTop="5px">
+					<ImageButton android:id="@+id/look_button"
+				android:layout_width="50px" android:visibility="invisible" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/look_buttona"
+				android:background="@drawable/look_buttona" />
+			<ImageButton android:id="@+id/dirnorth_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/north_buttona"
+				android:background="@drawable/north_buttona" />
+			<ImageButton android:id="@+id/dirup_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/up_buttona"
+				android:background="@drawable/up_buttona" />
+
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/dircommand_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:visibility="invisible" android:src="@drawable/comm_button"
+				android:background="@drawable/comm_button" />
+							<ImageButton android:id="@+id/dirwest_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/west_buttona"
+				android:background="@drawable/west_buttona" />
+			<ImageButton android:id="@+id/direast_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/east_buttona"
+				android:background="@drawable/east_buttona" />
+		</TableRow>
+
+		<TableRow>
+			<ImageButton android:id="@+id/enter_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:visibility="invisible" android:src="@drawable/enter_buttona"
+				android:background="@drawable/enter_buttona" />
+			<ImageButton android:id="@+id/dirsouth_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/south_buttona"
+				android:background="@drawable/south_buttona" />
+							<ImageButton android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/down_buttona"
+				android:background="@drawable/down_buttona" android:id="@+id/dirdown_button"/>
+		</TableRow>
+
+	</TableLayout>
+
+
+	<TableLayout android:id="@+id/KeyboardBox"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:layout_below="@+id/spinner1" android:visibility="invisible"
+		android:layout_toLeftOf="@+id/button1">
+
+		<TableRow android:layout_marginTop="2px">
+
+			<ImageButton android:id="@+id/key_q"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:src="@drawable/key_q_ls"
+				android:background="@drawable/key_q_ls" android:layout_marginRight="2px" />
+
+			<ImageButton android:id="@+id/key_w"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_w_ls"
+				android:background="@drawable/key_w_ls" />
+
+			<ImageButton android:id="@+id/key_e"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_e_ls"
+				android:background="@drawable/key_e_ls" />
+
+			<ImageButton android:id="@+id/key_r"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_r_ls"
+				android:background="@drawable/key_r_ls" />
+
+			<ImageButton android:id="@+id/key_t"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_t_ls"
+				android:background="@drawable/key_t_ls" />
+
+			<ImageButton android:id="@+id/key_y"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_y_ls"
+				android:background="@drawable/key_y_ls" />
+
+			<ImageButton android:id="@+id/key_u"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_u_ls"
+				android:background="@drawable/key_u_ls" />
+
+			<ImageButton android:id="@+id/key_i"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_i_ls"
+				android:background="@drawable/key_i_ls" />
+
+			<ImageButton android:id="@+id/key_o"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_o_ls"
+				android:background="@drawable/key_o_ls" />
+
+			<ImageButton android:id="@+id/key_p"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:layout_marginRight="2px"
+				android:src="@drawable/key_p_ls" android:background="@drawable/key_p_ls" />
+
+		</TableRow>
+
+		<TableRow android:layout_marginBottom="2px">
+
+			<ImageButton android:id="@+id/key_a"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:src="@drawable/key_a_ls"
+				android:background="@drawable/key_a_ls" android:layout_marginRight="2px" />
+
+			<ImageButton android:id="@+id/key_s"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_s_ls"
+				android:background="@drawable/key_s_ls" />
+
+			<ImageButton android:id="@+id/key_d"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_d_ls"
+				android:background="@drawable/key_d_ls" />
+
+			<ImageButton android:id="@+id/key_f"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_f_ls"
+				android:background="@drawable/key_f_ls" />
+
+			<ImageButton android:id="@+id/key_g"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_g_ls"
+				android:background="@drawable/key_g_ls" />
+
+			<ImageButton android:id="@+id/key_h"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_h_ls"
+				android:background="@drawable/key_h_ls" />
+
+			<ImageButton android:id="@+id/key_j"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_j_ls"
+				android:background="@drawable/key_j_ls" />
+
+			<ImageButton android:id="@+id/key_k"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_k_ls"
+				android:background="@drawable/key_k_ls" />
+
+			<ImageButton android:id="@+id/key_l"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_l_ls"
+				android:background="@drawable/key_l_ls" />
+
+			<ImageButton android:id="@+id/key_qm_ls"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:src="@drawable/key_qm_ls"
+				android:background="@drawable/key_qm_ls" />
+
+		</TableRow>
+
+		<TableRow android:layout_marginBottom="2px">
+
+			<ImageButton android:id="@+id/key_z"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:src="@drawable/key_z_ls"
+				android:background="@drawable/key_z_ls" android:layout_marginRight="2px" />
+
+			<ImageButton android:id="@+id/key_x"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_x_ls"
+				android:background="@drawable/key_x_ls" />
+
+			<ImageButton android:id="@+id/key_c"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_c_ls"
+				android:background="@drawable/key_c_ls" />
+
+			<ImageButton android:id="@+id/key_v"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_v_ls"
+				android:background="@drawable/key_v_ls" />
+
+			<ImageButton android:id="@+id/key_b"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_b_ls"
+				android:background="@drawable/key_b_ls" />
+
+			<ImageButton android:id="@+id/key_n"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_n_ls"
+				android:background="@drawable/key_n_ls" />
+
+			<ImageButton android:id="@+id/key_m"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center" android:src="@drawable/key_m_ls"
+				android:background="@drawable/key_m_ls" />
+
+			<ImageButton android:id="@+id/key_slash"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center"
+				android:src="@drawable/key_slash_ls" android:background="@drawable/key_slash_ls" />
+
+			<ImageButton android:id="@+id/key_dot"
+				android:layout_marginRight="2px" android:layout_width="40px"
+				android:layout_height="40px" android:scaleType="center"
+				android:src="@drawable/key_dot_ls" android:background="@drawable/key_dot_ls" />
+
+			<ImageButton android:id="@+id/key_comma"
+				android:layout_width="40px" android:layout_height="40px"
+				android:scaleType="center" android:src="@drawable/key_comma_ls"
+				android:background="@drawable/key_comma_ls" />
+
+		</TableRow>
+
+		<TableRow android:layout_marginBottom="2px">
+
+			<ImageButton android:id="@+id/key_del"
+				android:layout_width="80px" android:layout_height="40px"
+				android:layout_span="2" android:scaleType="center" android:src="@drawable/key_del_ls"
+				android:background="@drawable/key_del_ls" android:layout_gravity="right" />
+
+			<ImageButton android:id="@+id/key_spacels"
+				android:layout_width="240px" android:layout_height="40px"
+				android:layout_span="6" android:scaleType="center" android:src="@drawable/key_space_ls"
+				android:background="@drawable/key_space_ls" android:layout_gravity="right" />
+
+			<ImageButton android:id="@+id/key_enterls"
+				android:layout_width="80px" android:layout_height="40px"
+				android:layout_span="2" android:scaleType="center" android:src="@drawable/key_enter_ls"
+				android:background="@drawable/key_enter_ls" android:layout_gravity="right" />
+
+
+		</TableRow>
+
+	</TableLayout>
+
+	<TableLayout android:id="@+id/mainbuttonsnr"
+		android:orientation="vertical" android:layout_x="0px"
+		android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/maincatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcinfo" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="INFO" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcnodes" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="NODES" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bctalk" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="TALK" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bccombat" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="COMBAT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bctravel" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="TRAVEL" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbuilding" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BUILDING" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcinteract" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="INTERACT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcshopping" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SHOPPING" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget31" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcbanking" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BANKING" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcorg" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="ORG" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcgroup" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GROUP" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+
+	<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/infobuttonsnr"
+		android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/infocatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SCORE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcscore">
+					</Button>
+					<Button android:id="@+id/bcwho" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="WHO" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcskills" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SKILLS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcsystems" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SYSTEMS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcregions" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="REGIONS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcorgs" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="ORGS" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcaffected" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="AFFECTS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="COMMANDS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bccommands">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget31" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bceq" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="EQUIPMENT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcinventory" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="INVENTORY" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bccompare" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="COMPARE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcshoworg" android:text="SHOWORG">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget31" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:text="SHOWSYS" android:id="@+id/bcshowsys">
+					</Button>
+					<Button android:id="@+id/bcshowsys" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SHOWSYS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:visibility="invisible">
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+
+	<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/nodesbuttonsnr"
+		android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/nodescatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SEARCH" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcsearch">
+					</Button>
+					<Button android:id="@+id/bcdig" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DIG" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcexits" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="EXITS" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcglance" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GLANCE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcexamine" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="EXAMINE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcdrop" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DROP" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcscan" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SCAN" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+				
+					
+
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+
+
+	<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/talkbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/talkcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SAY JOB" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcsayjob">
+					</Button>
+					<Button android:id="@+id/bcsay" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SAY" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bctell" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="TELL" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcnewbie" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="NEWBIE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcreply" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="REPLY" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcgchat" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GCHAT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcschat" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SCHAT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="YELL" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcyell">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget31" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcafk" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="AFK" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcgtell" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GTELL" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcorgtalk" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="ORGTALK" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcooc" android:text="OOC">
+					</Button>
+				</TableRow>
+				
+
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+	
+	
+		<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/combatbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/combatcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="KILL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bckill">
+					</Button>
+					<Button android:id="@+id/bcblast" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BLAST" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcconsider" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="CONSIDER" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcrest" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="REST" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcsleep" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SLEEP" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcwake" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="WAKE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcsit" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SIT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="STAND" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcstand">
+					</Button>
+				</TableRow>
+				
+				
+
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+	
+			<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/buildingbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/buildingcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="CONSTRUCT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcconstruct">
+					</Button>
+					<Button android:id="@+id/bcmodify" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="MODIFY" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbridge" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BRIDGE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcrnode" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="RNODE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcsecure" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SECURE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bclayout" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="LAYOUT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+	
+	
+				<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/interactbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+			
+				<TableLayout android:id="@+id/interactcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GIVE PACK" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcgpj">
+					</Button>
+					<Button android:id="@+id/bcgvd" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GIVE VIRUS" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcgive" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GIVE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcwield" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="LOAD" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcremove" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="UNLOAD" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcdownload" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DOWNLOAD" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcopen" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="OPEN" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+										<Button android:id="@+id/bcclose" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="CLOSE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				
+								<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcunlock" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="UNLOCK" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bclock" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="LOCK" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+
+				</TableRow>
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+	
+				<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/shoppingbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/shoppingcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="LIST" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bclist">
+					</Button>
+					<Button android:id="@+id/bcbuy" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BUY" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcsell" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SELL" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcrepair" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="REPAIR" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:id="@+id/bcvalue" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="VALUE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbuyskill" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BUYSKILL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+		
+					<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/bankbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/bankcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BALANCE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcbankbalance">
+					</Button>
+					<Button android:id="@+id/bcbankdeposit" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DEPOSIT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbankwithdraw" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="WITHDRAW" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbanktransfer" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="TRANSFER" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
+			
+							<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/orgbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/orgcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DONATE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcdonate">
+					</Button>
+					<Button android:id="@+id/bcdemote" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="DEMOTE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcempower" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="EMPOWER" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcinduct" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="TRANSFER" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+				
+								<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="WITHDRAW" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcwithdraw">
+					</Button>
+					<Button android:id="@+id/bcwar" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="WAR" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcoutcast" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="OUTCAST" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcsetwages" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SETWAGES" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>
 
 </RelativeLayout>

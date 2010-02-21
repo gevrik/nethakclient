@@ -227,6 +227,21 @@
 				android:scaleType="center" android:src="@drawable/look_buttona"
 				android:background="@drawable/look_buttona" />
 		</TableRow>
+		
+				<TableRow>
+			<ImageButton android:id="@+id/secret_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/enter_buttona"
+				android:background="@drawable/south_buttona" android:visibility="invisible"/>
+			<ImageButton android:id="@+id/hisup_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/ui_hisup"
+				android:background="@drawable/ui_hisup" />
+			<ImageButton android:id="@+id/hisdown_button"
+				android:layout_width="50px" android:layout_height="50px"
+				android:scaleType="center" android:src="@drawable/ui_hisdown"
+				android:background="@drawable/ui_hisdown" />
+		</TableRow>
 
 	</TableLayout>
 
@@ -1343,5 +1358,95 @@
 
 		</TableRow>
 	</TableLayout>
+	
+					<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/travelbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/travelcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="CONNECT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcconnect">
+					</Button>
+					<Button android:id="@+id/bchome" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="HOME" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcstray" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="STRAY" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Button"
+						android:visibility="invisible" android:background="@drawable/nr_bg_button">
+					</Button>
+				</TableRow>
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>	
+	
+						<TableLayout android:orientation="vertical"
+		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
+		android:id="@+id/groupbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:layout_height="fill_parent">
+
+			<TableLayout android:id="@+id/groupcatbuttons"
+				android:orientation="vertical" android:layout_x="0px"
+				android:layout_y="0px" android:layout_height="wrap_content"
+				android:layout_width="wrap_content">
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="horizontal">
+					<Button android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GROUP" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcgroupshow">
+					</Button>
+					<Button android:id="@+id/bcggtell" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="GTELL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcfollow" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="FOLLOW" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcfollowself" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="SELF" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
+					</Button>
+				</TableRow>
+			</TableLayout>
+
+		</TableRow>
+	</TableLayout>	
+	
 
 </RelativeLayout>

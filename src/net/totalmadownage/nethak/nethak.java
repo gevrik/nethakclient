@@ -31,12 +31,16 @@ public class nethak extends Activity implements OnClickListener {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 	setContentView(R.layout.mainmenu);
 	
+	//if (!Prefs.getScreen(getBaseContext())) {
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		//}
+	
 //    if (Prefs.getScreen(getBaseContext())) {
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        }
 //    else
 //    {
-  	  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//  	  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 //    }
 	
 	View newButton = findViewById(R.id.new_button);

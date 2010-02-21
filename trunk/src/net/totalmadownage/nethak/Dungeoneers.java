@@ -469,8 +469,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 		//if (!Prefs.getScreen(getBaseContext())) {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-		//  }
+		//}
 
 		boolean showToast = false;
 
@@ -802,6 +801,26 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		View bcsetwagesButton = findViewById(R.id.bcsetwages);
 		bcsetwagesButton.setOnClickListener(this);
 		
+		// travel
+		
+		View bcconnectButton = findViewById(R.id.bcconnect);
+		bcconnectButton.setOnClickListener(this);
+		View bchomeButton = findViewById(R.id.bchome);
+		bchomeButton.setOnClickListener(this);
+		View bcstrayButton = findViewById(R.id.bcstray);
+		bcstrayButton.setOnClickListener(this);
+
+		// group
+		
+		View bcgroupshowButton = findViewById(R.id.bcgroupshow);
+		bcgroupshowButton.setOnClickListener(this);
+		View bcggtellButton = findViewById(R.id.bcggtell);
+		bcggtellButton.setOnClickListener(this);
+		View bcfollowButton = findViewById(R.id.bcfollow);
+		bcfollowButton.setOnClickListener(this);
+		View bcfollowselfButton = findViewById(R.id.bcfollowself);
+		bcfollowselfButton.setOnClickListener(this);
+		
 		// compass
 		
 		View northButton = findViewById(R.id.north_button);
@@ -820,6 +839,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		lookButton.setOnClickListener(this);
 		View enterButton = findViewById(R.id.enter_button);
 		enterButton.setOnClickListener(this);
+		View secretButton = findViewById(R.id.secret_button);
+		secretButton.setOnClickListener(this);
+		View hisupButton = findViewById(R.id.hisup_button);
+		hisupButton.setOnClickListener(this);
+		View hisdownButton = findViewById(R.id.hisdown_button);
+		hisdownButton.setOnClickListener(this);
 		
 		// directions
 
@@ -2204,6 +2229,14 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		case R.id.bcorg:			
 			switchKeyboardView(R.id.orgbuttonsnr);			
 			break;
+			
+		case R.id.bctravel:			
+			switchKeyboardView(R.id.travelbuttonsnr);			
+			break;
+			
+		case R.id.bcgroup:			
+			switchKeyboardView(R.id.groupbuttonsnr);			
+			break;
 
 			// info
 
@@ -3236,6 +3269,137 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			switchKeyboardView(R.id.NumblockBox);	
 			break;
 			
+			// group
+			
+		case R.id.bcgroupshow:	
+			cmdkeyboard.setText("group");
+			sendData.push(cmdkeyboard.getText() + "\r\n");
+			addText(cmdkeyboard.getText() + "\n", Color.WHITE, Color.BLACK);
+			cmdkeyboard.setText("");
+			switchKeyboardView(R.id.CommandBox);
+			
+			historypos = 0;
+
+			if(commandHistory.size() > 1)
+			{
+				if(!(cmdkeyboard.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				{
+					commandHistory.add(cmdkeyboard.getText().toString());
+					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+					{
+						commandHistory.remove(0);
+					}
+				}
+			}
+			else
+			{
+				commandHistory.add(cmdkeyboard.getText().toString());
+			}
+			break;
+			
+		case R.id.bcggtell:	
+			cmdkeyboard.setText("gtell ");
+			Spannable bcggtellBuff = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(bcggtellBuff, cmdkeyboard.getLayout());
+			switchKeyboardView(R.id.KeyboardBox);	
+			break;
+
+		case R.id.bcfollow:	
+			cmdkeyboard.setText("follow ");
+			Spannable bcfollowBuff = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(bcfollowBuff, cmdkeyboard.getLayout());
+			switchKeyboardView(R.id.KeyboardBox);	
+			break;
+			
+		case R.id.bcfollowself:	
+			cmdkeyboard.setText("follow self");
+			sendData.push(cmdkeyboard.getText() + "\r\n");
+			addText(cmdkeyboard.getText() + "\n", Color.WHITE, Color.BLACK);
+			cmdkeyboard.setText("");
+			switchKeyboardView(R.id.CommandBox);
+			
+			historypos = 0;
+
+			if(commandHistory.size() > 1)
+			{
+				if(!(cmdkeyboard.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				{
+					commandHistory.add(cmdkeyboard.getText().toString());
+					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+					{
+						commandHistory.remove(0);
+					}
+				}
+			}
+			else
+			{
+				commandHistory.add(cmdkeyboard.getText().toString());
+			}
+			break;
+			
+			// travel
+			
+		case R.id.bcconnect:	
+			cmdkeyboard.setText("connect ");
+			Spannable bcconnectBuff = (Spannable)cmdkeyboard.getText();
+			Selection.moveToRightEdge(bcconnectBuff, cmdkeyboard.getLayout());
+			switchKeyboardView(R.id.KeyboardBox);	
+			break;
+			
+		case R.id.bchome:	
+			cmdkeyboard.setText("home");
+			sendData.push(cmdkeyboard.getText() + "\r\n");
+			addText(cmdkeyboard.getText() + "\n", Color.WHITE, Color.BLACK);
+			cmdkeyboard.setText("");
+			switchKeyboardView(R.id.CommandBox);
+			
+			historypos = 0;
+
+			if(commandHistory.size() > 1)
+			{
+				if(!(cmdkeyboard.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				{
+					commandHistory.add(cmdkeyboard.getText().toString());
+					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+					{
+						commandHistory.remove(0);
+					}
+				}
+			}
+			else
+			{
+				commandHistory.add(cmdkeyboard.getText().toString());
+			}
+			break;
+			
+		case R.id.bcstray:	
+			cmdkeyboard.setText("stray");
+			sendData.push(cmdkeyboard.getText() + "\r\n");
+			addText(cmdkeyboard.getText() + "\n", Color.WHITE, Color.BLACK);
+			cmdkeyboard.setText("");
+			switchKeyboardView(R.id.CommandBox);
+			
+			historypos = 0;
+
+			if(commandHistory.size() > 1)
+			{
+				if(!(cmdkeyboard.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				{
+					commandHistory.add(cmdkeyboard.getText().toString());
+					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+					{
+						commandHistory.remove(0);
+					}
+				}
+			}
+			else
+			{
+				commandHistory.add(cmdkeyboard.getText().toString());
+			}
+			break;			
+			
+			
+			
 			// numblock
 
 		case R.id.one_button:
@@ -3702,7 +3866,53 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				commandHistory.add(cmdentera.getText().toString());
 			}
 
-			break;	
+			break;
+			
+		case R.id.secret_button:
+
+			break;			
+			
+		case R.id.hisup_button:
+			EditText cmdhisup = (EditText)findViewById(R.id.cmdText);
+			if(historypos < commandHistory.size())
+			{
+				historypos++;
+			}
+			if(historypos == 0)
+			{
+				cmdhisup.setText("");
+			}
+			else
+			{
+				cmdhisup.setText(commandHistory.get(commandHistory.size() - historypos));
+				Spannable cmdbuffer = (Spannable)cmdhisup.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdhisup.getLayout());
+			}
+
+			break;
+			
+			
+		case R.id.hisdown_button:
+			EditText cmdhisdown = (EditText)findViewById(R.id.cmdText);
+			if(historypos > 0)
+			{
+				historypos --;
+			}
+			if(historypos == 0)
+			{
+				cmdhisdown.setText("");
+			}
+			else
+			{
+				cmdhisdown.setText(commandHistory.get(commandHistory.size() - historypos));
+				Spannable cmdbuffer = (Spannable)cmdhisdown.getText();
+				Selection.moveToRightEdge(cmdbuffer, cmdhisdown.getLayout());
+			}
+
+			break;		
+			
+			
+		// compass end	
 
 		case R.id.commandindex_button:
 			openCommonDialog();        	
@@ -3801,6 +4011,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		View shoppingbuttonsnrView = (View)findViewById(R.id.shoppingbuttonsnr);
 		View bankbuttonsnrView = (View)findViewById(R.id.bankbuttonsnr);
 		View orgbuttonsnrView = (View)findViewById(R.id.orgbuttonsnr);
+		View travelbuttonsnrView = (View)findViewById(R.id.travelbuttonsnr);
+		View groupbuttonsnrView = (View)findViewById(R.id.groupbuttonsnr);
 		View DirectionBoxView = (View)findViewById(R.id.DirectionBox);
 		
 		View viewToToggle = null;
@@ -3846,6 +4058,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		case R.id.orgbuttonsnr:
 			viewToToggle = orgbuttonsnrView;
 			break;
+		case R.id.travelbuttonsnr:
+			viewToToggle = travelbuttonsnrView;
+			break;
+		case R.id.groupbuttonsnr:
+			viewToToggle = groupbuttonsnrView;
+			break;
 		case R.id.DirectionBox:
 			viewToToggle = DirectionBoxView;
 			break;
@@ -3866,6 +4084,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		shoppingbuttonsnrView.setVisibility(View.INVISIBLE);
 		bankbuttonsnrView.setVisibility(View.INVISIBLE);
 		orgbuttonsnrView.setVisibility(View.INVISIBLE);
+		travelbuttonsnrView.setVisibility(View.INVISIBLE);
+		groupbuttonsnrView.setVisibility(View.INVISIBLE);
 		DirectionBoxView.setVisibility(View.INVISIBLE);
 
 		if(viewToToggle != null && initialVisibility != View.VISIBLE)

@@ -69,6 +69,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	protected static final int MENU_OPTIONS = 3;
 	protected static final int MENU_HELP = 4;
 	protected static final int MENU_TOGGLE = 5;
+	protected static final int MENU_NOTES = 6;
 	protected PowerManager.WakeLock mWakeLock;
 
 	Spinner   spinner1;
@@ -153,6 +154,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		menu.add(0, MENU_DISCONNECT, 0, "Community");
 		menu.add(0, MENU_HELP, 0, "Help");
 		menu.add(0, MENU_TOGGLE, 0, "Guides");
+		menu.add(0, MENU_NOTES, 0, "Notes");
 		return true;
 	}
 
@@ -334,6 +336,10 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		case MENU_HELP:
 			Intent e = new Intent(this, Website.class);
 			startActivity(e);
+			return true;
+		case MENU_NOTES:
+			Intent h = new Intent(this, Notepadv3.class);
+			startActivity(h);
 			return true;
 		case MENU_TOGGLE:
 

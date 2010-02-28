@@ -67,7 +67,7 @@ public class nethak extends Activity implements OnClickListener {
 			   startActivity(new Intent(this, Prefs.class));
 			   break;
 		case R.id.help_button:
-			Intent f = new Intent(this, Website.class);
+			Intent f = new Intent(this, Newbieguide.class);
 			startActivity(f);
 		break;
 		case R.id.uihelp_button:
@@ -139,6 +139,13 @@ public class nethak extends Activity implements OnClickListener {
 					
 					   Intent itr = new Intent(this, Gtravel.class);
 					   startActivity(itr);
+					
+				}
+			
+				else if (i == 4) {
+					
+					   Intent ing = new Intent(this, Newbieguide.class);
+					   startActivity(ing);
 					
 				}
 			

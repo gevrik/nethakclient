@@ -5121,6 +5121,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			startActivity(itr);
 
 		}
+		else if (i == 4) {
+			
+			   Intent ing = new Intent(this, Newbieguide.class);
+			   startActivity(ing);
+			
+		}
 
 		else sendData.push(i + "\r\n");
 

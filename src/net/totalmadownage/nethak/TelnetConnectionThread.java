@@ -129,7 +129,7 @@ public class TelnetConnectionThread implements Runnable {
 		//int color = Color.WHITE;
 		try {
 			sendMessageText("connecting...\n",Color.WHITE,Color.BLACK);
-			skt = new Socket("kults.genesismuds.com", 7666);
+			skt = new Socket("212.13.195.184", 7666);
 			skt.setSoTimeout(50);
 			inStream  = skt.getInputStream();
 			outStream = new PrintWriter(skt.getOutputStream());

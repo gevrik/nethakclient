@@ -504,8 +504,8 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 		if(showToast)
 		{
-			Toast msg = Toast.makeText(Dungeoneers.this, "Tap on the input field to log in." +
-					" Once in-game, type HELP to get an overview. " +
+			Toast msg = Toast.makeText(Dungeoneers.this, "Please read README 1st in main menu." +
+					" This is a complicated, but rewarding game. " +
 					" Type 'newbie yourtext' to chat with other players.", Toast.LENGTH_LONG);
 
 			msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
@@ -1135,14 +1135,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				cmd.setText(cmd.getText() + s); 
 				Spannable cmdbufferw = (Spannable)cmd.getText();
 				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
-				startOrgs();
 			}
 			else if (s == "showsystem ")
 			{
 				cmd.setText(cmd.getText() + s); 
 				Spannable cmdbufferw = (Spannable)cmd.getText();
 				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
-				startSystem();
 			}
 			else
 			{
@@ -1425,7 +1423,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 				cmd.setText(s); 
 				Spannable cmdbufferw = (Spannable)cmd.getText();
 				Selection.moveToRightEdge(cmdbufferw, cmd.getLayout());
-				startSystem();
+
 			}
 
 			else

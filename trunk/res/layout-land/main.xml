@@ -231,8 +231,7 @@
 				<TableRow>
 			<ImageButton android:id="@+id/secret_button"
 				android:layout_width="50px" android:layout_height="50px"
-				android:scaleType="center" android:src="@drawable/enter_buttona"
-				android:background="@drawable/south_buttona" android:visibility="invisible"/>
+				android:scaleType="center" android:background="@drawable/mapicon" android:src="@drawable/mapicon" android:visibility="visible"/>
 			<ImageButton android:id="@+id/hisup_button"
 				android:layout_width="50px" android:layout_height="50px"
 				android:scaleType="center" android:src="@drawable/ui_hisup"

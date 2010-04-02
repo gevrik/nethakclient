@@ -129,7 +129,7 @@ public class TelnetConnectionThread implements Runnable {
 		//int color = Color.WHITE;
 		try {
 			sendMessageText("connecting...\n",Color.WHITE,Color.BLACK);
-			skt = new Socket("212.13.195.184", 7666);
+			skt = new Socket("netruns.org", 7666);
 			skt.setSoTimeout(50);
 			inStream  = skt.getInputStream();
 			outStream = new PrintWriter(skt.getOutputStream());
@@ -241,7 +241,7 @@ public class TelnetConnectionThread implements Runnable {
 		catch (UnknownHostException e1) {
 			sendMessageText("\nUnknown Host\n",Color.WHITE,Color.BLACK);
 		} catch (IOException e1) {
-			sendMessageText("\nIOException\n",Color.WHITE,Color.BLACK);
+			sendMessageText("\nServer offline\n",Color.WHITE,Color.BLACK);
 			e1.printStackTrace();
 		} catch (IllegalStateException e){
     		sendMessageText("\nIllegalStateException\n",Color.WHITE,Color.BLACK);

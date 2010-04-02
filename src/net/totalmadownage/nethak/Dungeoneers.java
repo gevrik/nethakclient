@@ -504,7 +504,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 		if(showToast)
 		{
-			Toast msg = Toast.makeText(Dungeoneers.this, "Please read README 1st in main menu." +
+			Toast msg = Toast.makeText(Dungeoneers.this, "Please read WIKI in main menu." +
 					" This is a complicated, but rewarding game. " +
 					" Type 'newbie yourtext' to chat with other players.", Toast.LENGTH_LONG);
 
@@ -3873,6 +3873,12 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			break;
 			
 		case R.id.secret_button:
+			
+			EditText cmdmap = (EditText)findViewById(R.id.cmdText);
+			cmdmap.setText("map");
+			sendData.push(cmdmap.getText() + "\r\n");
+			addText(cmdmap.getText() + "\n", Color.WHITE, Color.BLACK);
+			cmdmap.setText("");
 
 			break;			
 			

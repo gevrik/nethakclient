@@ -55,7 +55,7 @@ public class Newbieguide extends Activity {
           }
         });
 
-        webview.loadUrl("http://totalmadownage.net/nethak/?page_id=122");
+        webview.loadUrl("http://totalmadownage.net/nethak/?page_id=510");
         
     }
     

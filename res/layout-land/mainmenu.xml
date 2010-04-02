@@ -51,7 +51,7 @@ android:layout_gravity="center_horizontal" android:orientation="horizontal">
 	android:id="@+id/help_button"
 	android:layout_width="150px"
 	android:layout_height="38px"
-	android:layout_marginBottom="5dip" android:text="README 1ST"/>
+	android:layout_marginBottom="5dip" android:text="WIKI"/>
 	
 	</TableRow>
 	

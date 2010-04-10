@@ -4,14 +4,9 @@ import java.util.ArrayList;
 
 import net.totalmadownage.nethak.Dungeoneers.ServerInfo;
 import net.totalmadownage.nethak.R;
-import net.totalmadownage.nethak.R.id;
-import net.totalmadownage.nethak.R.layout;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.View;
@@ -21,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ServerListDialog extends Dialog {
 
@@ -83,43 +77,4 @@ public class ServerListDialog extends Dialog {
 		menu.setHeaderTitle("Primary context");
 	}
 	
-	private class ItemLongSelectedListener implements OnItemLongClickListener
-	{
-
-		//@Override
-		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-			contextSelect = position;
-			if(contextSelect > 0)
-				alert2.show();
-			return true;
-		}
-		
-	}
-	
-	private Builder alert2;
-	
-    private void setupAlerts() {
-        alert2 = new AlertDialog.Builder(this.getContext())
-        .setTitle("Edit")
-        .setMessage("Would you like to modify, connect, or delete this server?")
-        .setPositiveButton("Modify", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                        cready.modify(contextSelect);
-                        ServerListDialog.this.dismiss();
-                }
-        })
-        .setNeutralButton("Connect", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                        cready.connect(contextSelect);
-                        ServerListDialog.this.dismiss();
-                }
-        })
-        .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                        cready.delete(contextSelect);
-                        ServerListDialog.this.dismiss();
-                }
-        });
-      
-    }
 }

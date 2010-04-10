@@ -1,8 +1,6 @@
 package net.totalmadownage.nethak;
 
 import net.totalmadownage.nethak.R;
-import net.totalmadownage.nethak.R.id;
-import net.totalmadownage.nethak.R.layout;
 
 import android.app.Dialog;
 import android.content.Context;

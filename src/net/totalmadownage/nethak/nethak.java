@@ -8,11 +8,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.view.Menu;
-//import android.view.MenuInflater;
-//import android.view.MenuItem;
 import android.view.Window;
-import android.view.WindowManager;
+
 
 public class nethak extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
@@ -27,21 +24,10 @@ public class nethak extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
     this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-    //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 	setContentView(R.layout.mainmenu);
 	
-	//if (!Prefs.getScreen(getBaseContext())) {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		//}
-	
-//    if (Prefs.getScreen(getBaseContext())) {
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        }
-//    else
-//    {
-//  	  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//    }
 	
 	View newButton = findViewById(R.id.new_button);
 	newButton.setOnClickListener(this);

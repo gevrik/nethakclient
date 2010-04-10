@@ -1,9 +1,7 @@
 package net.totalmadownage.nethak;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -12,7 +10,6 @@ import java.net.UnknownHostException;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 
 
 public class TelnetConnectionThread implements Runnable {
@@ -575,27 +572,6 @@ public class TelnetConnectionThread implements Runnable {
        	Message m = new Message();
        	m.what = TEXT_UPDATE;
         m.setData(updateText);
-        DataListener.dataReady(m);
-	}
-
-
-	private void sendMessageScroll()
-	{
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       	Message m = new Message();
-       	m.what = TEXT_SCROLL;
-        DataListener.dataReady(m);
-	}
-	
-	private void sendMessageSent()
-	{
-       	Message m = new Message();
-       	m.what = TEXT_SENT;
         DataListener.dataReady(m);
 	}
 	

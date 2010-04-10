@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
-import android.view.WindowManager;
 
 public class Splash extends Activity {
 

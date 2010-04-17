@@ -32,65 +32,34 @@
 		android:layout_below="@id/loginText" android:layout_marginTop="1px"
 		android:visibility="visible" android:layout_centerInParent="true"
 		android:layout_alignParentRight="true"></Button>
-	<ImageButton android:id="@+id/numb_button"
-		android:background="@drawable/numblock_button"
-		android:layout_alignParentRight="true" android:layout_height="40px"
-		android:layout_width="40px" android:layout_above="@+id/cmdText"
-		android:visibility="invisible" />
+	<ImageButton android:id="@+id/commandtoggle_button" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/bctoggle_button" android:visibility="invisible" /><ImageButton android:id="@+id/toggle_button" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/travel_button" android:visibility="invisible" android:layout_below="@+id/commandtoggle_button" />
 
 	<ImageButton android:id="@+id/uiback_button"
 		android:background="@drawable/keyboard_button"
-		android:layout_alignParentRight="true" android:layout_above="@+id/numb_button"
-		android:layout_height="40px" android:layout_width="40px"
-		android:visibility="invisible" />
-	<ImageButton android:id="@+id/toggle_button"
-		android:layout_marginRight="2px" android:layout_height="40px"
-		android:layout_width="40px" android:layout_alignParentRight="true"
-		android:background="@drawable/travel_button" android:layout_above="@+id/uiback_button"
-		android:visibility="invisible" />
+		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"
+		android:visibility="invisible" android:layout_below="@+id/toggle_button"/><ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
+	
 		
-			<ImageButton android:id="@+id/commandtoggle_button"
-		android:layout_marginRight="2px" android:layout_height="40px"
-		android:layout_width="40px" android:layout_alignParentRight="true"
-		android:background="@drawable/bctoggle_button" android:layout_above="@+id/toggle_button"
-		android:visibility="invisible" />
+			
 
 
 
-	<Spinner android:id="@+id/spinner1"
-		android:layout_alignParentRight="true" android:layout_marginRight="2px"
-		android:layout_height="wrap_content" android:background="@drawable/spinner_button"
-		android:layout_width="148px" style="@style/Widget.DropDownItem.Spinner"
-		android:layout_alignParentTop="true" android:visibility="invisible">
-	</Spinner>
+	
 
-	<ImageButton android:id="@+id/commandindex_button"
-		android:scaleType="center" android:background="@drawable/commandindex_button"
-		android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/spinner1"
-		android:layout_height="40px" android:layout_width="40px"
-		android:visibility="invisible" />
-	<Button android:id="@+id/button1" android:background="@drawable/choosecommand_button"
-		android:layout_height="40px" android:layout_width="40px"
-		android:layout_below="@+id/spinner1" android:layout_alignParentRight="true"
-		android:visibility="invisible"></Button>
+	
+	
 	<!--
 		<Button android:id="@+id/button3" android:visibility="visible"
 		android:layout_alignParentBottom="true" android:layout_width="30px"
 		android:layout_height="30px" android:layout_toLeftOf="@+id/button1"
 		android:background="@drawable/commandindex_button"></Button>
 	-->
-	<Button android:id="@+id/button2" android:visibility="invisible"
-		android:text="index" android:layout_marginRight="2px"
-		android:layout_marginBottom="2px" android:layout_width="40px"
-		android:layout_height="40px"></Button>
+	
 
 
 
 
-	<Spinner android:id="@+id/spinnermodify" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:visibility="invisible"
-		android:layout_centerInParent="true" android:layout_alignParentTop="true">
-	</Spinner>
+	
 
 
 
@@ -109,8 +78,7 @@
 
 	<TableLayout android:id="@+id/NumblockBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:layout_below="@+id/spinner1" android:layout_toLeftOf="@+id/button1"
-		android:visibility="invisible">
+		android:visibility="invisible" android:layout_toLeftOf="@+id/commandtoggle_button">
 
 		<TableRow android:layout_marginTop="5px">
 			<ImageButton android:id="@+id/one_button"
@@ -180,8 +148,7 @@
 
 	<TableLayout android:id="@+id/CommandBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:layout_below="@+id/spinner1" android:visibility="invisible"
-		android:layout_toLeftOf="@+id/button1">
+		android:visibility="invisible" android:layout_toLeftOf="@+id/commandtoggle_button">
 
 		<TableRow android:layout_marginTop="5px">
 			<ImageButton android:id="@+id/up_button"
@@ -246,7 +213,7 @@
 
 	<TableLayout android:id="@+id/DirectionBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:layout_below="@+id/spinner1" android:layout_toLeftOf="@+id/button1" android:visibility="invisible">
+		android:visibility="invisible" android:layout_toLeftOf="@+id/commandtoggle_button">
 
 		<TableRow android:layout_marginTop="5px">
 					<ImageButton android:id="@+id/look_button"
@@ -298,8 +265,7 @@
 
 	<TableLayout android:id="@+id/KeyboardBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:layout_below="@+id/spinner1" android:visibility="invisible"
-		android:layout_toLeftOf="@+id/button1">
+		android:visibility="invisible" android:layout_toLeftOf="@+id/commandtoggle_button">
 
 		<TableRow android:layout_marginTop="2px">
 
@@ -915,7 +881,7 @@
 		<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/combatbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/combatbuttonsnr" android:layout_marginBottom="100px" android:visibility="invisible">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 

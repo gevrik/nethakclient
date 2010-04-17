@@ -92,6 +92,7 @@ public class TelnetConnectionThread implements Runnable {
 	protected static final int TELNET_OPTION_NENVIR = 39;  // Telnet environment option
 	protected static final int TELNET_OPTION_EXTOP  = 255; // Extended-options-list
 	
+	// no idea why eclipse insists that they are unused when they are
 	
 	private Socket skt;
 	private InputStream inStream;

@@ -60,11 +60,6 @@ public class Dungeoneers extends Activity implements OnClickListener {
 	protected static final int MENU_NOTES = 6;
 	protected PowerManager.WakeLock mWakeLock;
 
-	Spinner   spinner1;
-	Button    button1;
-	Spinner		spinnermodify;
-	Button		buttonmodify;
-
 	protected static final int HISTORY_BUFFER_SIZE = 20;
 
 	//private SpannableString inputSpanBuffer= new SpannableString("");
@@ -515,6 +510,9 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		commandtoggleButton.setOnClickListener(this);
 
 		// main categories
+		
+		View button1 = findViewById(R.id.button1);
+		button1.setOnClickListener(this);
 
 		View bcinfoButton = findViewById(R.id.bcinfo);
 		bcinfoButton.setOnClickListener(this);        
@@ -931,6 +929,9 @@ public class Dungeoneers extends Activity implements OnClickListener {
 
 			View vistogglebutton = (View)findViewById(R.id.toggle_button);
 			vistogglebutton.setVisibility(0);
+			
+			View button1 = (View)findViewById(R.id.button1);
+			button1.setVisibility(0);
 
 			View viscommandtogglebutton = (View)findViewById(R.id.commandtoggle_button);
 			viscommandtogglebutton.setVisibility(0);
@@ -2612,6 +2613,31 @@ public class Dungeoneers extends Activity implements OnClickListener {
 			else
 			{
 				commandHistory.add(cmdentera.getText().toString());
+			}
+
+			break;
+			
+		case R.id.button1:
+			EditText cmdenterb = (EditText)findViewById(R.id.cmdText);
+			sendData.push(cmdenterb.getText() + "\r\n");
+			addText(cmdenterb.getText() + "\n", Color.WHITE, Color.BLACK);
+
+			historypos = 0;
+
+			if(commandHistory.size() > 1)
+			{
+				if(!(cmdenterb.getText().toString().compareTo(commandHistory.get(commandHistory.size()-1)) == 0))
+				{
+					commandHistory.add(cmdenterb.getText().toString());
+					if(commandHistory.size() > HISTORY_BUFFER_SIZE)
+					{
+						commandHistory.remove(0);
+					}
+				}
+			}
+			else
+			{
+				commandHistory.add(cmdenterb.getText().toString());
 			}
 
 			break;

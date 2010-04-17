@@ -3,7 +3,7 @@
 
 <RelativeLayout android:id="@+id/RelativeLayout01"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android">
+	xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/mainbg">
 
 
 	<EditText android:layout_height="wrap_content"
@@ -37,33 +37,17 @@
 	<ImageButton android:id="@+id/uiback_button"
 		android:background="@drawable/keyboard_button"
 		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"
-		android:visibility="invisible" android:layout_below="@+id/toggle_button"/><ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
-	
+		android:visibility="invisible" android:layout_below="@+id/toggle_button"/>
 		
-			
-
-
-
+		
+		<ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" 
+		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" 
+		android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
+		
+		<ImageButton android:id="@+id/button1" android:background="@drawable/choosecommand_button" 
+		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" 
+		android:visibility="invisible" android:layout_below="@+id/numb_button"/>
 	
-
-	
-	
-	<!--
-		<Button android:id="@+id/button3" android:visibility="visible"
-		android:layout_alignParentBottom="true" android:layout_width="30px"
-		android:layout_height="30px" android:layout_toLeftOf="@+id/button1"
-		android:background="@drawable/commandindex_button"></Button>
-	-->
-	
-
-
-
-
-	
-
-
-
-
 
 	<TextView android:typeface="monospace" android:layout_width="fill_parent"
 		android:id="@+id/MainText" android:text="MainText"
@@ -73,8 +57,6 @@
 		android:layout_height="fill_parent" android:textStyle="normal"
 		android:textSize="10sp" android:autoLink="all" android:linksClickable="true"
 		android:layout_above="@+id/cmdText"></TextView>
-
-
 
 	<TableLayout android:id="@+id/NumblockBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"

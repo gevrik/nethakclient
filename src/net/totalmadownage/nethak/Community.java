@@ -89,27 +89,36 @@ public class Community extends Activity {
         return false;
     }
     
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
-	        
-     		new AlertDialog.Builder(this)
-    		.setMessage("Are you sure you want to exit?")
-    		.setCancelable(false)
-    		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-    		           public void onClick(DialogInterface dialog, int id) {
-    		        	   Community.this.finish();
-    		           }
-    		       })
-    		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
-    		           public void onClick(DialogInterface dialog, int id) {
-    		                dialog.cancel();
-    		           }
-    		       }).show();
-	    	
-	        return true;
-	    }
-	    return super.onKeyDown(keyCode, event);
-	}
+//	@Override
+//	public boolean onKeyDown(int keyCode, KeyEvent event) {
+//	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+//	        
+//     		new AlertDialog.Builder(this)
+//    		.setMessage("Are you sure you want to exit?")
+//    		.setCancelable(false)
+//    		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//    		           public void onClick(DialogInterface dialog, int id) {
+//    		        	   Community.this.finish();
+//    		           }
+//    		       })
+//    		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//    		           public void onClick(DialogInterface dialog, int id) {
+//    		                dialog.cancel();
+//    		           }
+//    		       }).show();
+//	    	
+//	        return true;
+//	    }
+//	    return super.onKeyDown(keyCode, event);
+//	}
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
+            webview.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
         
 }

@@ -37,33 +37,18 @@
 	<ImageButton android:id="@+id/uiback_button"
 		android:background="@drawable/keyboard_button"
 		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"
-		android:visibility="invisible" android:layout_below="@+id/toggle_button"/><ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
-	
+		android:visibility="invisible" android:layout_below="@+id/toggle_button"/>
 		
-			
-
-
-
+		
+		<ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" 
+		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" 
+		android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
+		
+		<Button android:id="@+id/button1" android:background="@drawable/choosecommand_button"
+		android:layout_height="40px" android:layout_width="40px"
+		android:layout_below="@+id/numb_button" android:layout_alignParentRight="true"
+		android:visibility="invisible"></Button>
 	
-
-	
-	
-	<!--
-		<Button android:id="@+id/button3" android:visibility="visible"
-		android:layout_alignParentBottom="true" android:layout_width="30px"
-		android:layout_height="30px" android:layout_toLeftOf="@+id/button1"
-		android:background="@drawable/commandindex_button"></Button>
-	-->
-	
-
-
-
-
-	
-
-
-
-
 
 	<TextView android:typeface="monospace" android:layout_width="fill_parent"
 		android:id="@+id/MainText" android:text="MainText"
@@ -73,8 +58,6 @@
 		android:layout_height="fill_parent" android:textStyle="normal"
 		android:textSize="10sp" android:autoLink="all" android:linksClickable="true"
 		android:layout_above="@+id/cmdText"></TextView>
-
-
 
 	<TableLayout android:id="@+id/NumblockBox"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
@@ -881,7 +864,7 @@
 		<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/combatbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/combatbuttonsnr" android:layout_marginBottom="100px" android:visibility="invisible">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 

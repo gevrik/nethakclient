@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="net.totalmadownage.nethak"
-      android:versionName="1.7.0" android:versionCode="26">
+      android:versionName="1.7.1" android:versionCode="27">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         
         <!-- android:debuggable="true"  -->
@@ -64,7 +64,7 @@
 		/>
 		
 		<activity android:name=".Newbieguide"
-		android:label="Netrunners Newbie Guide"
+		android:label="Netrunners WIKI"
 		android:screenOrientation="landscape"
 		/>
 		
@@ -74,9 +74,9 @@
 		</activity>
 		
 		<activity android:name=".Notepadv3"
-		android:screenOrientation="landscape"
-		android:theme="@android:style/Theme.Dialog"
-		/>
+		android:screenOrientation="landscape" />
+		<!-- android:theme="@android:style/Theme.Dialog" -->
+
 		
 		<activity android:name=".NoteEdit"
 		android:screenOrientation="landscape"

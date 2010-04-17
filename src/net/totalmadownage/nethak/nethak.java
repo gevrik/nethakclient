@@ -106,44 +106,14 @@ public class nethak extends Activity implements OnClickListener {
 				   startActivity(ig);
 					
 				}
-			
-				else if (i == 1) {
-					
-					   Intent is = new Intent(this, Gsurvival.class);
-					   startActivity(is);
-					
-				}
-			
-				else if (i == 2) {
-					
-					   Intent it = new Intent(this, Gtalk.class);
-					   startActivity(it);
-					
-				}
-			
-				else if (i == 3) {
-					
-					   Intent itr = new Intent(this, Gtravel.class);
-					   startActivity(itr);
-					
-				}
-			
-				else if (i == 4) {
+	
+				else {
 					
 					   Intent ing = new Intent(this, Newbieguide.class);
 					   startActivity(ing);
 					
 				}
-			
-				else {
 					
-					   Intent itr = new Intent(this, Gtravel.class);
-					   startActivity(itr);
-					
-				}
-				
-
-
 		}
 
 	   

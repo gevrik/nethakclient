@@ -40,9 +40,11 @@ public class Newbieguide extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setBuiltInZoomControls(true);
 
         final Activity activity = this;
         webview.setWebChromeClient(new WebChromeClient() {
+        	@Override
           public void onProgressChanged(WebView view, int progress) {
 
             activity.setProgress(progress * 100);
@@ -50,6 +52,7 @@ public class Newbieguide extends Activity {
         });
 
         webview.setWebViewClient(new WebViewClient() {
+        	@Override
           public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
           }

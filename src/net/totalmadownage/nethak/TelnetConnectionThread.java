@@ -139,12 +139,12 @@ public class TelnetConnectionThread implements Runnable {
             while(!Thread.currentThread().isInterrupted()){
             	//if(inStream.ready()) {
 
-                	char[] dataBuffer = new char[2000];
+                	char[] dataBuffer = new char[4096];
                 	String tempBuffer = "";
 
             		
                 	int numChars = 0;//inStream.read(dataBuffer);
-                	for(numChars=0; numChars<2000; numChars++)
+                	for(numChars=0; numChars<4096; numChars++)
                 	{
 
                 		int temp = 0;

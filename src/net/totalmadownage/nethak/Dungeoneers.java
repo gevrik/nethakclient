@@ -426,7 +426,7 @@ public class Dungeoneers extends Activity implements OnClickListener {
 		if(showToast)
 		{
 			Toast msg = Toast.makeText(Dungeoneers.this, "Please read WIKI in main menu." +
-					" Use MAP to see a map of your surroundings. " +
+					" Check the website for latest updates! " +
 					" Type 'newbie yourtext' to chat with other players.", Toast.LENGTH_LONG);
 
 			msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);

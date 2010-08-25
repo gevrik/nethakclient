@@ -3,7 +3,8 @@
 
 <RelativeLayout android:id="@+id/RelativeLayout01"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/mainbg">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@drawable/mainbg">
 
 
 	<EditText android:layout_height="wrap_content"
@@ -32,22 +33,33 @@
 		android:layout_below="@id/loginText" android:layout_marginTop="1px"
 		android:visibility="visible" android:layout_centerInParent="true"
 		android:layout_alignParentRight="true"></Button>
-	<ImageButton android:id="@+id/commandtoggle_button" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/bctoggle_button" android:visibility="invisible" /><ImageButton android:id="@+id/toggle_button" android:layout_height="40px" android:layout_width="40px" android:layout_alignParentRight="true" android:background="@drawable/travel_button" android:visibility="invisible" android:layout_below="@+id/commandtoggle_button" />
+	<ImageButton android:id="@+id/commandtoggle_button"
+		android:layout_height="40px" android:layout_width="40px"
+		android:layout_alignParentRight="true" android:background="@drawable/bctoggle_button"
+		android:visibility="invisible" />
+	<ImageButton android:id="@+id/toggle_button"
+		android:layout_height="40px" android:layout_width="40px"
+		android:layout_alignParentRight="true" android:background="@drawable/travel_button"
+		android:visibility="invisible" android:layout_below="@+id/commandtoggle_button" />
 
 	<ImageButton android:id="@+id/uiback_button"
 		android:background="@drawable/keyboard_button"
-		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px"
-		android:visibility="invisible" android:layout_below="@+id/toggle_button"/>
-		
-		
-		<ImageButton android:id="@+id/numb_button" android:background="@drawable/numblock_button" 
-		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" 
-		android:visibility="invisible" android:layout_below="@+id/uiback_button"/>
-		
-		<ImageButton android:id="@+id/button1" android:background="@drawable/choosecommand_button" 
-		android:layout_alignParentRight="true" android:layout_height="40px" android:layout_width="40px" 
-		android:visibility="invisible" android:layout_below="@+id/numb_button"/>
-	
+		android:layout_alignParentRight="true" android:layout_height="40px"
+		android:layout_width="40px" android:visibility="invisible"
+		android:layout_below="@+id/toggle_button" />
+
+
+	<ImageButton android:id="@+id/numb_button"
+		android:background="@drawable/numblock_button"
+		android:layout_alignParentRight="true" android:layout_height="40px"
+		android:layout_width="40px" android:visibility="invisible"
+		android:layout_below="@+id/uiback_button" />
+
+	<ImageButton android:id="@+id/button1" android:background="@drawable/choosecommand_button"
+		android:layout_alignParentRight="true" android:layout_height="40px"
+		android:layout_width="40px" android:visibility="invisible"
+		android:layout_below="@+id/numb_button" />
+
 
 	<TextView android:typeface="monospace" android:layout_width="fill_parent"
 		android:id="@+id/MainText" android:text="MainText"
@@ -176,11 +188,12 @@
 				android:scaleType="center" android:src="@drawable/look_buttona"
 				android:background="@drawable/look_buttona" />
 		</TableRow>
-		
-				<TableRow>
+
+		<TableRow>
 			<ImageButton android:id="@+id/secret_button"
 				android:layout_width="50px" android:layout_height="50px"
-				android:scaleType="center" android:background="@drawable/mapicon" android:src="@drawable/mapicon" android:visibility="visible"/>
+				android:scaleType="center" android:background="@drawable/mapicon"
+				android:src="@drawable/mapicon" android:visibility="visible" />
 			<ImageButton android:id="@+id/hisup_button"
 				android:layout_width="50px" android:layout_height="50px"
 				android:scaleType="center" android:src="@drawable/ui_hisup"
@@ -198,10 +211,10 @@
 		android:visibility="invisible" android:layout_toLeftOf="@+id/commandtoggle_button">
 
 		<TableRow android:layout_marginTop="5px">
-					<ImageButton android:id="@+id/look_button"
-				android:layout_width="50px" android:visibility="invisible" android:layout_height="50px"
-				android:scaleType="center" android:src="@drawable/look_buttona"
-				android:background="@drawable/look_buttona" />
+			<ImageButton android:id="@+id/look_button"
+				android:layout_width="50px" android:visibility="invisible"
+				android:layout_height="50px" android:scaleType="center"
+				android:src="@drawable/look_buttona" android:background="@drawable/look_buttona" />
 			<ImageButton android:id="@+id/dirnorth_button"
 				android:layout_width="50px" android:layout_height="50px"
 				android:scaleType="center" android:src="@drawable/north_buttona"
@@ -216,9 +229,9 @@
 		<TableRow>
 			<ImageButton android:id="@+id/dircommand_button"
 				android:layout_width="50px" android:layout_height="50px"
-				android:scaleType="center" android:visibility="invisible" android:src="@drawable/comm_button"
-				android:background="@drawable/comm_button" />
-							<ImageButton android:id="@+id/dirwest_button"
+				android:scaleType="center" android:visibility="invisible"
+				android:src="@drawable/comm_button" android:background="@drawable/comm_button" />
+			<ImageButton android:id="@+id/dirwest_button"
 				android:layout_width="50px" android:layout_height="50px"
 				android:scaleType="center" android:src="@drawable/west_buttona"
 				android:background="@drawable/west_buttona" />
@@ -231,15 +244,16 @@
 		<TableRow>
 			<ImageButton android:id="@+id/enter_button"
 				android:layout_width="50px" android:layout_height="50px"
-				android:scaleType="center" android:visibility="invisible" android:src="@drawable/enter_buttona"
-				android:background="@drawable/enter_buttona" />
+				android:scaleType="center" android:visibility="invisible"
+				android:src="@drawable/enter_buttona" android:background="@drawable/enter_buttona" />
 			<ImageButton android:id="@+id/dirsouth_button"
 				android:layout_width="50px" android:layout_height="50px"
 				android:scaleType="center" android:src="@drawable/south_buttona"
 				android:background="@drawable/south_buttona" />
-							<ImageButton android:layout_width="50px" android:layout_height="50px"
-				android:scaleType="center" android:src="@drawable/down_buttona"
-				android:background="@drawable/down_buttona" android:id="@+id/dirdown_button"/>
+			<ImageButton android:layout_width="50px"
+				android:layout_height="50px" android:scaleType="center"
+				android:src="@drawable/down_buttona" android:background="@drawable/down_buttona"
+				android:id="@+id/dirdown_button" />
 		</TableRow>
 
 	</TableLayout>
@@ -540,8 +554,8 @@
 	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/infobuttonsnr"
-		android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/infobuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -675,8 +689,8 @@
 	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/nodesbuttonsnr"
-		android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/nodesbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -739,8 +753,8 @@
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
 					</Button>
 				</TableRow>
-				
-					
+
+
 
 
 			</TableLayout>
@@ -752,7 +766,8 @@
 	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/talkbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/talkbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -764,10 +779,10 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SAY JOB" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcsayjob">
+						android:text="SAY JOB" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcsayjob">
 					</Button>
 					<Button android:id="@+id/bcsay" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -777,10 +792,9 @@
 					</Button>
 					<Button android:id="@+id/bctell" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="TELL" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="TELL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcnewbie" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -794,10 +808,9 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:id="@+id/bcreply" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="REPLY" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="REPLY" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcgchat" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -807,34 +820,31 @@
 					</Button>
 					<Button android:id="@+id/bcschat" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SCHAT" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="SCHAT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="YELL" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px" android:id="@+id/bcyell">
+						android:text="YELL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcyell">
 					</Button>
 				</TableRow>
 				<TableRow android:id="@+id/widget31" android:layout_width="fill_parent"
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:id="@+id/bcafk" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="AFK" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="AFK" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcgtell" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="GTELL" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="GTELL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcorgtalk" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -851,19 +861,20 @@
 						android:id="@+id/bcooc" android:text="OOC">
 					</Button>
 				</TableRow>
-				
+
 
 
 			</TableLayout>
 
 		</TableRow>
 	</TableLayout>
-	
-	
-		<TableLayout android:orientation="vertical"
+
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/combatbuttonsnr" android:layout_marginBottom="100px" android:visibility="invisible">
+		android:id="@+id/combatbuttonsnr" android:layout_marginBottom="100px"
+		android:visibility="invisible">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -895,20 +906,18 @@
 					</Button>
 					<Button android:id="@+id/bcrest" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="REST" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="REST" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
 				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:id="@+id/bcsleep" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SLEEP" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="SLEEP" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcwake" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -918,32 +927,32 @@
 					</Button>
 					<Button android:id="@+id/bcsit" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SIT" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="SIT" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="STAND" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px" android:id="@+id/bcstand">
+						android:text="STAND" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px"
+						android:id="@+id/bcstand">
 					</Button>
 				</TableRow>
-				
-				
+
+
 
 
 			</TableLayout>
 
 		</TableRow>
 	</TableLayout>
-	
-			<TableLayout android:orientation="vertical"
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/buildingbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/buildingbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -955,16 +964,17 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="CONSTRUCT" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcconstruct">
+						android:text="CONSTRUCT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcconstruct">
 					</Button>
 					<Button android:id="@+id/bcmodify" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="MODIFY" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+						android:text="MODIFY" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcbridge" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -975,10 +985,9 @@
 					</Button>
 					<Button android:id="@+id/bcrnode" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="RNODE" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="RNODE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
 				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
@@ -992,14 +1001,16 @@
 					</Button>
 					<Button android:id="@+id/bclayout" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="LAYOUT" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+						android:text="LAYOUT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
 					</Button>
-										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
-					</Button>										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
 					</Button>
@@ -1009,16 +1020,17 @@
 
 		</TableRow>
 	</TableLayout>
-	
-	
-				<TableLayout android:orientation="vertical"
+
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/interactbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/interactbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
-			
-				<TableLayout android:id="@+id/interactcatbuttons"
+
+			<TableLayout android:id="@+id/interactcatbuttons"
 				android:orientation="vertical" android:layout_x="0px"
 				android:layout_y="0px" android:layout_height="wrap_content"
 				android:layout_width="wrap_content">
@@ -1026,30 +1038,29 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="GIVE PACK" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcgpj">
+						android:text="GIVE PACK" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcgpj">
 					</Button>
 					<Button android:id="@+id/bcgvd" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="GIVE VIRUS" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+						android:text="GIVE VIRUS" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcgive" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="GIVE" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="GIVE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcwield" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="LOAD" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="LOAD" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
 				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
@@ -1063,9 +1074,10 @@
 					</Button>
 					<Button android:id="@+id/bcdownload" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="DOWNLOAD" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+						android:text="DOWNLOAD" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcopen" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1073,15 +1085,15 @@
 						android:layout_marginRight="1px" android:layout_marginBottom="1px"
 						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
-										<Button android:id="@+id/bcclose" android:layout_width="wrap_content"
+					<Button android:id="@+id/bcclose" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
 						android:text="CLOSE" android:textColor="#ed9c15" android:typeface="monospace"
 						android:layout_marginRight="1px" android:layout_marginBottom="1px"
 						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
-				
-								<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
+
+				<TableRow android:id="@+id/widget30" android:layout_width="fill_parent"
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:id="@+id/bcunlock" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1101,7 +1113,7 @@
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
 					</Button>
-										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
 					</Button>
@@ -1112,11 +1124,12 @@
 
 		</TableRow>
 	</TableLayout>
-	
-				<TableLayout android:orientation="vertical"
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/shoppingbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/shoppingbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -1141,10 +1154,9 @@
 					</Button>
 					<Button android:id="@+id/bcsell" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SELL" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="SELL" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcrepair" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1158,21 +1170,22 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:id="@+id/bcvalue" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="VALUE" android:textColor="#ed9c15"
+						android:text="VALUE" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+					</Button>
+					<Button android:id="@+id/bcbuyskill" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
+						android:text="BUYSKILL" android:textColor="#ed9c15"
 						android:typeface="monospace" android:layout_marginRight="1px"
 						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
 						android:layout_marginTop="1px">
 					</Button>
-					<Button android:id="@+id/bcbuyskill" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="BUYSKILL" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
-					</Button>
-										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
-					</Button>										<Button android:id="@+id/widget45" android:layout_width="wrap_content"
+					</Button>
+					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
 						android:visibility="invisible" android:background="@drawable/nr_bg_button">
 					</Button>
@@ -1182,11 +1195,12 @@
 
 		</TableRow>
 	</TableLayout>
-		
-					<TableLayout android:orientation="vertical"
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/bankbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/bankbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -1198,41 +1212,43 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="BALANCE" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcbankbalance">
+						android:text="BALANCE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcbankbalance">
 					</Button>
-					<Button android:id="@+id/bcbankdeposit" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="DEPOSIT" android:textColor="#ed9c15" android:typeface="monospace"
+					<Button android:id="@+id/bcbankdeposit"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:background="@drawable/nr_bg_button" android:text="DEPOSIT"
+						android:textColor="#ed9c15" android:typeface="monospace"
 						android:layout_marginRight="1px" android:layout_marginBottom="1px"
 						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
-					<Button android:id="@+id/bcbankwithdraw" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="WITHDRAW" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+					<Button android:id="@+id/bcbankwithdraw"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:background="@drawable/nr_bg_button" android:text="WITHDRAW"
+						android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
-					<Button android:id="@+id/bcbanktransfer" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="TRANSFER" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+					<Button android:id="@+id/bcbanktransfer"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:background="@drawable/nr_bg_button" android:text="TRANSFER"
+						android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
 			</TableLayout>
 
 		</TableRow>
 	</TableLayout>
-			
-							<TableLayout android:orientation="vertical"
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/orgbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/orgbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -1244,16 +1260,17 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="DONATE" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcdonate">
+						android:text="DONATE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcdonate">
 					</Button>
 					<Button android:id="@+id/bcdemote" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="DEMOTE" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px">
+						android:text="DEMOTE" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/bcempower" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1270,15 +1287,15 @@
 						android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
-				
-								<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
+
+				<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="WITHDRAW" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcwithdraw">
+						android:text="WITHDRAW" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcwithdraw">
 					</Button>
 					<Button android:id="@+id/bcwar" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1305,11 +1322,12 @@
 
 		</TableRow>
 	</TableLayout>
-	
-					<TableLayout android:orientation="vertical"
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/travelbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/travelbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -1321,10 +1339,10 @@
 					android:layout_height="wrap_content" android:orientation="horizontal">
 					<Button android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="CONNECT" android:textColor="#ed9c15" android:typeface="monospace"
-						android:layout_marginRight="1px" android:layout_marginBottom="1px"
-						android:layout_marginLeft="1px" android:layout_marginTop="1px"
-						android:id="@+id/bcconnect">
+						android:text="CONNECT" android:textColor="#ed9c15"
+						android:typeface="monospace" android:layout_marginRight="1px"
+						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
+						android:layout_marginTop="1px" android:id="@+id/bcconnect">
 					</Button>
 					<Button android:id="@+id/bchome" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
@@ -1334,10 +1352,9 @@
 					</Button>
 					<Button android:id="@+id/bcstray" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="STRAY" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="STRAY" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 					<Button android:id="@+id/widget45" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:text="Button"
@@ -1347,12 +1364,13 @@
 			</TableLayout>
 
 		</TableRow>
-	</TableLayout>	
-	
-						<TableLayout android:orientation="vertical"
+	</TableLayout>
+
+	<TableLayout android:orientation="vertical"
 		android:layout_x="0px" android:layout_y="0px" android:layout_height="wrap_content"
 		android:layout_width="wrap_content" android:layout_above="@+id/cmdText"
-		android:id="@+id/groupbuttonsnr" android:visibility="invisible" android:layout_marginBottom="100px">
+		android:id="@+id/groupbuttonsnr" android:visibility="invisible"
+		android:layout_marginBottom="100px">
 		<TableRow android:id="@+id/widget29" android:layout_width="fill_parent"
 			android:orientation="horizontal" android:layout_height="fill_parent">
 
@@ -1384,16 +1402,15 @@
 					</Button>
 					<Button android:id="@+id/bcfollowself" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:background="@drawable/nr_bg_button"
-						android:text="SELF" android:textColor="#ed9c15"
-						android:typeface="monospace" android:layout_marginRight="1px"
-						android:layout_marginBottom="1px" android:layout_marginLeft="1px"
-						android:layout_marginTop="1px">
+						android:text="SELF" android:textColor="#ed9c15" android:typeface="monospace"
+						android:layout_marginRight="1px" android:layout_marginBottom="1px"
+						android:layout_marginLeft="1px" android:layout_marginTop="1px">
 					</Button>
 				</TableRow>
 			</TableLayout>
 
 		</TableRow>
-	</TableLayout>	
-	
+	</TableLayout>
+
 
 </RelativeLayout>
